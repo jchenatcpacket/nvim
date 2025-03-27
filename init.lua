@@ -7,30 +7,17 @@ vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set smartindent")
 vim.cmd("set norelativenumber")
 
--- -- line number
--- vim.opt.number = true
--- -- use mouse for all vim modes: visual, normal, insert, command line.
--- vim.opt.mouse = 'a'
--- -- highlight search
--- vim.opt.hlsearch = false
--- vim.opt.wrap = true
--- vim.opt.breakindent = true
--- vim.opt.shiftwidth = 2
--- vim.opt.tabstop = 4
--- vim.opt.expandtab = true
--- vim.opt.smarttab = true
+vim.opt.mouse = 'a'
+vim.opt.hlsearch = false
+vim.opt.smarttab = true
+vim.opt.wrap = true
+vim.opt.breakindent = true
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
+vim.opt.termguicolors = true
 
--- -- spell check
--- vim.opt.spelllang = 'en_us'
--- vim.opt.spell = true
-
--- vim.opt.termguicolors = true
-
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
-
--- vim.g.do_filetype_lua = 1
--- vim.g.did_load_filetypes = 0
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { noremap = true, silent = true, desc = "Save file in insert mode" })
 vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save file in normal mode" })
@@ -64,18 +51,4 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 require("lazy").setup("plugins")
-
--- show neo tree on startup
--- vim.api.nvim_create_autocmd("VimEnter", {
--- 	command = "set nornu nonu | Neotree toggle",
--- })
--- vim.api.nvim_create_autocmd("BufEnter", {
--- 	command = "set rnu nu",
--- })
