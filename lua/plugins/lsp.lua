@@ -47,7 +47,7 @@ return {
       })
       
       vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-      vim.api.nvim_create_user_command('format', vim.lsp.buf.format, {})
+      vim.api.nvim_create_user_command('Format', vim.lsp.buf.format, {})
     end,
   },
 }
