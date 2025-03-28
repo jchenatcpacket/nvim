@@ -38,7 +38,7 @@ return {
     },
     lazy = false,
     opts = {},
-    config = function ()
+    config = function()
       require('neo-tree').setup {
         filesystem = {
           filtered_items = {
@@ -75,4 +75,11 @@ return {
       require("Comment").setup()
     end,
   },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  }
 }
