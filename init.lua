@@ -52,7 +52,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
-
-vim.api.nvim_create_user_command('Hello', function()
-  print('Hello, Neovim World!')
-end, {})

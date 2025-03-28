@@ -48,8 +48,7 @@ return {
           },
         }
       }
-      vim.keymap.set("n", "<leader>nt", ":Neotree filesystem reveal left<CR>", {})
-    end
+      end
   },
   {
     "nvim-lualine/lualine.nvim",
