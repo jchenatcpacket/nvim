@@ -1,6 +1,7 @@
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
+vim.cmd("set autoindent")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set number")
 vim.cmd("set clipboard=unnamedplus")
@@ -15,14 +16,13 @@ vim.opt.breakindent = true
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
 vim.opt.termguicolors = true
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { noremap = true, silent = true, desc = "Save file in insert mode" })
 vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save file in normal mode" })
 vim.keymap.set("i", "<S-Tab>", "<C-d>", { noremap = true, silent = true, desc = "Unindent line in insert mode" })
-vim.keymap.set("n", "<S-Tab>", "<<", { noremap = true, silent = true, desc = "Unindent line in normal mode" })
+-- vim.keymap.set("n", "<S-Tab>", "<<", { noremap = true, silent = true, desc = "Unindent line in normal mode" })
 vim.keymap.set("n", "<C-z>", "u", { noremap = true, silent = true, desc = "Undo in normal mode" })
 vim.keymap.set("i", "<C-z>", "<Esc>ui", { noremap = true, silent = true, desc = "Undo in insert mode" })
 
