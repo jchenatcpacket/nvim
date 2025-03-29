@@ -186,6 +186,10 @@ return {
         ---Function to call after (un)comment
         post_hook = nil,
       })
+
+      vim.keymap.set({"n", "i"}, "<C-/>", function() 
+        require('Comment.api').toggle.linewise.current()
+        end, { noremap = true })
     end,
   },
   {
