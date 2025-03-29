@@ -19,20 +19,24 @@ vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { noremap = true, silent = true, desc = "Save file in insert mode" })
-vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save file in normal mode" })
-vim.keymap.set("i", "<S-Tab>", "<C-d>", { noremap = true, silent = true, desc = "Unindent line in insert mode" })
--- vim.keymap.set("n", "<S-Tab>", "<<", { noremap = true, silent = true, desc = "Unindent line in normal mode" })
-vim.keymap.set("n", "<C-z>", "u", { noremap = true, silent = true, desc = "Undo in normal mode" })
-vim.keymap.set("i", "<C-z>", "<Esc>ui", { noremap = true, silent = true, desc = "Undo in insert mode" })
+vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "Save file in insert mode" })
+vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file in normal mode" })
 
-vim.keymap.set("n", "dn3", "d3w", { noremap = true, silent = true, desc = "deletes next 3 words in normal mode" })
+vim.keymap.set('n', '<Tab>', '>>', {})
+vim.keymap.set("n", "<S-Tab>", "<<", {})
 
-vim.keymap.set("n", "clr", function()
-  vim.cmd("normal! gg")
-  vim.cmd("normal! dG")
-  vim.cmd("normal! gg")
-end, { noremap = true, silent = true, desc = "Clear file in normal mode" })
+vim.keymap.set("i", "<S-Tab>", "<C-d>", {})
+
+vim.keymap.set("n", "<C-z>", "u", { desc = "Undo in normal mode" })
+vim.keymap.set("i", "<C-z>", "<Esc>ui", { desc = "Undo in insert mode" })
+
+-- vim.keymap.set("n", "clr", function()
+--   vim.cmd("normal! gg")
+--   vim.cmd("normal! dG")
+--   vim.cmd("normal! gg")
+-- end, {  desc = "Clear file in normal mode" })
+
+vim.api.nvim_create_user_command('ClearFile', '%delete_', {})
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
