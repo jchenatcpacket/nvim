@@ -6,6 +6,10 @@ return {
     config = function()
       require("onedark").setup({
         style = "darker",
+        transparent = true,
+        lualine = {
+          transparent = false,
+        },
       })
       require("onedark").load()
     end,
@@ -38,7 +42,6 @@ return {
       "MunifTanjim/nui.nvim",
     },
     lazy = false,
-    opts = {},
     config = function()
       require('neo-tree').setup {
         filesystem = {
