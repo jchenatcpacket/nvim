@@ -6,7 +6,7 @@ return {
     config = function()
       require("onedark").setup({
         style = "darker",
-        transparent = true,
+        transparent = false,
         lualine = {
           transparent = false,
         },
@@ -29,7 +29,7 @@ return {
           enable = true,
           disable = { "c", "rust" },
           additional_vim_regex_highlighting = false,
-        }
+        },
       })
     end
   },
