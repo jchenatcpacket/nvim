@@ -12,7 +12,7 @@ return {
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
       vim.keymap.set({"n"}, "<C-p>", builtin.find_files, {})
-      vim.keymap.set({"n"}, "<C-f>", builtin.current_buffer_fuzzy_find, {})
+      vim.keymap.set({"n"}, "<C-o>", builtin.current_buffer_fuzzy_find, {})
     end
   },
   {
