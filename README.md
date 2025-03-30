@@ -1,13 +1,17 @@
-# my neovim set up
+# my neovim setup
 
 ## Basics
 - Vscode style shortcuts for save, undo, redo, find in file, comment toggle, search files...
-- indent aligns, colored brackets
+- indentation alignment, colored brackets/parenthesis
 - flash.nvim
 - telescope, neotree, lualine
 - treesitter, lsp
 - snippets/completions
-- keymaps smooth scroll
+- keys for smooth scrolling
 
-## To Add in the future
+## To-Add in the future
 - LSP from docker container
+
+## Missing(No Plans to add anytime soon)
+- git diff
+- debugger
