@@ -73,7 +73,7 @@ if vim.g.vscode then
         },
       },
     },
-    install = { colorscheme = { "habamax" } },
+    install = {},
     checker = { enabled = true },
   })
 else
