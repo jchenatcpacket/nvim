@@ -19,22 +19,11 @@ vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "Save file in insert mode" })
-vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file in normal mode" })
-
-vim.keymap.set('n', '<Tab>', '>>', {})
-vim.keymap.set("n", "<S-Tab>", "<<", {})
-
-vim.keymap.set("i", "<S-Tab>", "<C-d>", {})
-
-vim.keymap.set("n", "<C-z>", "u", { desc = "Undo in normal mode" })
-vim.keymap.set("i", "<C-z>", "<Esc>ui", { desc = "Undo in insert mode" })
-
 -- vim.keymap.set("n", "clr", function()
 --   vim.cmd("normal! gg")
 --   vim.cmd("normal! dG")
 --   vim.cmd("normal! gg")
--- end, {  desc = "Clear file in normal mode" })
+-- end, { desc = "Clear file in normal mode" })
 
 vim.api.nvim_create_user_command('ClearFile', '%delete_', {})
 
@@ -77,5 +66,16 @@ if vim.g.vscode then
     checker = { enabled = true },
   })
 else
+  vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "Save file in insert mode" })
+  vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file in normal mode" })
+
+  vim.keymap.set('n', '<Tab>', '>>', {})
+  vim.keymap.set("n", "<S-Tab>", "<<", {})
+
+  vim.keymap.set("i", "<S-Tab>", "<C-d>", {})
+
+  vim.keymap.set("n", "<C-z>", "u", { desc = "Undo in normal mode" })
+  vim.keymap.set("i", "<C-z>", "<Esc>ui", { desc = "Undo in insert mode" })
+
   require("lazy").setup("plugins")
 end
