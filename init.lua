@@ -1,21 +1,6 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set autoindent")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set number")
 vim.cmd("set clipboard=unnamedplus")
-vim.cmd("set smartindent")
-vim.cmd("set norelativenumber")
+vim.cmd("set autoindent")
 
-vim.opt.mouse = 'a'
-vim.opt.hlsearch = false
-vim.opt.smarttab = true
-vim.opt.wrap = true
-vim.opt.breakindent = true
-vim.opt.spelllang = 'en_us'
-vim.opt.spell = true
-vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -66,6 +51,19 @@ if vim.g.vscode then
     checker = { enabled = true },
   })
 else
+  vim.cmd("set expandtab")
+  vim.cmd("set tabstop=2")
+  vim.cmd("set softtabstop=2")
+  vim.cmd("set shiftwidth=2")
+  vim.cmd("set number")
+  vim.cmd("set smartindent")
+  vim.cmd("set norelativenumber")
+  vim.opt.mouse = 'a'
+  vim.opt.hlsearch = false
+  vim.opt.smarttab = true
+  vim.opt.wrap = true
+  vim.opt.breakindent = true
+
   vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "Save file in insert mode" })
   vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file in normal mode" })
 
