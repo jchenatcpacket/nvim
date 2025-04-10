@@ -1,20 +1,5 @@
 return {
   {
-    "navarasu/onedark.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("onedark").setup({
-        style = "darker",
-        transparent = false,
-        lualine = {
-          transparent = false,
-        },
-      })
-      require("onedark").load()
-    end,
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     lazy = false,
@@ -70,6 +55,8 @@ return {
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
         disabled_filetypes = {
+          "packer",
+          "NvimTree",
           statusline = {},
           winbar = {},
         },
