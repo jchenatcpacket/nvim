@@ -26,6 +26,7 @@ return {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
+    priority = 900,
     lazy = false,
     config = function()
       require('neo-tree').setup {
@@ -55,8 +56,6 @@ return {
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
         disabled_filetypes = {
-          "packer",
-          "NvimTree",
           statusline = {},
           winbar = {},
         },
