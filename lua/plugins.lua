@@ -1,20 +1,5 @@
 return {
   {
-    "navarasu/onedark.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("onedark").setup({
-        style = "darker",
-        transparent = false,
-        lualine = {
-          transparent = false,
-        },
-      })
-      require("onedark").load()
-    end,
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     lazy = false,
@@ -41,6 +26,7 @@ return {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
+    priority = 900,
     lazy = false,
     config = function()
       require('neo-tree').setup {
