@@ -4,14 +4,10 @@
 - Vscode style shortcuts for save, undo, redo, find in file, comment toggle, search files...
 - indentation alignment, colored brackets/parenthesis
 - flash.nvim
-- telescope, neotree, lualine
-- treesitter, lsp
+- telescope, neotree, lualine, filetabs
+- treesitter, lsp, linter, formatter, NO DAP YET (Debug adapter protocol)
 - snippets/completions
-- keys for smooth scrolling
+- smooth scrolling
 
 ## To-Add in the future
 - LSP from docker container
-
-## Missing(No Plans to add anytime soon)
-- git diff
-- debugger

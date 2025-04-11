@@ -19,32 +19,6 @@ return {
     end
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    priority = 900,
-    lazy = false,
-    config = function()
-      require('neo-tree').setup {
-        filesystem = {
-          filtered_items = {
-            visible = true,
-            hide_dotfiles = false,
-            hide_gitignored = true,
-            hide_by_name = {
-              ".DS_Store",
-            },
-            never_show = { ".git" },
-          },
-        }
-      }
-      end
-  },
-  {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     lazy = false,
