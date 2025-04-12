@@ -144,31 +144,7 @@ return {
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
-  {
-    'DaikyXendo/nvim-material-icon',
-    lazy = false,
-    config = function()
-      require'nvim-web-devicons'.setup {
-        -- your personnal icons can go here (to override)
-        -- you can specify color or cterm_color instead of specifying both of them
-        -- DevIcon will be appended to `name`
-        override = {
-          zsh = {
-            icon = "",
-            color = "#428850",
-            cterm_color = "65",
-            name = "Zsh"
-          }
-        };
-        -- globally enable different highlight colors per icon (default to true)
-        -- if set to false all icons will have the default icon's color
-        color_icons = true;
-        -- globally enable default icons (default to false)
-        -- will get overriden by `get_icons` option
-        default = true;
-      }
-    end
-  },
+
   {
     "HiPhish/rainbow-delimiters.nvim",
     lazy = false,
@@ -196,32 +172,6 @@ return {
           'RainbowDelimiterCyan',
         },
       }
-    end
-  },
-  {
-    "karb94/neoscroll.nvim",
-    config = function ()
-      neoscroll = require('neoscroll')
-      neoscroll.setup({
-        -- Default easing function used in any animation where
-        -- the `easing` argument has not been explicitly supplied
-        easing = "quadratic"
-      })
-      local keymap = {
-        -- Use the "sine" easing function
-        ["<C-u>"] = function() neoscroll.ctrl_u({ duration = 250; easing = 'sine' }) end;
-        ["<C-d>"] = function() neoscroll.ctrl_d({ duration = 250; easing = 'sine' }) end;
-        -- Use the "circular" easing function
-        -- ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450; easing = 'circular' }) end;
-        -- ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450; easing = 'circular' }) end;
-        -- When no value is passed the `easing` option supplied in `setup()` is used
-        -- ["<C-y>"] = function() neoscroll.scroll(-0.1, { move_cursor=false; duration = 100 }) end;
-        -- ["<C-e>"] = function() neoscroll.scroll(0.1, { move_cursor=false; duration = 100 }) end;
-      }
-      local modes = { 'n', 'v', 'x' }
-      for key, func in pairs(keymap) do
-          vim.keymap.set(modes, key, func)
-      end
     end
   },
 }
