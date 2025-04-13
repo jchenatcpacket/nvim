@@ -59,7 +59,9 @@ else
 	vim.opt.wrap = true
 	vim.opt.breakindent = true
 
-	vim.opt.statuscolumn = '%=%{ v:virtnum > 0 ? "" : printf("%d|%d", v:relnum, v:lnum) } '
+	vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum == 0 ? printf("%d|%d", v:relnum, v:lnum) : " " ) : ""} '
+	vim.opt.relativenumber = true
+	vim.opt.number = true
 
 	vim.diagnostic.config({ virtual_text = true })
 
