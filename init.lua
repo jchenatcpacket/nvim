@@ -54,13 +54,12 @@ else
 	vim.cmd("set softtabstop=2")
 	vim.cmd("set shiftwidth=2")
 	vim.cmd("set smartindent")
-	vim.opt.mouse = "a"
 	vim.opt.hlsearch = false
 	vim.opt.smarttab = true
 	vim.opt.wrap = true
 	vim.opt.breakindent = true
 
-	vim.opt.statuscolumn = '%=%{ v:virtnum > 0 ? "" : printf("%d|%d", v:lnum, v:relnum) } '
+	vim.opt.statuscolumn = '%=%{ v:virtnum > 0 ? "" : printf("%d|%d", v:relnum, v:lnum) } '
 
 	vim.diagnostic.config({ virtual_text = true })
 
