@@ -84,20 +84,40 @@ return {
     },
     lazy = false,
     config = function()
-      require('neo-tree').setup {
+      require("neo-tree").setup({
+        enable_diagnostics = false,
         filesystem = {
           filtered_items = {
-            visible = true,
-            hide_dotfiles = false,
-            hide_gitignored = false,
+            visible = false, -- when true, they will just be displayed differently than normal items
+            hide_dotfiles = true,
+            hide_gitignored = true,
+            hide_hidden = true, -- only works on Windows for hidden files/directories
             hide_by_name = {
-              ".DS_Store",
+              --"node_modules"
             },
-            never_show = { ".git" },
+            hide_by_pattern = { -- uses glob style patterns
+              --"*.meta",
+              --"*/src/*/tsconfig.json",
+            },
+            always_show = { -- remains visible even if other settings would normally hide it
+              ".gitignored",
+            },
+            always_show_by_pattern = { -- uses glob style patterns
+              ".env*",
+            },
+            never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+              ".DS_Store",
+              ".git"
+            },
+            never_show_by_pattern = { -- uses glob style patterns
+              --".null-ls_*",
+            },
           },
-        }
-      }
-      end
+        },
+      })
+
+      vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>")
+    end
   },
   {
     "nvim-telescope/telescope.nvim",
