@@ -69,6 +69,8 @@ else
 	vim.opt.wrap = true
 	vim.opt.breakindent = true
 
+	vim.diagnostic.config({ virtual_text = true })
+
 	vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "Save file in insert mode" })
 	vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file in normal mode" })
 	vim.keymap.set("i", "<S-Tab>", "<C-d>", {})
