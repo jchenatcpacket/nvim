@@ -1,6 +1,7 @@
 vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set autoindent")
 
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -8,14 +9,6 @@ vim.keymap.set("n", "<Tab>", ">>", {})
 vim.keymap.set("n", "<S-Tab>", "<<", {})
 
 vim.keymap.set("n", "<C-z>", "u", { desc = "Undo in normal mode" })
-
--- vim.keymap.set("n", "clr", function()
---   vim.cmd("normal! gg")
---   vim.cmd("normal! dG")
---   vim.cmd("normal! gg")
--- end, { desc = "Clear file in normal mode" })
-
-vim.api.nvim_create_user_command("ClearFile", "%delete_", {})
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -60,14 +53,14 @@ else
 	vim.cmd("set tabstop=2")
 	vim.cmd("set softtabstop=2")
 	vim.cmd("set shiftwidth=2")
-	vim.cmd("set number")
 	vim.cmd("set smartindent")
-	vim.cmd("set norelativenumber")
 	vim.opt.mouse = "a"
 	vim.opt.hlsearch = false
 	vim.opt.smarttab = true
 	vim.opt.wrap = true
 	vim.opt.breakindent = true
+
+	vim.opt.statuscolumn = '%=%{ v:virtnum > 0 ? "" : printf("%d|%d", v:lnum, v:relnum) } '
 
 	vim.diagnostic.config({ virtual_text = true })
 
