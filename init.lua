@@ -88,6 +88,9 @@ else
 	end
 	vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum < 1 ? printf("%s", v:lua.custom_statuscol()) : " " ) : ""} '
 
+	-- cursor customize
+	vim.opt.guicursor = "n:block-blinkwait700-blinkoff400-blinkon250,i:ver25-blinkwait700-blinkoff400-blinkon250"
+
 	-- show diagnostics inline
 	vim.diagnostic.config({ virtual_text = true })
 
