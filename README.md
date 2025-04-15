@@ -10,4 +10,4 @@
 - smooth scrolling
 
 ## To-Add in the future
-- LSP from docker container
+- LSP from docker container     
