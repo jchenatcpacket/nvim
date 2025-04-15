@@ -87,7 +87,7 @@ else
 			return string.format("%dj|%d", vim.v.relnum, vim.v.lnum)
 		end
 	end
-	vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum == 0 ? printf("%s", v:lua.custom_statuscol()) : " " ) : ""} '
+	vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum < 1 ? printf("%s", v:lua.custom_statuscol() ) : " " ) : ""} '
 
 	-- show diagnostics inline
 	vim.diagnostic.config({ virtual_text = true })
