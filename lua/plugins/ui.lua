@@ -1,7 +1,8 @@
 return {
   { 
-    'akinsho/bufferline.nvim', 
-    version = "*", 
+    'akinsho/bufferline.nvim',
+    version = "*",
+    lazy = false,
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function ()
       vim.opt.termguicolors = true
@@ -59,6 +60,7 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    lazy = false,
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
@@ -122,6 +124,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
+    lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local builtin = require("telescope.builtin")

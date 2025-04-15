@@ -59,10 +59,25 @@ else
 	vim.opt.wrap = true
 	vim.opt.breakindent = true
 
+	-- set hightlight colors (overriden by coolorscheme, hence after)
+	vim.cmd([[highlight LineNr guifg=#6c7086]])
+	vim.cmd([[highlight CursorLineNr guifg=#cdd6f4 "guibg=#313244]])
+	vim.cmd([[highlight LineNrAbove guifg=#eba0ac]])
+	vim.cmd([[highlight LineNrBelow guifg=#94e2d5]])
+	-- set line number to be a bit darker
+	vim.cmd([[hi Status_LineNr guifg=#6c7086]])
+	-- color background the same als normal but color text light grey, use 'Vertical Line Extension' ⏐ unicode U+23d0
+	vim.cmd([[hi Status_DivLine guibg=#1e1e2e guifg=#313244]])
+	-- set number + set relativenumber to use in 'statuscolumn =' in lua part
+	vim.cmd("set number")
+	vim.cmd("set relativenumber")
+	-- highlight current line, to hide and only use number highlight uncomment " set cursorlineopt
+	vim.cmd("set cursorline")
+	-- set signwidth to always show and limit to 1 char so stuff doesn't move when LSP error occurs
+	vim.cmd("set signcolumn=yes:1")
 	vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum == 0 ? printf("r%d|a%d", v:relnum, v:lnum) : " " ) : ""} '
-	vim.opt.relativenumber = true
-	vim.opt.number = true
 
+	-- show diagnostics inline
 	vim.diagnostic.config({ virtual_text = true })
 
 	vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "Save file in insert mode" })

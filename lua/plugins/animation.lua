@@ -1,6 +1,7 @@
 return {
   {
     "karb94/neoscroll.nvim",
+    lazy = false,
     config = function ()
       neoscroll = require('neoscroll')
       neoscroll.setup({
@@ -27,6 +28,7 @@ return {
   },
   {
     "sphamba/smear-cursor.nvim",
+    lazy = false,
     opts = {    -- Smear cursor when switching buffers or windows.
       smear_between_buffers = true,
 
