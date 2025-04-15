@@ -58,7 +58,7 @@ else
 	vim.opt.wrap = true
 	vim.opt.breakindent = true
 
-	-- set hightlight colors (overriden by coolorscheme, hence after)
+	-- set hightlight colors (overriden by colorscheme, hence after)
 	vim.cmd([[highlight LineNr guifg=#6c7086]])
 	vim.cmd([[highlight CursorLineNr guifg=#cdd6f4 "guibg=#313244]])
 	vim.cmd([[highlight LineNrAbove guifg=#eba0ac]])
@@ -67,14 +67,27 @@ else
 	vim.cmd([[hi Status_LineNr guifg=#6c7086]])
 	-- color background the same als normal but color text light grey, use 'Vertical Line Extension' ⏐ unicode U+23d0
 	vim.cmd([[hi Status_DivLine guibg=#1e1e2e guifg=#313244]])
-	-- set number + set relativenumber to use in 'statuscolumn =' in lua part
+	-- set number + set relativenumber to use in 'statuscolumn ='
 	vim.cmd("set number")
 	vim.cmd("set relativenumber")
 	-- highlight current line, to hide and only use number highlight uncomment " set cursorlineopt
 	vim.cmd("set cursorline")
 	-- set signwidth to always show and limit to 1 char so stuff doesn't move when LSP error occurs
 	vim.cmd("set signcolumn=yes:1")
-	vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum == 0 ? printf("r%d|a%d", v:relnum, v:lnum) : " " ) : ""} '
+
+	_G.custom_statuscol = function()
+		local current_line = vim.api.nvim_win_get_cursor(0)[1]
+		local absolute_line = vim.v.lnum
+		local line_diff = absolute_line - current_line
+		if line_diff == 0 then
+			return string.format("%d|%d", vim.v.relnum, vim.v.lnum)
+		elseif line_diff < 0 then
+			return string.format("%dk|%d", vim.v.relnum, vim.v.lnum)
+		else
+			return string.format("%dj|%d", vim.v.relnum, vim.v.lnum)
+		end
+	end
+	vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum == 0 ? printf("%s", v:lua.custom_statuscol()) : " " ) : ""} '
 
 	-- show diagnostics inline
 	vim.diagnostic.config({ virtual_text = true })
