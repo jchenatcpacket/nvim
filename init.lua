@@ -4,10 +4,9 @@ vim.cmd("set autoindent")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.keymap.set("n", "<Tab>", ">>", {})
-vim.keymap.set("n", "<S-Tab>", "<<", {})
-
-vim.keymap.set("n", "<C-z>", "u", { desc = "Undo in normal mode" })
+vim.keymap.set("n", "<Tab>", ">>", { desc = "normal mode, indent" })
+vim.keymap.set("n", "<S-Tab>", "<<", { desc = "normal mode, reverse indent" })
+vim.keymap.set("n", "<C-z>", "u", { desc = "normal mode, undo" })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -87,15 +86,15 @@ else
 			return string.format("%dj|%d", vim.v.relnum, vim.v.lnum)
 		end
 	end
-	vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum < 1 ? printf("%s", v:lua.custom_statuscol() ) : " " ) : ""} '
+	vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum < 1 ? printf("%s", v:lua.custom_statuscol()) : " " ) : ""} '
 
 	-- show diagnostics inline
 	vim.diagnostic.config({ virtual_text = true })
 
-	vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "Save file in insert mode" })
-	vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file in normal mode" })
-	vim.keymap.set("i", "<S-Tab>", "<C-d>", {})
-	vim.keymap.set("i", "<C-z>", "<Esc>ui", { desc = "Undo in insert mode" })
+	vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "insert mode, save file" })
+	vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "normal mode, save file" })
+	vim.keymap.set("i", "<S-Tab>", "<C-d>", {desc = "insert mode, reverse indent" })
+	vim.keymap.set("i", "<C-z>", "<Esc>ui", { desc = "insert mode, undo" })
 
 	require("lazy").setup("plugins")
 end
