@@ -94,7 +94,7 @@ else
 	-- show diagnostics inline
 	vim.diagnostic.config({ virtual_text = true })
 
-	vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { desc = "insert mode, save file" })
+	vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { desc = "insert mode, save file" })
 	vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "normal mode, save file" })
 	vim.keymap.set("i", "<S-Tab>", "<C-d>", {desc = "insert mode, reverse indent" })
 	vim.keymap.set("i", "<C-z>", "<Esc>ui", { desc = "insert mode, undo" })
