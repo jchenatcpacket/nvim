@@ -48,21 +48,4 @@ return {
 			vim.keymap.set("n", "<leader>nt", "<Cmd>Neotree toggle<CR>")
 		end,
 	},
-  {
-    'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    lazy = false,
-    config = function ()
-      require("oil").setup({
-        keymaps = {
-          ["<C-c>"] = { "actions.close", mode = "n" },
-        },
-      })
-      vim.keymap.set("n", "<leader>oil", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-    end
-  },
 }
