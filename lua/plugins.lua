@@ -1,24 +1,5 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    lazy = false,
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        auto_install = true,
-        indent = { enable = true },
-        ensure_installed = { "lua" },
-        sync_install = false,
-        ignore_install = { "javascript" },
-        highlight = {
-          enable = true,
-          disable = { "c", "rust" },
-          additional_vim_regex_highlighting = false,
-        },
-      })
-    end
-  },
-  {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     lazy = false,
