@@ -1,5 +1,5 @@
 return {
-  {
+	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 		dependencies = {
@@ -10,11 +10,20 @@ return {
 		lazy = false,
 		config = function()
 			require("neo-tree").setup({
-        enable_git_status = true,
+				enable_git_status = true,
 				enable_diagnostics = true,
-        window = {
-          position = "float",
-        },
+				window = {
+					position = "float",
+					mappings = {
+						["ad"] = "add_directory",
+            ["m"] = "move",
+						["d"] = "delete",
+						["r"] = "rename_basename",
+            ["q"] = "cancel",
+            ["s"] = "open_vsplit",
+            ["t"] = "open_tabnew",
+					},
+				},
 				filesystem = {
 					filtered_items = {
 						visible = false, -- when true, they will just be displayed differently than normal items
@@ -48,21 +57,4 @@ return {
 			vim.keymap.set("n", "<leader>nt", "<Cmd>Neotree toggle<CR>")
 		end,
 	},
-  {
-    'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    lazy = false,
-    config = function ()
-      require("oil").setup({
-        keymaps = {
-          ["<C-c>"] = { "actions.close", mode = "n" },
-        },
-      })
-      vim.keymap.set("n", "<leader>oil", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-    end
-  },
 }
