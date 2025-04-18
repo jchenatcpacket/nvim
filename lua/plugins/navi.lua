@@ -16,25 +16,25 @@ return {
             vim.keymap.set("n", "<leader>fli", "<CMD>FzfLua lsp_implementations<CR>", { desc = "lsp implementation" })
         end,
     },
-    {
-        "folke/trouble.nvim",
-        lazy = false,
-        cmd = "Trouble",
-        config = function()
-            require('trouble').setup({
-                focus = true,
-                auto_preview = true,
-                warn_no_results = true,
-                open_no_results = true,
-                win = {
-                    type = "float",
-                    position = "center",
-                    size = 0.8,
-                },
-            })
-            vim.keymap.set("n", "<leader>tld", "<cmd>Trouble lsp_definitions<cr>", { desc = "trouble lsp definition" })
-        end,
-    },
+    -- {
+    --     "folke/trouble.nvim",
+    --     lazy = false,
+    --     cmd = "Trouble",
+    --     config = function()
+    --         require('trouble').setup({
+    --             focus = true,
+    --             auto_preview = true,
+    --             warn_no_results = true,
+    --             open_no_results = true,
+    --             win = {
+    --                 type = "float",
+    --                 position = "center",
+    --                 size = 0.8,
+    --             },
+    --         })
+    --         vim.keymap.set("n", "<leader>tld", "<cmd>Trouble lsp_definitions<cr>", { desc = "trouble lsp definition" })
+    --     end,
+    -- },
     {
         "stevearc/aerial.nvim",
         opts = {},
@@ -85,6 +85,8 @@ return {
         config = function ()
             require('goto-preview').setup({
                 focus_on_open = true,
+                zindex = 1,
+                vim_ui_input = true,
             })
         end,
         keys = {
