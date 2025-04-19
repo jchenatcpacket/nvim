@@ -20,6 +20,9 @@ vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { desc = "insert mode, save file" })
 vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "normal mode, save file" })
 vim.keymap.set("i", "<C-z>", "<Esc>ui", { desc = "insert mode, undo" })
 
+vim.api.nvim_set_keymap("n", "<leader>gdec", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true }) 
+vim.api.nvim_set_keymap("n", "<leader>gdef", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+
 -- set hightlight colors (overriden by colorscheme, hence after)
 vim.cmd([[highlight LineNr guifg=#6c7086]])
 vim.cmd([[highlight CursorLineNr guifg=#cdd6f4 "guibg=#313244]])
