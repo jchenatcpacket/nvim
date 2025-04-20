@@ -13,8 +13,6 @@ vim.cmd("set autoindent")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.keymap.set("n", "<Tab>", ">>", { desc = "normal mode, indent" })
-vim.keymap.set("n", "<S-Tab>", "<<", { desc = "normal mode, reverse indent" })
 vim.keymap.set("n", "<C-z>", "u", { desc = "normal mode, undo" })
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { desc = "insert mode, save file" })
 vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "normal mode, save file" })
