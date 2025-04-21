@@ -26,10 +26,19 @@ return {
 				vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 			end)
 
-			vim.g.rainbow_delimiters = { highlight = highlight }
-			-- require("ibl").setup({ scope = { highlight = highlight } })
+			local highlight = {
+                "CursorColumn",
+                "Whitespace",
+            }
+            require("ibl").setup {
+                indent = { highlight = highlight, char = "" },
+                whitespace = {
+                    highlight = highlight,
+                    remove_blankline_trail = false,
+                },
+                scope = { enabled = false },
+            }
 
-			hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 		end,
 	},
 	{
@@ -59,13 +68,12 @@ return {
 		event = "VeryLazy",
 		---@type Flash.Config
 		opts = {},
-    -- stylua: ignore
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
+        keys = {
+        { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+        { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+        { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+        { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+        { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+        },
 	},
 }

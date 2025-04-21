@@ -7,13 +7,21 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
         config = function()
-            require("fzf-lua").setup({})
-            vim.keymap.set("n", "<C-p>", "<CMD>FzfLua files<CR>", { desc = "search filenames" })
+            local fzf = require("fzf-lua")
+            
+            fzf.setup({'fzf-native'})
+
+            vim.keymap.set("n", "<C-p>", function ()
+                fzf.files()
+            end, { desc = "search filenames" })
             vim.keymap.set("n", "<C-o>", "<CMD>FzfLua grep_curbuf<CR>", { desc = "search current buffer" })
             vim.keymap.set("n", "<leader>gall", "<CMD>FzfLua grep_project<CR>", { desc = "search all project lines" })
-            vim.keymap.set("n", "<leader>fld", "<CMD>FzfLua lsp_definitions<CR>", { desc = "goto definition" })
-            vim.keymap.set("n", "<leader>flr", "<CMD>FzfLua lsp_references<CR>", { desc = "preview lsp reference" })
-            vim.keymap.set("n", "<leader>fli", "<CMD>FzfLua lsp_implementations<CR>", { desc = "preview lsp implementation" })
+            vim.keymap.set("n", "<leader>pdef", function ()
+                fzf.lsp_definitions({ jump_to_single_result = false })
+            end, { desc = "preview lsp definition" })
+            vim.keymap.set("n", "<leader>gdef", "<CMD>FzfLua lsp_definitions<CR>", { desc = "goto lsp definition" })
+            vim.keymap.set("n", "<leader>pref", "<CMD>FzfLua lsp_references<CR>", { desc = "preview lsp reference" })
+            vim.keymap.set("n", "<leader>pimpl", "<CMD>FzfLua lsp_implementations<CR>", { desc = "preview lsp implementation" })
         end,
     },
     {
