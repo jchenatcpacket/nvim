@@ -62,9 +62,8 @@ return {
                     min_height = { 8, 0.1 },
                 },
             })
-            -- You probably also want to set a keymap to toggle aerial
-            vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle! float<CR>")
-            vim.keymap.set("n", "q", "<cmd>AerialClose<CR>")
+
+            vim.keymap.set("n", "<leader>ol", "<cmd>AerialOpen float<CR>")
         end,
     },
 }
