@@ -11,9 +11,9 @@ return {
             vim.keymap.set("n", "<C-p>", "<CMD>FzfLua files<CR>", { desc = "search filenames" })
             vim.keymap.set("n", "<C-o>", "<CMD>FzfLua grep_curbuf<CR>", { desc = "search current buffer" })
             vim.keymap.set("n", "<leader>gall", "<CMD>FzfLua grep_project<CR>", { desc = "search all project lines" })
-            vim.keymap.set("n", "<leader>fld", "<CMD>FzfLua lsp_definitions<CR>", { desc = "lsp definition" })
-            vim.keymap.set("n", "<leader>flr", "<CMD>FzfLua lsp_references<CR>", { desc = "lsp reference" })
-            vim.keymap.set("n", "<leader>fli", "<CMD>FzfLua lsp_implementations<CR>", { desc = "lsp implementation" })
+            vim.keymap.set("n", "<leader>fld", "<CMD>FzfLua lsp_definitions<CR>", { desc = "goto definition" })
+            vim.keymap.set("n", "<leader>flr", "<CMD>FzfLua lsp_references<CR>", { desc = "preview lsp reference" })
+            vim.keymap.set("n", "<leader>fli", "<CMD>FzfLua lsp_implementations<CR>", { desc = "preview lsp implementation" })
         end,
     },
     {
