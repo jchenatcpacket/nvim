@@ -15,6 +15,7 @@ return {
         -- Conform will run the first available formatter
         javascript = { "prettierd", "prettier", stop_after_first = true },
       },
+
       -- format_on_save = {
       --   lsp_fallback = true,
       --   async = false,
@@ -29,5 +30,9 @@ return {
         timeout_ms = 500,
       })
     end, { desc = "Format file or range (in visual mode)" })
+
+    vim.keymap.set({ "n", "v" }, "<leader>tw", function()
+      conform.format({ formatters = { "trim_whitespace" } })
+    end, { desc = "trim trailing whitespace" })
   end
 }
