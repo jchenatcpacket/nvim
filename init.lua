@@ -36,9 +36,7 @@ vim.cmd("set cursorline")
 vim.cmd("set signcolumn=yes:1")
 
 vim.cmd("set list")
-vim.cmd([[set showbreak=↪\ ]])
--- use lsp diagnostics to warn about the trialing spaces instread og highlight
-vim.cmd([[set listchars=extends:›,precedes:‹,eol:↵,trail:.,tab:>-,nbsp:␣]])
+vim.cmd([[set listchars=trail:…,nbsp:+,tab:▏\ ,eol:↵]])
 
 vim.keymap.set('n', '<C-i>', 'i', { noremap = true, desc = "remap insert mode action"})
 
