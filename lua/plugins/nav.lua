@@ -7,13 +7,42 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
         config = function()
-            require("fzf-lua").setup({})
-            vim.keymap.set("n", "<C-p>", "<CMD>FzfLua files<CR>", { desc = "search filenames" })
-            vim.keymap.set("n", "<C-o>", "<CMD>FzfLua grep_curbuf<CR>", { desc = "search current buffer" })
-            vim.keymap.set("n", "<leader>gall", "<CMD>FzfLua grep_project<CR>", { desc = "search all project lines" })
-            vim.keymap.set("n", "<leader>fld", "<CMD>FzfLua lsp_definitions<CR>", { desc = "goto definition" })
-            vim.keymap.set("n", "<leader>flr", "<CMD>FzfLua lsp_references<CR>", { desc = "preview lsp reference" })
-            vim.keymap.set("n", "<leader>fli", "<CMD>FzfLua lsp_implementations<CR>", { desc = "preview lsp implementation" })
+            local fzf = require("fzf-lua")
+
+            fzf.setup({
+                lsp = {
+                    jump1 = false, -- jump_to_single_result = false
+                }
+            })
+
+            vim.keymap.set("n", "<C-p>", function ()
+                fzf.files()
+            end, { desc = "search filenames" })
+
+            vim.keymap.set("n", "<C-o>", function ()
+                fzf.grep_curbuf()
+            end, { desc = "search current buffer" })
+
+            vim.keymap.set("n", "<leader>gpj", function ()
+                fzf.grep_project()
+            end, { desc = "search all project lines" })
+
+            vim.keymap.set("n", "<leader>vdf", function ()
+                fzf.lsp_definitions()
+            end, { desc = "preview lsp definition" })
+
+            vim.keymap.set("n", "<leader>tdf", function ()
+                fzf.lsp_definitions({ jump_to_single_result = true })
+            end, { desc = "goto lsp definition" })
+
+            vim.keymap.set("n", "<leader>vtd", function ()
+                fzf.lsp_typedefs()
+            end, { desc = "preview lsp type definition" })
+
+            vim.keymap.set("n", "<leader>vds", "<CMD>FzfLua lsp_document_symbols<CR>", { desc = "preview lsp Document Symbols" })
+            vim.keymap.set("n", "<leader>vws", "<CMD>FzfLua lsp_workspace_symbols<CR>", { desc = "preview lsp Workspace Symbols" })
+            vim.keymap.set("n", "<leader>vrf", "<CMD>FzfLua lsp_references<CR>", { desc = "preview lsp reference" })
+            vim.keymap.set("n", "<leader>vim", "<CMD>FzfLua lsp_implementations<CR>", { desc = "preview lsp implementation" })
         end,
     },
     {
@@ -54,9 +83,8 @@ return {
                     min_height = { 8, 0.1 },
                 },
             })
-            -- You probably also want to set a keymap to toggle aerial
-            vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle! float<CR>")
-            vim.keymap.set("n", "q", "<cmd>AerialClose<CR>")
+
+            vim.keymap.set("n", "<leader>ol", "<cmd>AerialOpen float<CR>")
         end,
     },
 }

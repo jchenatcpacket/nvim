@@ -35,6 +35,13 @@ vim.cmd("set cursorline")
 -- set signwidth to always show and limit to 1 char so stuff doesn't move when LSP error occurs
 vim.cmd("set signcolumn=yes:1")
 
+vim.cmd("set list")
+vim.cmd([[set showbreak=↪\ ]])
+-- use lsp diagnostics to warn about the trialing spaces instread og highlight
+vim.cmd([[set listchars=extends:›,precedes:‹,eol:↵,trail:.,tab:>-,nbsp:␣]])
+
+vim.keymap.set('n', '<C-i>', 'i', { noremap = true, desc = "remap insert mode action"})
+
 _G.custom_statuscol = function()
 	local current_line = vim.api.nvim_win_get_cursor(0)[1]
 	local absolute_line = vim.v.lnum

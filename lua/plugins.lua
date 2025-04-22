@@ -26,10 +26,7 @@ return {
 				vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 			end)
 
-			vim.g.rainbow_delimiters = { highlight = highlight }
-			-- require("ibl").setup({ scope = { highlight = highlight } })
-
-			hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+            require("ibl").setup()
 		end,
 	},
 	{
@@ -46,10 +43,18 @@ return {
 				---LHS of toggle mappings in NORMAL mode
 				toggler = {
 					---Line-comment toggle keymap
-					line = "gcc",
+					line = "<leader>tcc",
 					---Block-comment toggle keymap
-					block = "gbc",
+					block = "<leader>tcb",
 				},
+                extra = {
+                    ---Add comment on the line above
+                    above = '<leader>cla',
+                    ---Add comment on the line below
+                    below = '<leader>clb',
+                    ---Add comment at the end of line
+                    eol = '<leader>ceol',
+                },
 			})
 		end,
 	},
@@ -59,13 +64,24 @@ return {
 		event = "VeryLazy",
 		---@type Flash.Config
 		opts = {},
-    -- stylua: ignore
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+        keys = {
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+        },
     },
-	},
+    -- tmux can do floating windows
+    {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        lazy = false,
+        config = function ()
+            require("toggleterm").setup({
+                open_mapping = [[<c-`>]],
+                direction = 'float',
+            })
+        end
+    },
 }
