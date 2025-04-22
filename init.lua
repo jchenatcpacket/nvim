@@ -37,6 +37,9 @@ vim.opt.breakindent = true
 vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set autoindent")
 
+-- newline on file save
+vim.opt.fixendofline = false
+
 -- set hightlight colors (overriden by colorscheme, hence after)
 vim.cmd([[highlight LineNr guifg=#6c7086]])
 vim.cmd([[highlight CursorLineNr guifg=#cdd6f4 "guibg=#313244]])
