@@ -8,7 +8,7 @@ return {
         opts = {},
         config = function()
             local fzf = require("fzf-lua")
-            
+
             fzf.setup({
                 lsp = {
                     jump1 = false, -- jump_to_single_result = false
@@ -19,7 +19,7 @@ return {
                 fzf.files()
             end, { desc = "search filenames" })
 
-            vim.keymap.set("n", "<C-o>", function () 
+            vim.keymap.set("n", "<C-o>", function ()
                 fzf.grep_curbuf()
             end, { desc = "search current buffer" })
 
