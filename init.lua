@@ -1,11 +1,17 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set smartindent")
-vim.opt.hlsearch = false
 vim.opt.smarttab = true
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=4")
+vim.cmd("set softtabstop=4")
+
+vim.cmd("set smartindent")
+vim.cmd("set shiftwidth=4")
+
+vim.cmd("set list")
+vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ ,multispace:┊\ ,eol:↵]])
+
 vim.opt.wrap = true
+vim.opt.hlsearch = false
+
 vim.opt.breakindent = true
 vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set autoindent")
@@ -35,11 +41,6 @@ vim.cmd("set cursorline")
 -- set signwidth to always show and limit to 1 char so stuff doesn't move when LSP error occurs
 vim.cmd("set signcolumn=yes:1")
 
-vim.cmd("set list")
-vim.cmd([[set listchars=trail:…,nbsp:+,tab:▏\ ,eol:↵]])
-
-vim.keymap.set('n', '<C-i>', 'i', { noremap = true, desc = "remap insert mode action"})
-
 _G.custom_statuscol = function()
 	local current_line = vim.api.nvim_win_get_cursor(0)[1]
 	local absolute_line = vim.v.lnum
@@ -56,9 +57,6 @@ vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum < 1 ? printf("%s", v
 
 -- cursor customize
 vim.opt.guicursor = "n:block-blinkwait700-blinkoff400-blinkon250,i:ver25-blinkwait700-blinkoff400-blinkon250"
-
--- show diagnostics inline
-vim.diagnostic.config({ virtual_text = true })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
