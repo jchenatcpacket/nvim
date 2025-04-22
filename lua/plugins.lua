@@ -43,10 +43,18 @@ return {
 				---LHS of toggle mappings in NORMAL mode
 				toggler = {
 					---Line-comment toggle keymap
-					line = "gcc",
+					line = "<leader>tcc",
 					---Block-comment toggle keymap
-					block = "gbc",
+					block = "<leader>tcb",
 				},
+                extra = {
+                    ---Add comment on the line above
+                    above = '<leader>cla',
+                    ---Add comment on the line below
+                    below = '<leader>clb',
+                    ---Add comment at the end of line
+                    eol = '<leader>ceol',
+                },
 			})
 		end,
 	},
@@ -63,5 +71,16 @@ return {
             { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
         },
-	},
+    },
+    {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        lazy = false,
+        config = function ()
+            require("toggleterm").setup({
+                open_mapping = [[<c-`>]],
+                direction = 'float',
+            })
+        end
+    },
 }

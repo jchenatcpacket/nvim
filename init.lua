@@ -37,7 +37,8 @@ vim.cmd("set signcolumn=yes:1")
 
 vim.cmd("set list")
 vim.cmd([[set showbreak=↪\ ]])
-vim.cmd([[set listchars=extends:›,precedes:‹,eol:↵,trail:~,tab:>-,nbsp:␣,space:.]])
+-- use lsp diagnostics to warn about the trialing spaces instread og highlight
+vim.cmd([[set listchars=extends:›,precedes:‹,eol:↵,trail:.,tab:>-,nbsp:␣]])
 
 vim.keymap.set('n', '<C-i>', 'i', { noremap = true, desc = "remap insert mode action"})
 
