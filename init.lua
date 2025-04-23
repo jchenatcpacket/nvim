@@ -6,7 +6,6 @@ vim.cmd("set smartindent")
 vim.cmd("set shiftwidth=4")
 
 vim.cmd("set list")
-vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ \ \ ,multispace:┊\ ,eol:↵]])
 
 -- custom function to setting indent to 2 or 4
 vim.api.nvim_create_user_command('SetIndent', function(opts)
@@ -29,6 +28,8 @@ vim.api.nvim_create_user_command('SetIndent', function(opts)
 
     print("Indent set to " .. width)
 end, { nargs = 1 })
+
+vim.api.nvim_create_autocmd("BufEnter", { command = "SetIndent 4", })
 
 vim.opt.wrap = true
 vim.opt.hlsearch = false
