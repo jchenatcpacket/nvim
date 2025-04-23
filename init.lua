@@ -1,22 +1,44 @@
+-- vim.opt.smarttab = true
 vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
+vim.cmd("set tabstop=4")
+vim.cmd("set softtabstop=4")
 vim.cmd("set smartindent")
-vim.opt.hlsearch = false
-vim.opt.smarttab = true
+vim.cmd("set shiftwidth=4")
+
+vim.cmd("set list")
+vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ \ \ ,multispace:┊\ ,eol:↵]])
+
+-- custom function to setting indent to 2 or 4
+vim.api.nvim_create_user_command('SetIndent', function(opts)
+    local width = tonumber(opts.args)
+
+    if width ~= 2 and width ~= 4 then
+        vim.api.nvim_err_writeln("Error: Indent must be either 2 or 4")
+        return
+    end
+
+    if width == 2 then
+        vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ ,multispace:┊\ ,eol:↵]])
+    elseif width == 4 then
+        vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ \ \ ,multispace:┊\ ,eol:↵]])
+    end
+
+    vim.opt.tabstop = width
+    vim.opt.softtabstop = width
+    vim.opt.shiftwidth = width
+
+    print("Indent set to " .. width)
+end, { nargs = 1 })
+
 vim.opt.wrap = true
+vim.opt.hlsearch = false
+
 vim.opt.breakindent = true
 vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set autoindent")
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
-vim.keymap.set("n", "<C-z>", "<cmd>u<cr>", { desc = "normal mode, undo" })
-vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
-vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
-vim.keymap.set("i", "<C-z>", "<cmd>ui<cr>", { desc = "insert mode, undo" })
+-- newline on file save
+vim.opt.fixendofline = false
 
 -- set hightlight colors (overriden by colorscheme, hence after)
 vim.cmd([[highlight LineNr guifg=#6c7086]])
@@ -35,13 +57,7 @@ vim.cmd("set cursorline")
 -- set signwidth to always show and limit to 1 char so stuff doesn't move when LSP error occurs
 vim.cmd("set signcolumn=yes:1")
 
-vim.cmd("set list")
-vim.cmd([[set showbreak=↪\ ]])
--- use lsp diagnostics to warn about the trialing spaces instread og highlight
-vim.cmd([[set listchars=extends:›,precedes:‹,eol:↵,trail:.,tab:>-,nbsp:␣]])
-
-vim.keymap.set('n', '<C-i>', 'i', { noremap = true, desc = "remap insert mode action"})
-
+-- customize status column
 _G.custom_statuscol = function()
 	local current_line = vim.api.nvim_win_get_cursor(0)[1]
 	local absolute_line = vim.v.lnum
@@ -56,11 +72,17 @@ _G.custom_statuscol = function()
 end
 vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum < 1 ? printf("%s", v:lua.custom_statuscol()) : " " ) : ""} '
 
--- cursor customize
+-- customize cursor
 vim.opt.guicursor = "n:block-blinkwait700-blinkoff400-blinkon250,i:ver25-blinkwait700-blinkoff400-blinkon250"
 
--- show diagnostics inline
-vim.diagnostic.config({ virtual_text = true })
+-- customize keymaps
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+vim.keymap.set("n", "<C-z>", "<cmd>u<cr>", { desc = "normal mode, undo" })
+vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
+vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
+vim.keymap.set("i", "<C-z>", "<C-u>", { desc = "insert mode, undo" })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
