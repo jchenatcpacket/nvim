@@ -83,6 +83,7 @@ vim.keymap.set("n", "<C-z>", "<cmd>u<cr>", { desc = "normal mode, undo" })
 vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
 vim.keymap.set("i", "<C-z>", "<C-u>", { desc = "insert mode, undo" })
+vim.api.nvim_create_user_command("Redo", "normal! <C-r>", {"command to redo changes"})
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

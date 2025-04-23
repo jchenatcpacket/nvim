@@ -49,9 +49,9 @@ return {
         lazy = false,
         config = function ()
             require("toggleterm").setup({
-                open_mapping = [[<c-`>]],
                 direction = 'float',
             })
+            vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<cr>", {desc = "floating terminal"})
         end
     },
 }
