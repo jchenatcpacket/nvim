@@ -1,13 +1,12 @@
 # my neovim setup
 
 ## Basics
-- Vscode style shortcuts for save, undo, redo, find in file, comment toggle, search files...
-- indentation alignment, colored brackets/parenthesis
+- search files, buffer, project lines...
+- neotree, lualine, bufferline
 - flash.nvim
-- telescope, neotree, lualine, filetabs
-- treesitter, lsp, linter, formatter, NO DAP YET (Debug adapter protocol)
+- treesitter, lsp, linter, formatter, NO DAP (Debug adapter protocol)
 - snippets/completions
-- smooth scrolling
+- gitsigns for preview hunk, revert hunk/changes
 
 ## To-Add in the future
-- LSP from docker container     
+- LSP from docker container
