@@ -80,10 +80,10 @@ vim.opt.guicursor = "n:block-blinkwait700-blinkoff400-blinkon250,i:ver25-blinkwa
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.keymap.set("n", "<C-z>", "<cmd>u<cr>", { desc = "normal mode, undo" })
 vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
-vim.keymap.set("i", "<C-z>", "<C-u>", { desc = "insert mode, undo" })
+vim.keymap.set("n", "w", "a<space><esc>", { desc = "normal mode, insert a whitespace" })
+vim.keymap.set({ "n", "v" }, "4", '"_', { desc = "backhole" })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
