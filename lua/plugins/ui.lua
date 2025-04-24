@@ -20,7 +20,7 @@ return {
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = "auto",
+					theme = "dracula",
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {
@@ -39,7 +39,7 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch", "diff" },
+					lualine_b = { "branch" },
 					lualine_c = {
 						{
 							"filename",
@@ -47,8 +47,8 @@ return {
 						},
 						{
 							"navic",
-							color_correction = "dynamic",
-							navic_opts = nil,
+							color_correction = "static",
+							navic_opts = { highlight = true },
 						},
 					},
 					lualine_x = {
@@ -75,6 +75,9 @@ return {
 							update_in_insert = false, -- Update diagnostics in insert mode.
 							always_visible = false, -- Show diagnostics even if there are none.
 						},
+					},
+					lualine_y = { "location", "progress", "encoding" },
+					lualine_z = {
 						{
 							"lsp_status",
 							icon = "", -- f013
@@ -90,8 +93,6 @@ return {
 							ignore_lsp = {},
 						},
 					},
-					lualine_y = { "location", "progress", "encoding", "filetype" },
-					lualine_z = {},
 				},
 				inactive_sections = {
 					lualine_a = {},
@@ -197,10 +198,7 @@ return {
 				depth_limit_indicator = "..",
 				safe_output = true,
 				lazy_update_context = false,
-				click = false,
-				format_text = function(text)
-					return text
-				end,
+				click = true,
 			})
 		end,
 	},
