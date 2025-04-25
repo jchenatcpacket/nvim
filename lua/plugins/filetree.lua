@@ -11,6 +11,21 @@ return {
 		config = function()
 			require("neo-tree").setup({
 				enable_git_status = true,
+				git_status = {
+					symbols = {
+						-- Change type
+						added = "add", -- or "✚", but this is redundant info if you use git_status_colors on the name
+						modified = "modified", -- or "", but this is redundant info if you use git_status_colors on the name
+						deleted = "deleted", -- this can only be used in the git_status source
+						renamed = "renamed", -- this can only be used in the git_status source
+						-- Status type
+						untracked = "untracked",
+						ignored = "ignored",
+						unstaged = "unstaged",
+						staged = "staged",
+						conflict = "conflict",
+					},
+				},
 				enable_diagnostics = true,
 				window = {
 					position = "float",
