@@ -23,7 +23,7 @@ return {
 				fzf.grep_curbuf()
 			end, { desc = "search current buffer" })
 
-			vim.keymap.set("n", "<leader>gal", function()
+			vim.keymap.set("n", "<leader>ga", function()
 				fzf.grep_project()
 			end, { desc = "search all project lines" })
 
