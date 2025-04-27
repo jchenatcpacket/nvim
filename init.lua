@@ -4,6 +4,7 @@ vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set smartindent")
 vim.cmd("set shiftwidth=4")
+vim.cmd("set autoindent")
 
 vim.cmd("set list")
 
@@ -33,11 +34,7 @@ vim.api.nvim_create_autocmd("BufEnter", { command = "SetIndent 4" })
 
 vim.opt.wrap = true
 vim.opt.hlsearch = false
-
 vim.opt.breakindent = true
-vim.cmd("set clipboard=unnamedplus")
-vim.cmd("set autoindent")
-
 -- newline on file save
 vim.opt.fixendofline = false
 
@@ -80,10 +77,13 @@ vim.opt.guicursor = "n:block-blinkwait700-blinkoff400-blinkon250,i:ver25-blinkwa
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.keymap.set("n", "<C-z>", "<cmd>u<cr>", { desc = "normal mode, undo" })
+vim.cmd("set clipboard=unnamedplus")
+vim.keymap.set("n", "<C-z>", "<cmd>undo<cr>", { desc = "undo in normal mode"})
+vim.keymap.set("i", "<C-z>", "<C-u>", { desc = "undo in insert mode"})
 vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
-vim.keymap.set("i", "<C-z>", "<C-u>", { desc = "insert mode, undo" })
+vim.keymap.set("n", "<leader>w", "a<space><esc>", { desc = "normal mode, insert a whitespace" })
+-- vim.keymap.set({ "n", "v" }, "", '"_', { desc = "backhole" })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
