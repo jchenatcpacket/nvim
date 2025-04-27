@@ -25,7 +25,7 @@ return {
                 current_line_blame_opts = {
                     virt_text = true,
                     virt_text_pos = "eol",
-                    delay = 6,
+                    delay = 500,
                     ignore_whitespace = false,
                     virt_text_priority = 100,
                     use_focus = true,
@@ -33,7 +33,7 @@ return {
                 current_line_blame_formatter = "  <author>, <author_time:%R> - <summary>",
             })
 
-            vim.keymap.set({'n', 'o', 'x'}, 'ih', gitsigns.select_hunk, { desc = "git select hunk" })
+            vim.keymap.set({'n', 'o', 'x'}, '<leader>hs', gitsigns.select_hunk, { desc = "git select hunk" })
             vim.keymap.set('n', '<leader>hr', gitsigns.reset_hunk, { desc = "git reset hunk" })
             vim.keymap.set('n', '<leader>hp', gitsigns.preview_hunk, { desc = "git preview hunk" })
             vim.keymap.set('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = "git preview hunk inline" })
