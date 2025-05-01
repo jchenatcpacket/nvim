@@ -58,7 +58,7 @@ return {
 			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 
 			-- lsp config
-			vim.diagnostic.enable(false)
+			vim.diagnostic.enable(true)
 			vim.diagnostic.config({
 				virtual_text = true,
 				signs = false,
