@@ -56,6 +56,19 @@ return {
 			lspconfig.pyright.setup({ capabilities = capabilities })
 			lspconfig.gopls.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+
+			-- lsp config
+			vim.diagnostic.enable(false)
+			vim.diagnostic.config({
+				virtual_text = true,
+				signs = false,
+				underline = true,
+				update_in_insert = true,
+				severity_sort = true,
+			})
+			vim.api.nvim_create_user_command("LspDiag", function()
+				vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+			end, { nargs = 0 })
 		end,
 	},
 }

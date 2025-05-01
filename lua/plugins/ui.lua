@@ -21,7 +21,7 @@ return {
 				options = {
 					icons_enabled = true,
 					theme = "auto",
-					component_separators = { 
+					component_separators = {
 						-- left = "",
 						left = ">",
 						right = "",
@@ -51,7 +51,7 @@ return {
 						},
 						{
 							"navic",
-							color_correction = "static",
+							color_correction = "dynamic",
 							navic_opts = { highlight = true },
 						},
 					},
@@ -62,7 +62,7 @@ return {
 							--   'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic', 'coc', 'ale', 'vim_lsp'.
 							-- or a function that returns a table as such:
 							--   { error=error_cnt, warn=warn_cnt, info=info_cnt, hint=hint_cnt }
-							sources = { "nvim_diagnostic", "coc" },
+							sources = { "nvim_diagnostic" },
 
 							-- Displays diagnostics for the defined severity types
 							sections = { "error", "warn", "info", "hint" },
@@ -80,7 +80,7 @@ return {
 							always_visible = false, -- Show diagnostics even if there are none.
 						},
 					},
-					lualine_y = { "location", "progress", "encoding" },
+					lualine_y = { "location", "progress" },
 					lualine_z = {
 						{
 							"lsp_status",
@@ -98,18 +98,6 @@ return {
 						},
 					},
 				},
-				inactive_sections = {
-					lualine_a = {},
-					lualine_b = {},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = {},
-					lualine_z = {},
-				},
-				tabline = {},
-				winbar = {},
-				inactive_winbar = {},
-				extensions = {},
 			})
 		end,
 	},
