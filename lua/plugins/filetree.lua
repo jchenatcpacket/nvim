@@ -7,7 +7,6 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
-		lazy = false,
 		config = function()
 			require("neo-tree").setup({
 				enable_git_status = true,
@@ -80,7 +79,7 @@ return {
 				},
 			})
 
-			vim.keymap.set("n", "<leader>nt", "<Cmd>Neotree toggle<CR>")
+			vim.keymap.set("n", "<leader>nt", "<cmd>Neotree toggle<cr>")
 		end,
 	},
 }

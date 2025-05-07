@@ -1,55 +1,26 @@
 return {
 	{
 		"numToStr/Comment.nvim",
-		lazy = false,
 		config = function()
-			require("Comment").setup({
-				---Add a space b/w comment and the line
-				padding = true,
-				---Whether the cursor should stay at its position
-				sticky = true,
-				---Lines to be ignored while (un)comment
-				ignore = nil,
-				---LHS of toggle mappings in NORMAL mode
-				toggler = {
-					---Line-comment toggle keymap
-					line = "<leader>tcc",
-					---Block-comment toggle keymap
-					block = "<leader>tcb",
-				},
-				extra = {
-					---Add comment on the line above
-					above = "<leader>cla",
-					---Add comment on the line below
-					below = "<leader>clb",
-					---Add comment at the end of line
-					eol = "<leader>ceol",
-				},
-			})
+			require("Comment").setup()
 		end,
 	},
 	{
 		"folke/flash.nvim",
-		lazy = false,
 		event = "VeryLazy",
-		---@type Flash.Config
 		opts = {},
 		keys = {
-			{
-				"<leader>s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
+			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+			{ "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+			{ "r", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+			{ "R", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 		},
 	},
-	-- tmux can do floating windows
+	-- Todo: explore tmux as floating windows terminal
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
-		lazy = false,
+		event = "VeryLazy",
 		config = function()
 			require("toggleterm").setup({
 				direction = "float",

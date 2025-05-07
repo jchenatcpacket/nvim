@@ -2,20 +2,17 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
-		lazy = false,
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
 			vim.opt.termguicolors = true
-			require("bufferline").setup({})
+			require("bufferline").setup()
 		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
-			"SmiteshP/nvim-navic",
 		},
-		lazy = false,
 		config = function()
 			require("lualine").setup({
 				options = {
@@ -44,17 +41,7 @@ return {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch" },
-					lualine_c = {
-						{
-							"filename",
-							path = 3,
-						},
-						{
-							"navic",
-							color_correction = "dynamic",
-							navic_opts = { highlight = true },
-						},
-					},
+					lualine_c = {},
 					lualine_x = {
 						{
 							"diagnostics",
@@ -75,7 +62,7 @@ return {
 								hint = "DiagnosticHint", -- Changes diagnostics' hint color.
 							},
 							symbols = { error = "E", warn = "W", info = "I", hint = "H" },
-							colored = true, -- Displays diagnostics status in color if set to true.
+							colored = true,    -- Displays diagnostics status in color if set to true.
 							update_in_insert = false, -- Update diagnostics in insert mode.
 							always_visible = false, -- Show diagnostics even if there are none.
 						},
@@ -98,25 +85,32 @@ return {
 						},
 					},
 				},
+				winbar = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = {
+						{
+							"filename",
+							path = 3,
+						},
+					},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = {}
+				}
 			})
 		end,
 	},
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		lazy = false,
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
+		opts = {},
 		keys = {
 			{
 				"<leader>?",
-				function()
-					require("which-key").show({ global = false })
-				end,
-				desc = "Buffer Local Keymaps (which-key)",
+				function() require("which-key").show({ global = false }) end,
+				desc =
+				"Buffer Local Keymaps (which-key)",
 			},
 		},
 	},
@@ -144,83 +138,6 @@ return {
 				-- will get overriden by `get_icons` option
 				default = true,
 			})
-		end,
-	},
-	{
-		"SmiteshP/nvim-navic",
-		lazy = false,
-		config = function()
-			local navic = require("nvim-navic")
-			navic.setup({
-				icons = {
-					File = ' ',
-					Module = ' ',
-					Namespace = ' ',
-					Package = ' ',
-					Class = ' ',
-					Method = ' ',
-					Property = ' ',
-					Field = ' ',
-					Constructor = ' ',
-					Enum = ' ',
-					Interface = ' ',
-					Function = ' ',
-					Variable = ' ',
-					Constant = ' ',
-					String = ' ',
-					Number = ' ',
-					Boolean = ' ',
-					Array = ' ',
-					Object = ' ',
-					Key = ' ',
-					Null = ' ',
-					EnumMember = ' ',
-					Struct = ' ',
-					Event = ' ',
-					Operator = ' ',
-					TypeParameter = ' '
-				},
-				lsp = {
-					auto_attach = true,
-					preference = nil,
-				},
-				highlight = true,
-				separator = " > ",
-				depth_limit = 0,
-				depth_limit_indicator = "..",
-				safe_output = true,
-				lazy_update_context = false,
-				click = true,
-			})
-
-			vim.api.nvim_set_hl(0, "NavicIconsFile",          {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsModule",        {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsNamespace",     {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsPackage",       {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsClass",         {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsMethod",        {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsProperty",      {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsField",         {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsConstructor",   {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsEnum",          {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsInterface",     {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsFunction",      {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsVariable",      {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsConstant",      {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsString",        {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsNumber",        {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsBoolean",       {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsArray",         {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsObject",        {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsKey",           {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsNull",          {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsEnumMember",    {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsStruct",        {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsEvent",         {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsOperator",      {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicIconsTypeParameter", {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicText",               {default = true, bg = "#000000", fg = "#ffffff"})
-			vim.api.nvim_set_hl(0, "NavicSeparator",          {default = true, bg = "#000000", fg = "#ffffff"})
 		end,
 	},
 }
