@@ -73,6 +73,19 @@ vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum < 1 ? printf("%s", v
 -- customize cursor
 vim.opt.guicursor = "n:block-blinkwait700-blinkoff400-blinkon250,i:ver25-blinkwait700-blinkoff400-blinkon250"
 
+-- Hide cursor in inactive windows
+vim.opt.guicursor:append("a:Cursor/lCursor")
+vim.api.nvim_create_autocmd({"WinLeave"}, {
+  callback = function()
+    vim.opt.guicursor:append("a:Cursor-blinkon0")
+  end
+})
+vim.api.nvim_create_autocmd({"WinEnter"}, {
+  callback = function()
+    vim.opt.guicursor:remove("a:Cursor-blinkon0")
+  end
+})
+
 -- customize keymaps
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
