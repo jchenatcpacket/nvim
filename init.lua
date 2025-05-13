@@ -18,9 +18,9 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
 	end
 
 	if width == 2 then
-		vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ ,multispace:┊\ ,eol:↵]])
+		vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ ,multispace:␣,eol:↵]])
 	elseif width == 4 then
-		vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ \ \ ,multispace:┊\ ,eol:↵]])
+		vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ \ \ ,multispace:␣,eol:↵]])
 	end
 
 	vim.opt.tabstop = width
