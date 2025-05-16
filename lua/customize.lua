@@ -41,3 +41,5 @@ vim.cmd("set relativenumber")
 vim.cmd("set cursorline")
 
 vim.cmd("set clipboard=unnamedplus")
+
+vim.opt.termguicolors = true

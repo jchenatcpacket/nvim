@@ -27,7 +27,7 @@ return {
         },
         enable_diagnostics = true,
         window = {
-          position = "float",
+          position = "left",
           mappings = {
             ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
             -- Read `# Preview Mode` for more information
@@ -79,7 +79,6 @@ return {
         },
       })
 
-      vim.keymap.set("n", "<leader>nt", "<cmd>Neotree toggle<cr>")
     end,
   },
 }
