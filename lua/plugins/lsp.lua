@@ -18,6 +18,8 @@ return {
     lspconfig.pyright.setup({ capabilities = capabilities })
     lspconfig.gopls.setup({ capabilities = capabilities })
     lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+    lspconfig.dockerfile_language_server.setup({ capabilities = capabilities })
+    lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
 
     -- lsp config
     vim.diagnostic.enable(true)
