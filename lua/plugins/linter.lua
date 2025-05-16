@@ -13,7 +13,7 @@ return {
 
     vim.api.nvim_create_user_command("Lint", function()
       lint.try_lint()
-    end
-    )
+    end, { nargs = 0 })
+
   end,
 }

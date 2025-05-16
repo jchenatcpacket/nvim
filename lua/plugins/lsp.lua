@@ -34,15 +34,15 @@ return {
 
     vim.api.nvim_create_autocmd("InsertEnter", {
       callback = function()
-        -- vscode.action("errorLens.toggle")
-        vscode.update_config("errorLens.enabled", false, "global")
+        -- hide lsp diag virt text
+        vim.diagnostic.enable(false)
       end,
     })
 
     vim.api.nvim_create_autocmd("InsertLeave", {
       callback = function()
-        -- vscode.action("errorLens.toggle")
-        vscode.update_config("errorLens.enabled", true, "global")
+        -- shown lsp diag virt text
+        vim.diagnostic.enable(true)
       end,
     })
   end

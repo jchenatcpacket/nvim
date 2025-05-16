@@ -2,7 +2,7 @@
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
-vim.cmd("set smartindent")
+-- vim.cmd("set smartindent")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set autoindent")
 
@@ -29,7 +29,7 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
   print("Indent set to " .. width)
 end, { nargs = 1 })
 
-vim.api.nvim_create_autocmd("BufEnter", { command = "SetIndent 4" })
+vim.api.nvim_create_autocmd("BufEnter", { command = "SetIndent 2" })
 
 vim.opt.wrap = true
 vim.opt.hlsearch = false
