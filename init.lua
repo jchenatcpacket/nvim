@@ -1,117 +1,19 @@
--- vim.opt.smarttab = true
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set smartindent")
-vim.cmd("set shiftwidth=4")
-vim.cmd("set autoindent")
-
-vim.cmd("set list")
-
--- custom function to setting indent to 2 or 4
-vim.api.nvim_create_user_command("SetIndent", function(opts)
-	local width = tonumber(opts.args)
-
-	if width ~= 2 and width ~= 4 then
-		vim.api.nvim_err_writeln("Error: Indent must be either 2 or 4")
-		return
-	end
-
-	if width == 2 then
-		vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ ,multispace:␣,eol:↵]])
-	elseif width == 4 then
-		vim.cmd([[set listchars=trail:…,nbsp:+,tab:│\ ,leadmultispace:▏\ \ \ ,multispace:␣,eol:↵]])
-	end
-
-	vim.opt.tabstop = width
-	vim.opt.softtabstop = width
-	vim.opt.shiftwidth = width
-
-	print("Indent set to " .. width)
-end, { nargs = 1 })
-
-vim.api.nvim_create_autocmd("BufEnter", { command = "SetIndent 4" })
-
-vim.opt.wrap = true
-vim.opt.hlsearch = false
-vim.opt.breakindent = true
--- newline on file save
-vim.opt.fixendofline = false
-
--- set hightlight colors (overriden by colorscheme, hence after)
-vim.cmd([[highlight LineNr guifg=#6c7086]])
-vim.cmd([[highlight CursorLineNr guifg=#cdd6f4 "guibg=#313244]])
-vim.cmd([[highlight LineNrAbove guifg=#eba0ac]])
-vim.cmd([[highlight LineNrBelow guifg=#94e2d5]])
--- set line number to be a bit darker
-vim.cmd([[hi Status_LineNr guifg=#6c7086]])
--- color background the same als normal but color text light grey, use 'Vertical Line Extension' ⏐ unicode U+23d0
-vim.cmd([[hi Status_DivLine guibg=#1e1e2e guifg=#313244]])
--- set number + set relativenumber to use in 'statuscolumn ='
-vim.cmd("set number")
-vim.cmd("set relativenumber")
--- highlight current line, to hide and only use number highlight uncomment " set cursorlineopt
-vim.cmd("set cursorline")
--- set signwidth to always show and limit to 1 char so stuff doesn't move when LSP error occurs
-vim.cmd("set signcolumn=yes:1")
-
--- customize status column
-_G.custom_statuscol = function()
-	local current_line = vim.api.nvim_win_get_cursor(0)[1]
-	local absolute_line = vim.v.lnum
-	local line_diff = absolute_line - current_line
-	if line_diff == 0 then
-		return string.format("%d|%d", vim.v.relnum, vim.v.lnum)
-	elseif line_diff < 0 then
-		return string.format("%dk|%d", vim.v.relnum, vim.v.lnum)
-	else
-		return string.format("%dj|%d", vim.v.relnum, vim.v.lnum)
-	end
-end
-vim.opt.statuscolumn = '%s%=%{&relativenumber ? ( v:virtnum < 1 ? printf("%s", v:lua.custom_statuscol()) : " " ) : ""} '
-
--- customize cursor
-vim.opt.guicursor = "n:block-blinkwait700-blinkoff400-blinkon250,i:ver25-blinkwait700-blinkoff400-blinkon250"
-
--- Hide cursor in inactive windows
-vim.opt.guicursor:append("a:Cursor/lCursor")
-vim.api.nvim_create_autocmd({"WinLeave"}, {
-  callback = function()
-    vim.opt.guicursor:append("a:Cursor-blinkon0")
-  end
-})
-vim.api.nvim_create_autocmd({"WinEnter"}, {
-  callback = function()
-    vim.opt.guicursor:remove("a:Cursor-blinkon0")
-  end
-})
-
--- customize keymaps
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.cmd("set clipboard=unnamedplus")
-vim.keymap.set("n", "<C-z>", "<cmd>undo<cr>", { desc = "undo in normal mode"})
-vim.keymap.set("i", "<C-z>", "<C-u>", { desc = "undo in insert mode"})
-vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
-vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
-vim.keymap.set("n", "<leader>w", "a<space><esc>", { desc = "normal mode, insert a whitespace" })
--- vim.keymap.set({ "n", "v" }, "", '"_', { desc = "backhole" })
-
--- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvigit"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
+  local lazyrepo = "https://github.com/folke/lazy.nvigit"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out,                            "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
