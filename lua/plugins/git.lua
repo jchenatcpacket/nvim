@@ -39,5 +39,6 @@ return
     vim.keymap.set('n', '<leader>hd', gitsigns.diffthis, { desc = "git diff" })
     vim.keymap.set('n', '<leader>td', gitsigns.toggle_deleted, { desc = "git toggle deleted" })
     vim.keymap.set('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = "git word diff" })
+    vim.keymap.set('n', '<leader>hb', gitsigns.blame_line, { desc = "git show line blame info" })
   end
 }
