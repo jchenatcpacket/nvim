@@ -1,8 +1,3 @@
 vim.keymap.set("n", "<C-z>", "<cmd>undo<cr>", { desc = "undo in normal mode"})
-vim.keymap.set("i", "<C-z>", "<C-u>", { desc = "undo in insert mode"})
 vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
-vim.keymap.set("n", "<leader>a", "a<space><esc>", { desc = "append a whitespace" })
-vim.keymap.set("n", "<leader>i", "i<space><esc>", { desc = "insert a whitespace" })
-vim.keymap.set("n", "<leader>o", "o<esc>", { desc = "insert a empty line below current line" })
-vim.keymap.set("n", "<leader>O", "O<esc>", { desc = "insert a empty line above current line" })

@@ -21,3 +21,5 @@ require('customize')
 require('keymaps')
 
 require("lazy").setup("plugins")
+
+require('search')
