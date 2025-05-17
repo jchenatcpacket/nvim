@@ -32,8 +32,21 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
-        lualine_c = {},
+        lualine_c = {
+          function ()
+            local git_blame = require('gitblame')
+
+            if git_blame.is_blame_text_available() then
+              return git_blame.get_current_blame_text()
+            end
+          end
+        },
         lualine_x = {
+          {
+            function ()
+              return _G.indent_info
+            end
+          },
           {
             "diagnostics",
             -- Table of diagnostic sources, available sources are:

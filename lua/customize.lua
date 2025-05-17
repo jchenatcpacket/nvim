@@ -26,7 +26,7 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
   vim.opt.softtabstop = width
   vim.opt.shiftwidth = width
 
-  print("Indent set to " .. width)
+  _G.indent_info = "Indent:" .. width
 end, { nargs = 1 })
 
 vim.api.nvim_create_autocmd("BufEnter", { command = "SetIndent 2" })
