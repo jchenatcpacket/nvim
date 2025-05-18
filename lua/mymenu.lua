@@ -25,32 +25,42 @@ local popup_options = {
     col = "33%"
   },
   size = {
-    width = 40,
+    width = 35,
     height = 20,
   },
   border = {
-    style = "rounded",
+    style = "single",
     text = {
       top = "MyMenu",
       top_align = "center",
     },
   },
+  buf_options = {
+    modifiable = false,
+    readonly = true,
+  },
   win_options = {
     winhighlight = "Normal:Normal,FloatBorder:Normal",
   },
-  focusable = true
+  focusable = true,
+  enter = true
 }
 
 local menu = Menu(popup_options, {
   lines = {
-    Menu.separator("Fzf"),
-    Menu.item("grep project", { id = 1 }),
-    Menu.item("grep current buffer", { id = 2 }),
-    Menu.item("find files", { id = 3 }),
-    Menu.item("find lsp workspace symbols", { id = 4 }),
-    Menu.item("find lsp document symbols", { id = 5 }),
+    Menu.separator("Fzf", {
+      char = "-",
+      text_align = "center",
+    }),
+    Menu.item("grep project"),
+    Menu.item("grep current buffer"),
+    Menu.item("find files"),
+    Menu.item("find lsp workspace symbols"),
+    Menu.item("find lsp document symbols"),
   },
-  -- max_width = 20,
+
+  max_width = 30,
+
   keymap = {
     focus_next = { "j", "<Down>" },
     focus_prev = { "k", "<Up>" },
@@ -69,9 +79,13 @@ local menu = Menu(popup_options, {
 })
 
 vim.keymap.set("n", "<leader>m", function()
-  menu:mount()
-end, { desc = "show MyMenu" })
+  if not menu._.mounted then
+    menu:mount()
+  else
+    menu:unmount()
+  end
+end, { desc = "toggle MyMenu" })
 
-menu:on({ event.BufLeave }, function()
+menu:on({event.BufLeave, event.BufWinLeave}, function()
   menu:unmount()
-end, { once = true })
+end)

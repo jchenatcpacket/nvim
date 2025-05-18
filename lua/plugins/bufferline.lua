@@ -20,7 +20,7 @@ return {
 				show_close_icon = false,
 				max_name_length = 14,
 				max_prefix_length = 13,
-				tab_size = 10,
+				tab_size = 13,
 				show_tab_indicators = true,
 				indicator = {
 					style = "underline",

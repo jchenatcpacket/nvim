@@ -33,7 +33,7 @@ return {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
         lualine_c = {
-          function ()
+          function()
             local git_blame = require('gitblame')
 
             if git_blame.is_blame_text_available() then
@@ -43,7 +43,7 @@ return {
         },
         lualine_x = {
           {
-            function ()
+            function()
               return _G.indent_info
             end
           },
@@ -61,14 +61,14 @@ return {
             diagnostics_color = {
               -- Same values as the general color option can be used here.
               error = "DiagnosticError", -- Changes diagnostics' error color.
-              warn = "DiagnosticWarn", -- Changes diagnostics' warn color.
-              info = "DiagnosticInfo", -- Changes diagnostics' info color.
-              hint = "DiagnosticHint", -- Changes diagnostics' hint color.
+              warn = "DiagnosticWarn",   -- Changes diagnostics' warn color.
+              info = "DiagnosticInfo",   -- Changes diagnostics' info color.
+              hint = "DiagnosticHint",   -- Changes diagnostics' hint color.
             },
             symbols = { error = "E", warn = "W", info = "I", hint = "H" },
-            colored = true,      -- Displays diagnostics status in color if set to true.
+            colored = true,           -- Displays diagnostics status in color if set to true.
             update_in_insert = false, -- Update diagnostics in insert mode.
-            always_visible = false, -- Show diagnostics even if there are none.
+            always_visible = false,   -- Show diagnostics even if there are none.
           },
         },
         lualine_y = { "location", "progress" },
@@ -94,13 +94,13 @@ return {
         lualine_b = {},
         lualine_c = {
           {
-            "filename",
-            path = 3,
-          },
-          {
             "filetype",
             colored = true,
             icon_only = true,
+          },
+          {
+            "filename",
+            path = 3,
           },
           {
             "navic",
@@ -112,6 +112,18 @@ return {
         lualine_y = {},
         lualine_z = {},
       },
+      inactive_winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { {
+          "filetype",
+          colored = true,
+          icon_only = true,
+        }, { 'filename', path = 3 } },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
+      }
     })
   end,
 }

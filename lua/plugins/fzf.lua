@@ -14,7 +14,7 @@ return {
 
       vim.keymap.set("n", "<C-p>", function()
         fzf.files()
-      end, { desc = "search filenames" })
+      end, { desc = "find files" })
 
     end,
   },
