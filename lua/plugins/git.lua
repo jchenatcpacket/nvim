@@ -47,7 +47,7 @@ return {
     opts = {
         enabled = true,
         message_template = "<summary> • <date> • <author> • <<sha>>",
-        date_format = "%m-%d-%Y %H:%M:%S",
+        date_format = "%m-%d-%Y", -- full datetime "%m-%d-%Y %H:%M:%S",
         virtual_text_column = 1,
         display_virtual_text = 0
       },

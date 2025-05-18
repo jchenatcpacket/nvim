@@ -71,7 +71,7 @@ return {
             always_visible = false,   -- Show diagnostics even if there are none.
           },
         },
-        lualine_y = { "location", "progress" },
+        lualine_y = { "location", "progress", 'encoding', 'fileformat', 'filetype' },
         lualine_z = {
           {
             "lsp_status",
@@ -115,15 +115,29 @@ return {
       inactive_winbar = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { {
-          "filetype",
-          colored = true,
-          icon_only = true,
-        }, { 'filename', path = 3 } },
+        lualine_c = {
+          {
+            "filetype",
+            colored = true,
+            icon_only = true,
+          },
+          {
+            "filename",
+            path = 3
+          }
+        },
         lualine_x = {},
         lualine_y = {},
         lualine_z = {}
-      }
+      },
+      -- tabline = {
+      --   lualine_a = { 'buffers' },
+      --   lualine_b = { 'branch' },
+      --   lualine_c = { 'filename' },
+      --   lualine_x = {},
+      --   lualine_y = {},
+      --   lualine_z = { 'tabs' }
+      -- }
     })
   end,
 }
