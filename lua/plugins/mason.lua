@@ -17,7 +17,7 @@ return {
 					"dockerfile-language-server",
 					"docker-compose-language-service",
 				},
-				automatic_installation = true,
+				automatic_enable = false,
 			})
 		end,
 	},
