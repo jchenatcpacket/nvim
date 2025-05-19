@@ -94,11 +94,6 @@ return {
         lualine_b = {},
         lualine_c = {
           {
-            "filetype",
-            colored = true,
-            icon_only = true,
-          },
-          {
             "filename",
             path = 3,
           },
@@ -117,11 +112,6 @@ return {
         lualine_b = {},
         lualine_c = {
           {
-            "filetype",
-            colored = true,
-            icon_only = true,
-          },
-          {
             "filename",
             path = 3
           }
@@ -130,14 +120,7 @@ return {
         lualine_y = {},
         lualine_z = {}
       },
-      -- tabline = {
-      --   lualine_a = { 'buffers' },
-      --   lualine_b = { 'branch' },
-      --   lualine_c = { 'filename' },
-      --   lualine_x = {},
-      --   lualine_y = {},
-      --   lualine_z = { 'tabs' }
-      -- }
+      always_show_tabline = false,
     })
   end,
 }
