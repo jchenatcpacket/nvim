@@ -9,9 +9,8 @@ return {
         icons_enabled = true,
         theme = "auto",
         component_separators = {
-          -- left = "",
-          left = ">",
-          right = "",
+          left = "",
+          right = ""
         },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
@@ -76,7 +75,7 @@ return {
               function()
                 local line = vim.fn.line('.')
                 local col = vim.fn.charcol('.')
-                return string.format('Ln %3d, Col %-2d', line, col)
+                return string.format('Ln%-d,Col%-d', line, col)
               end
             }, 
             "progress", 'encoding', 'fileformat', 'filetype' 
