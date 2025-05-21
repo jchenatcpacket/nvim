@@ -71,7 +71,16 @@ return {
             always_visible = false,   -- Show diagnostics even if there are none.
           },
         },
-        lualine_y = { "location", "progress", 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 
+            {
+              function()
+                local line = vim.fn.line('.')
+                local col = vim.fn.charcol('.')
+                return string.format('Ln %3d, Col %-2d', line, col)
+              end
+            }, 
+            "progress", 'encoding', 'fileformat', 'filetype' 
+          },
         lualine_z = {
           {
             "lsp_status",
