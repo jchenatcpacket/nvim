@@ -37,7 +37,9 @@ vim.opt.breakindent = true
 -- newline on file save
 vim.opt.fixendofline = false
 
-vim.cmd("set relativenumber")
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.signcolumn = "number"
 vim.cmd("set cursorline")
 
 vim.cmd("set clipboard=unnamedplus")
