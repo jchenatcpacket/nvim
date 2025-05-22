@@ -9,9 +9,8 @@ return {
         icons_enabled = true,
         theme = "auto",
         component_separators = {
-          -- left = "",
-          left = ">",
-          right = "",
+          left = "",
+          right = ""
         },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
@@ -71,7 +70,16 @@ return {
             always_visible = false,   -- Show diagnostics even if there are none.
           },
         },
-        lualine_y = { "location", "progress", 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 
+            {
+              function()
+                local line = vim.fn.line('.')
+                local col = vim.fn.charcol('.')
+                return string.format('Ln%-d,Col%-d', line, col)
+              end
+            }, 
+            "progress", 'encoding', 'fileformat', 'filetype' 
+          },
         lualine_z = {
           {
             "lsp_status",
@@ -94,11 +102,6 @@ return {
         lualine_b = {},
         lualine_c = {
           {
-            "filetype",
-            colored = true,
-            icon_only = true,
-          },
-          {
             "filename",
             path = 3,
           },
@@ -117,11 +120,6 @@ return {
         lualine_b = {},
         lualine_c = {
           {
-            "filetype",
-            colored = true,
-            icon_only = true,
-          },
-          {
             "filename",
             path = 3
           }
@@ -130,14 +128,7 @@ return {
         lualine_y = {},
         lualine_z = {}
       },
-      -- tabline = {
-      --   lualine_a = { 'buffers' },
-      --   lualine_b = { 'branch' },
-      --   lualine_c = { 'filename' },
-      --   lualine_x = {},
-      --   lualine_y = {},
-      --   lualine_z = { 'tabs' }
-      -- }
+      always_show_tabline = false,
     })
   end,
 }
