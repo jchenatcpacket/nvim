@@ -75,7 +75,7 @@ return {
               function()
                 local line = vim.fn.line('.')
                 local col = vim.fn.charcol('.')
-                return string.format('Ln%-d,Col%-d', line, col)
+                return string.format('Ln %-d, Col %-d', line, col)
               end
             }, 
             "progress", 'encoding', 'fileformat', 'filetype' 
