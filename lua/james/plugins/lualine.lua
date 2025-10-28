@@ -41,7 +41,7 @@ return {
                             return string.format('Ln %-d, Col %-d', line, col)
                         end
                     },
-                    "progress", 'encoding', 'fileformat', 'filetype'
+                    "progress", 'encoding', 'filetype'
                 },
                 lualine_z = {
                     {
