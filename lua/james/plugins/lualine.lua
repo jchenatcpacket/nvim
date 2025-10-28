@@ -41,7 +41,8 @@ return {
                             return string.format('Ln %-d, Col %-d', line, col)
                         end
                     },
-                    "progress", 'encoding', 'filetype'
+                    { function() return "Spaces:" .. _G.indent_count end },
+                    'encoding', 'filetype'
                 },
                 lualine_z = {
                     {
