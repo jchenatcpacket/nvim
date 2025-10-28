@@ -1,0 +1,93 @@
+return {
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+        require("lualine").setup({
+            options = {
+                icons_enabled = true,
+                theme = "auto",
+                component_separators = {
+                    left = "",
+                    right = ""
+                },
+                section_separators = { left = "", right = "" },
+                disabled_filetypes = {
+                    statusline = {},
+                    winbar = {},
+                    "neo-tree"
+                },
+                ignore_focus = {},
+                always_divide_middle = true,
+                always_show_tabline = true,
+                globalstatus = false,
+                refresh = {
+                    statusline = 100,
+                    tabline = 100,
+                    winbar = 100,
+                },
+            },
+            sections = {
+                lualine_a = { "mode" },
+                lualine_b = { "branch" },
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = {
+                    {
+                        function()
+                            local line = vim.fn.line('.')
+                            local col = vim.fn.charcol('.')
+                            return string.format('Ln %-d, Col %-d', line, col)
+                        end
+                    },
+                    { function() return "Spaces:" .. _G.indent_count end },
+                    'encoding', 'filetype'
+                },
+                lualine_z = {
+                    {
+                        "lsp_status",
+                        icon = "", -- f013
+                        symbols = {
+                            -- Standard unicode symbols to cycle through for LSP progress:
+                            spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+                            -- Standard unicode symbol for when LSP is done:
+                            done = "✓",
+                            -- Delimiter inserted between LSP names:
+                            separator = " ",
+                        },
+                        -- List of LSP names to ignore (e.g., `null-ls`):
+                        ignore_lsp = {},
+                    },
+                },
+            },
+            winbar = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = {
+                    {
+                        "filename",
+                        path = 3,
+                    },
+                },
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {},
+            },
+            inactive_winbar = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = {
+                    {
+                        "filename",
+                        path = 3
+                    }
+                },
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {}
+            },
+            always_show_tabline = true,
+        })
+    end,
+}
