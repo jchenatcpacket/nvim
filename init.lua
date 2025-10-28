@@ -1,5 +1,3 @@
-vim.opt.number = true
-
 if vim.g.vscode then
     -- VSCode extension
 else
@@ -8,5 +6,6 @@ else
     -- require('keymaps')
     -- require('mymenu')
     -- require("old.lazy")
+    require('cus')
     require("james.lazy")
 end
