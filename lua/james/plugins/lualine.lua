@@ -69,6 +69,11 @@ return {
                         "filename",
                         path = 3,
                     },
+                    {
+                        "navic",
+                        color_correction = "dynamic",
+                        navic_opts = { highlight = true },
+                    }
                 },
                 lualine_x = {},
                 lualine_y = {},
@@ -88,6 +93,7 @@ return {
                 lualine_z = {}
             },
             always_show_tabline = true,
+            -- tabline = {}
         })
     end,
 }
