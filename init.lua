@@ -6,6 +6,7 @@ else
     -- require('keymaps')
     -- require('mymenu')
     -- require("old.lazy")
-    require('cus')
+    require('common')
     require("james.lazy")
+    -- require("cclear")
 end
