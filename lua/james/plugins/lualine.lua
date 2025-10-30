@@ -52,6 +52,7 @@ return {
                             return string.format('Ln %-d, Col %-d', line, col)
                         end
                     },
+                    'progress',
                     { function() return "Spaces:" .. _G.indent_count end },
                     'encoding', 'filetype'
                 },
