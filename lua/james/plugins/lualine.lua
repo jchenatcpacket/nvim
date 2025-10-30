@@ -32,7 +32,7 @@ return {
                 lualine_a = { "mode" },
                 lualine_b = { "branch" },
                 lualine_c = {},
-                lualine_x = {},
+                lualine_x = {'diagnostics'},
                 lualine_y = {
                     {
                         function()
@@ -68,11 +68,6 @@ return {
                     {
                         "filename",
                         path = 3,
-                    },
-                    {
-                        "navic",
-                        color_correction = "dynamic",
-                        navic_opts = { highlight = true },
                     }
                 },
                 lualine_x = {},
@@ -92,8 +87,20 @@ return {
                 lualine_y = {},
                 lualine_z = {}
             },
-            always_show_tabline = true,
-            -- tabline = {}
+            tabline = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = {
+                    {
+                        "navic",
+                        color_correction = "dynamic",
+                        navic_opts = { highlight = true },
+                    }
+                },
+                lualine_x = {},
+                lualine_y = {},
+                lualine_z = {},
+            }
         })
     end,
 }
