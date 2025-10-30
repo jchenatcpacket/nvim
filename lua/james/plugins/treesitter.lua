@@ -8,11 +8,11 @@ return {
       require("nvim-treesitter.configs").setup({
         auto_install = true,
         indent = { enable = true },
-        ensure_installed = { "lua" },
+        ensure_installed = { "lua", "python" },
         sync_install = false,
         ignore_install = { "javascript" },
         highlight = {
-          enable = false,
+          enable = true,
           disable = { "c" },
           additional_vim_regex_highlighting = false,
         },
