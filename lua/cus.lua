@@ -34,3 +34,5 @@ vim.cmd("hi TrailingSpace ctermbg=238 guibg=#4D0000")
 
 vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
+vim.keymap.set("i", "<D-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
+vim.keymap.set("n", "<D-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
