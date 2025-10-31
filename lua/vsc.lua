@@ -30,7 +30,8 @@ end, { desc = 'Copy unnamed register to system clipboard' })
 --   vscode.action("workbench.action.find")
 -- end, { desc = "quick find in workbench" })
 
-vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<Esc>:w<CR>", { desc = "Save and exit to normal mode" })
+vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
+vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
 
 vim.keymap.set("n", "<leader>t", function()
     vscode.action("editor.action.trimTrailingWhitespace")

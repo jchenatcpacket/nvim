@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 if vim.g.vscode then
-    require("vscode")
+    require("vsc")
 else
     require('common')
     require("james.lazy")
