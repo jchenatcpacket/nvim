@@ -31,7 +31,18 @@ return {
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = { "branch" },
-                lualine_c = {},
+                lualine_c = { "diff", {
+                    function ()
+                        vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+                        vim.g.gitblame_date_format = "%x"
+                        local git_blame = require('gitblame')
+                        if git_blame.is_blame_text_available() then
+                            return git_blame.get_current_blame_text()
+                        else
+                            return "Not committed yet"
+                        end
+                    end
+                } },
                 lualine_x = {'diagnostics'},
                 lualine_y = {
                     {
@@ -41,6 +52,7 @@ return {
                             return string.format('Ln %-d, Col %-d', line, col)
                         end
                     },
+                    'progress',
                     { function() return "Spaces:" .. _G.indent_count end },
                     'encoding', 'filetype'
                 },

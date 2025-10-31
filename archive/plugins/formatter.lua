@@ -24,7 +24,7 @@ return {
       })
     end, { desc = "Format file or a range of lines" })
 
-    vim.keymap.set({ "n" }, "<leader>tw", function()
+    vim.keymap.set({ "n" }, "<leader>t", function()
       conform.format({ formatters = { "trim_whitespace" } })
     end, { desc = "trim trailing whitespace" })
   end,

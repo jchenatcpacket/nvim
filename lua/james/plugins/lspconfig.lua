@@ -1,5 +1,8 @@
 return {
     "neovim/nvim-lspconfig",
+    opts = {
+        autoformat = false,
+    },
     config = function()
         local capabilities = require("blink.cmp").get_lsp_capabilities()
         local lspconfig = require("lspconfig")
@@ -29,6 +32,7 @@ return {
             update_in_insert = true,
             severity_sort = true,
         })
+
         vim.api.nvim_create_user_command("LspDiag", function()
             vim.diagnostic.enable(not vim.diagnostic.is_enabled())
         end, { nargs = 0 })
