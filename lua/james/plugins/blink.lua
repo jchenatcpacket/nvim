@@ -1,5 +1,4 @@
 return {
-  {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
     dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
@@ -55,5 +54,4 @@ return {
       fuzzy = { implementation = "prefer_rust_with_warning" },
     },
     opts_extend = { "sources.default" },
-  },
 }
