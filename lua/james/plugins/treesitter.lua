@@ -8,7 +8,7 @@ return {
       require("nvim-treesitter.configs").setup({
         auto_install = true,
         indent = { enable = true },
-        ensure_installed = { "lua", "python" },
+        ensure_installed = { "lua", "python", "rust", "dockerfile", "yaml" },
         sync_install = false,
         ignore_install = { "javascript" },
         highlight = {
