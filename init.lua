@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 if vim.g.vscode then
-    -- VSCode extension
+    require("vscode")
 else
     require('common')
     require("james.lazy")
