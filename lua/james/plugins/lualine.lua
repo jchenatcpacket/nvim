@@ -32,7 +32,7 @@ return {
                 lualine_a = { "mode" },
                 lualine_b = { "branch" },
                 lualine_c = { "diff", {
-                    function ()
+                    function()
                         vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
                         vim.g.gitblame_date_format = "%x"
                         local git_blame = require('gitblame')
@@ -43,7 +43,7 @@ return {
                         end
                     end
                 } },
-                lualine_x = {'diagnostics'},
+                lualine_x = { 'diagnostics' },
                 lualine_y = {
                     {
                         function()
@@ -75,40 +75,16 @@ return {
             },
             winbar = {
                 lualine_a = {},
-                lualine_b = {},
-                lualine_c = {
-                    {
-                        "filename",
-                        path = 3,
-                    }
-                },
+                lualine_b = { { "filename", path = 3, } },
+                lualine_c = { { "navic", color_correction = "dynamic", navic_opts = { highlight = true } } },
                 lualine_x = {},
                 lualine_y = {},
                 lualine_z = {},
             },
-            inactive_winbar = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = {
-                    {
-                        "filename",
-                        path = 3
-                    }
-                },
-                lualine_x = {},
-                lualine_y = {},
-                lualine_z = {}
-            },
             tabline = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = {
-                    {
-                        "navic",
-                        color_correction = "dynamic",
-                        navic_opts = { highlight = true },
-                    }
-                },
+                lualine_a = { "tabs" },
+                lualine_b = { "windows" },
+                lualine_c = { "buffers" },
                 lualine_x = {},
                 lualine_y = {},
                 lualine_z = {},
