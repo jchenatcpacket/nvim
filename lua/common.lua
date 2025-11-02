@@ -16,8 +16,10 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
 
   if width == 2 then
     vim.cmd([[set listchars=leadmultispace:▏\ ]])
+    vim.keymap.set('i', '<tab>', "<space><space>")
   elseif width == 4 then
     vim.cmd([[set listchars=leadmultispace:▏\ \ \ ]])
+    vim.keymap.set('i', '<tab>', "<space><space><space><space>")
   end
 
   vim.opt.tabstop = width
