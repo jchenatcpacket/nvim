@@ -16,10 +16,8 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
 
   if width == 2 then
     vim.cmd([[set listchars=leadmultispace:▏\ ]])
-    vim.keymap.set('i', '<tab>', "<space><space>")
   elseif width == 4 then
     vim.cmd([[set listchars=leadmultispace:▏\ \ \ ]])
-    vim.keymap.set('i', '<tab>', "<space><space><space><space>")
   end
 
   vim.opt.tabstop = width
@@ -45,3 +43,7 @@ vim.keymap.set('n', '<leader>m', function()
     vim.fn.setreg('*', content, regtype)
     print("Copied to system clipboard")
 end, { desc = 'Copy unnamed register to system clipboard' })
+
+vim.keymap.set('i', '<Tab>', function()
+  return string.rep(' ', vim.opt.softtabstop:get())
+end, { expr = true, noremap = true })
