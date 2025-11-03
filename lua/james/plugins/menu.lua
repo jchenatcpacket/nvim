@@ -8,12 +8,12 @@ return {
 
       local options = {
         {
-          name = "Test test test",
+          name = "Echo Test",
           cmd = function()
             local current_WORD = vim.fn.expand('<cWORD>')
             print(current_WORD)
           end,
-          rtxt = "",
+          rtxt = "<NOP>",
         },
         {
           name = "Format Buffer",
@@ -33,7 +33,13 @@ return {
         {
           name = "Goto Definition",
           cmd = vim.lsp.buf.definition,
-          rtxt = "<leader>gSomething",
+          rtxt = "<NOP>",
+        },
+
+        {
+          name = "Goto Implementation",
+          cmd = vim.lsp.buf.implementation,
+          rtxt = "<NOP>",
         },
 
         { name = "separator" },
@@ -44,7 +50,39 @@ return {
             local current_WORD = vim.fn.expand('<cWORD>')
             fzf.lsp_references({query = current_WORD})
           end,
-          rtxt = "<leader>gSomething",
+          rtxt = "<NOP>",
+        },
+        {
+          name = "Show Definition",
+          cmd = function()
+            local current_WORD = vim.fn.expand('<cWORD>')
+            fzf.lsp_definitions({query = current_WORD})
+          end,
+          rtxt = "<NOP>",
+        },
+        {
+          name = "Show Declaration",
+          cmd = function()
+            local current_WORD = vim.fn.expand('<cWORD>')
+            fzf.lsp_declarations({query = current_WORD})
+          end,
+          rtxt = "<NOP>",
+        },
+        {
+          name = "Show Typedef",
+          cmd = function()
+            local current_WORD = vim.fn.expand('<cWORD>')
+            fzf.lsp_typedefs({query = current_WORD})
+          end,
+          rtxt = "<NOP>",
+        },
+        {
+          name = "Show Implementation",
+          cmd = function()
+            local current_WORD = vim.fn.expand('<cWORD>')
+            fzf.lsp_implementations({query = current_WORD})
+          end,
+          rtxt = "<NOP>",
         }
       }
 
