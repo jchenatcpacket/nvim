@@ -47,3 +47,5 @@ end, { desc = 'Copy unnamed register to system clipboard' })
 vim.keymap.set('i', '<Tab>', function()
   return string.rep(' ', vim.opt.softtabstop:get())
 end, { expr = true, noremap = true })
+
+vim.keymap.set({'n', "v"}, 'D', '"_d', { noremap = true, desc = "capital D to delete to blackhole" })
