@@ -31,6 +31,14 @@ return {
         { name = "separator" },
 
         {
+          name = "Goto Definition",
+          cmd = vim.lsp.buf.definition,
+          rtxt = "<leader>gSomething",
+        },
+
+        { name = "separator" },
+
+        {
           name = "Show Reference",
           cmd = function()
             local current_WORD = vim.fn.expand('<cWORD>')
