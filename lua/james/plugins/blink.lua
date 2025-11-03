@@ -27,13 +27,14 @@ return {
       -- See :h blink-cmp-config-keymap for defining your own keymap
       keymap = {
         preset = "default",
+        ["<Tab>"] = { "select_and_accept", 'fallback' },
+        ["<CR>"] = { "select_and_accept", 'fallback' },
 
         ['<Up>'] = { 'select_prev', 'fallback' },
         ['<Down>'] = { 'select_next', 'fallback' },
 
         -- show with a list of providers
         ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
-
       },
 
       appearance = {
