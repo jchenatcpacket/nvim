@@ -23,6 +23,13 @@ return {
           rtxt = "<C-o>",
         },
         {
+          name = "Jump Forward",
+          cmd = function ()
+            vim.cmd('normal! <C-i>')
+          end,
+          rtxt = "<C-i>",
+        },
+        {
           name = "Format Buffer",
           cmd = function()
             local conform = require("conform")
