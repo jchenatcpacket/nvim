@@ -16,6 +16,13 @@ return {
           rtxt = "<NOP>",
         },
         {
+          name = "Jump Back",
+          cmd = function ()
+            vim.cmd('normal! <C-o>')
+          end,
+          rtxt = "<C-o>",
+        },
+        {
           name = "Format Buffer",
           cmd = function()
             local conform = require("conform")
