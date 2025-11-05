@@ -6,14 +6,44 @@ return {
     config = function()
       local fzf = require("fzf-lua")
 
+      local function get_visual_selection()
+        local start_pos = vim.fn.getpos("'<")
+        local end_pos = vim.fn.getpos("'>")
+
+        local lines = vim.api.nvim_buf_get_text(
+          0,
+          start_pos[2] - 1,
+          start_pos[3] - 1,
+          end_pos[2] - 1,
+          end_pos[3],
+          {}
+        )
+
+        return table.concat(lines, '\n')
+      end
+
       local options = {
         {
-          name = "Echo Test",
+          name = "Echo cWORD",
           cmd = function()
             local current_WORD = vim.fn.expand('<cWORD>')
             print(current_WORD)
           end,
-          rtxt = "<NOP>",
+          -- rtxt = "<NOP>",
+        },
+        {
+          name = "Jump Back",
+          cmd = function ()
+            vim.cmd('normal! <C-o>')
+          end,
+          rtxt = "<C-o>",
+        },
+        {
+          name = "Jump Forward",
+          cmd = function ()
+            vim.cmd('normal! <C-i>')
+          end,
+          rtxt = "<C-i>",
         },
         {
           name = "Format Buffer",
@@ -31,15 +61,33 @@ return {
         { name = "separator" },
 
         {
+          name = "Search in Buffer",
+          cmd = function ()
+            local current_WORD = vim.fn.expand('<cWORD>')
+            fzf.lgrep_curbuf({query = current_WORD})
+          end
+        },
+
+        {
+          name = "Search in Project",
+          cmd = function ()
+            local current_WORD = vim.fn.expand('<cWORD>')
+            fzf.live_grep({query = current_WORD})
+          end
+        },
+
+        { name = "separator" },
+
+        {
           name = "Goto Definition",
           cmd = vim.lsp.buf.definition,
-          rtxt = "<NOP>",
+          -- rtxt = "<NOP>",
         },
 
         {
           name = "Goto Implementation",
           cmd = vim.lsp.buf.implementation,
-          rtxt = "<NOP>",
+          -- rtxt = "<NOP>",
         },
 
         { name = "separator" },
@@ -50,7 +98,7 @@ return {
             local current_WORD = vim.fn.expand('<cWORD>')
             fzf.lsp_references({query = current_WORD})
           end,
-          rtxt = "<NOP>",
+          -- rtxt = "<NOP>",
         },
         {
           name = "Show Definition",
@@ -58,7 +106,7 @@ return {
             local current_WORD = vim.fn.expand('<cWORD>')
             fzf.lsp_definitions({query = current_WORD})
           end,
-          rtxt = "<NOP>",
+          -- rtxt = "<NOP>",
         },
         {
           name = "Show Declaration",
@@ -66,7 +114,7 @@ return {
             local current_WORD = vim.fn.expand('<cWORD>')
             fzf.lsp_declarations({query = current_WORD})
           end,
-          rtxt = "<NOP>",
+          -- rtxt = "<NOP>",
         },
         {
           name = "Show Typedef",
@@ -74,7 +122,7 @@ return {
             local current_WORD = vim.fn.expand('<cWORD>')
             fzf.lsp_typedefs({query = current_WORD})
           end,
-          rtxt = "<NOP>",
+          -- rtxt = "<NOP>",
         },
         {
           name = "Show Implementation",
@@ -82,12 +130,33 @@ return {
             local current_WORD = vim.fn.expand('<cWORD>')
             fzf.lsp_implementations({query = current_WORD})
           end,
-          rtxt = "<NOP>",
+          -- rtxt = "<NOP>",
         }
       }
 
       vim.keymap.set("n", "<C-t>", function()
         require("menu").open(options)
+      end, {})
+
+      local visual_mode_options = {
+        {
+          name = "Search in Buffer",
+          cmd = function()
+            local visual_selection = get_visual_selection()
+            fzf.lgrep_curbuf({query = visual_selection})
+          end,
+        },
+
+        {
+          name = "Search in Project",
+          cmd = function()
+            local visual_selection = get_visual_selection()
+            fzf.live_grep({query = visual_selection})
+          end,
+        },
+      }
+      vim.keymap.set("v", "<C-t>", function()
+        require("menu").open(visual_mode_options)
       end, {})
     end
   },
