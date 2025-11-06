@@ -55,7 +55,14 @@ return {
                 },
             },
             winbar = {
-                lualine_a = {},
+                lualine_a = { {
+                    "buffers",
+                    symbols = {
+                        modified = ' ●', -- Text to show when the buffer is modified
+                        alternate_file = '#', -- Text to show to identify the alternate file
+                        directory = '', -- Text to show when the buffer is a directory
+                    }
+                } },
                 lualine_b = { { "filename", path = 3, } },
                 lualine_c = { { "navic", color_correction = "dynamic", navic_opts = { highlight = true } } },
                 lualine_x = {},
@@ -63,17 +70,8 @@ return {
                 lualine_z = {},
             },
             tabline = {
-                lualine_a = { "tabs", "windows" },
-                lualine_b = {
-                    {
-                        "buffers",
-                        symbols = {
-                            modified = ' ●', -- Text to show when the buffer is modified
-                            alternate_file = '#', -- Text to show to identify the alternate file
-                            directory = '', -- Text to show when the buffer is a directory
-                        }
-                    }
-                },
+                lualine_a = { "tabs", },
+                lualine_b = { "windows" },
                 lualine_c = {},
                 lualine_x = {},
                 lualine_y = {},
