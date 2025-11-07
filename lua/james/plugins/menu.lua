@@ -95,40 +95,40 @@ return {
         {
           name = "Show Reference",
           cmd = function()
-            local current_WORD = vim.fn.expand('<cWORD>')
-            fzf.lsp_references({query = current_WORD})
+            local word = vim.fn.expand('<cword>')
+            fzf.lsp_references({query = word, jump1 = false})
           end,
           -- rtxt = "<NOP>",
         },
         {
           name = "Show Definition",
           cmd = function()
-            local current_WORD = vim.fn.expand('<cWORD>')
-            fzf.lsp_definitions({query = current_WORD})
+            local word = vim.fn.expand('<cword>')
+            fzf.lsp_definitions({query = word, jump1 = false})
           end,
           -- rtxt = "<NOP>",
         },
         {
           name = "Show Declaration",
           cmd = function()
-            local current_WORD = vim.fn.expand('<cWORD>')
-            fzf.lsp_declarations({query = current_WORD})
+            local word = vim.fn.expand('<cword>')
+            fzf.lsp_declarations({query = word, jump1 = false})
           end,
           -- rtxt = "<NOP>",
         },
         {
           name = "Show Typedef",
           cmd = function()
-            local current_WORD = vim.fn.expand('<cWORD>')
-            fzf.lsp_typedefs({query = current_WORD})
+            local word = vim.fn.expand('<cword>')
+            fzf.lsp_typedefs({query = word, jump1 = false})
           end,
           -- rtxt = "<NOP>",
         },
         {
           name = "Show Implementation",
           cmd = function()
-            local current_WORD = vim.fn.expand('<cWORD>')
-            fzf.lsp_implementations({query = current_WORD})
+            local word = vim.fn.expand('<cword>')
+            fzf.lsp_implementations({query = word, jump1 = false})
           end,
           -- rtxt = "<NOP>",
         }
