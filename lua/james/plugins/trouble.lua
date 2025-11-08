@@ -11,17 +11,10 @@ return {
   },
   config = function()
     require("trouble").setup({
-      focus = true,
-      follow = false,
+      focus = false,
+      follow = true,
       win = {
-        type = "float",
-        position = "center",
-      },
-      keys = {
-        q = "close",
-        o = "jump_close",
-        ["<esc>"] = "cancel",
-        ["<cr>"] = "jump",
+        position = "right",
       }
     })
   end
