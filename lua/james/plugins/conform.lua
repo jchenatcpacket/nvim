@@ -37,4 +37,5 @@ return {
       conform.format({ formatters = { "trim_whitespace" } })
     end, { desc = "trim trailing whitespace" })
   end,
+  cond = not vim.g.vscode,
 }

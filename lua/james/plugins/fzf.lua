@@ -11,5 +11,6 @@ return {
     vim.keymap.set({ "n", "v", "i" }, "<C-p>",
     function() fzf.files() end,
     { silent = true, desc = "find files" })
-  end
+  end,
+  cond = not vim.g.vscode,
 }

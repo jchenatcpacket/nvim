@@ -4,6 +4,7 @@ return {
     opts = {
         autoformat = false,
     },
+    cond = not vim.g.vscode,
     config = function()
         vim.lsp.config("lua_ls", {
             settings = {

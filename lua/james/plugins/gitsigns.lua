@@ -50,5 +50,6 @@ return {
                 col = 1
             },
         }
-    end
+    end,
+    cond = not vim.g.vscode,
 }
