@@ -1,8 +1,8 @@
 require("keymaps")
+require("james.lazy")
 
 if vim.g.vscode then
-    require("vsc")
+    require("vscode-setup")
 else
     require('common')
-    require("james.lazy")
 end

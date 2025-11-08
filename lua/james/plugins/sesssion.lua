@@ -11,5 +11,6 @@ return {
   },
   config = function()
     require("auto-session").setup({})
-  end
+  end,
+  cond = not vim.g.vscode,
 }

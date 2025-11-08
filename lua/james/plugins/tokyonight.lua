@@ -7,5 +7,6 @@ return {
     require("tokyonight.colors").setup({ style = "moon" })
 
     vim.cmd.colorscheme("tokyonight")
-  end
+  end,
+  cond = not vim.g.vscode,
 }

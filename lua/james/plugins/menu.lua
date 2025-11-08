@@ -3,6 +3,7 @@ return {
   {
     "nvzone/menu",
     lazy = false,
+    cond = not vim.g.vscode,
     config = function()
       local fzf = require("fzf-lua")
 
