@@ -6,7 +6,11 @@ return {
         {
             "<leader>p",
             function()
-                Snacks.picker.yanky()
+                if vim.g.vscode then
+                    vim.cmd("YankyRingHistory")
+                else
+                    Snacks.picker.yanky()
+                end
             end,
             mode = { "n", "x" },
             desc = "Open Yank History"
