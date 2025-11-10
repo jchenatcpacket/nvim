@@ -1,6 +1,6 @@
 return {
   "stevearc/conform.nvim",
-  dependencies = { "mason.nvim" },
+  dependencies = { "williamboman/mason.nvim" },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     vim.g.disable_autoformat = true
