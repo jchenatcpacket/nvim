@@ -3,7 +3,6 @@ vim.opt.wrap = false
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
-vim.opt.autoread = true
 
 vim.cmd("set list")
 
