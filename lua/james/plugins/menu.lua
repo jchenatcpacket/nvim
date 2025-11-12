@@ -34,14 +34,14 @@ return {
         },
         {
           name = "Jump Back",
-          cmd = function ()
+          cmd = function()
             vim.cmd('normal! <C-o>')
           end,
           rtxt = "<C-o>",
         },
         {
           name = "Jump Forward",
-          cmd = function ()
+          cmd = function()
             vim.cmd('normal! <C-i>')
           end,
           rtxt = "<C-i>",
@@ -59,21 +59,29 @@ return {
           rtxt = "<leader>fm",
         },
 
+        {
+          name = "Toggle Inlay Hints",
+          cmd = function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({0}),{0})
+          end,
+          -- rtxt = "<leader>fm",
+        },
+
         { name = "separator" },
 
         {
           name = "Search in Buffer",
-          cmd = function ()
+          cmd = function()
             local current_WORD = vim.fn.expand('<cWORD>')
-            fzf.lgrep_curbuf({query = current_WORD})
+            fzf.lgrep_curbuf({ query = current_WORD })
           end
         },
 
         {
           name = "Search in Project",
-          cmd = function ()
+          cmd = function()
             local current_WORD = vim.fn.expand('<cWORD>')
-            fzf.live_grep({query = current_WORD})
+            fzf.live_grep({ query = current_WORD })
           end
         },
 
@@ -94,42 +102,42 @@ return {
         { name = "separator" },
 
         {
-          name = "Show Reference",
+          name = "Show LSP Reference",
           cmd = function()
             local word = vim.fn.expand('<cword>')
-            fzf.lsp_references({query = word, jump1 = false})
+            fzf.lsp_references({ jump1 = false })
           end,
           -- rtxt = "<NOP>",
         },
         {
-          name = "Show Definition",
+          name = "Show LSP Definition",
           cmd = function()
             local word = vim.fn.expand('<cword>')
-            fzf.lsp_definitions({query = word, jump1 = false})
+            fzf.lsp_definitions({ jump1 = false })
           end,
           -- rtxt = "<NOP>",
         },
         {
-          name = "Show Declaration",
+          name = "Show LSP Declaration",
           cmd = function()
             local word = vim.fn.expand('<cword>')
-            fzf.lsp_declarations({query = word, jump1 = false})
+            fzf.lsp_declarations({ jump1 = false })
           end,
           -- rtxt = "<NOP>",
         },
         {
-          name = "Show Typedef",
+          name = "Show LSP Typedef",
           cmd = function()
-            local word = vim.fn.expand('<cword>')
-            fzf.lsp_typedefs({query = word, jump1 = false})
+            -- local word = vim.fn.expand('<cword>')
+            fzf.lsp_typedefs({ jump1 = false })
           end,
           -- rtxt = "<NOP>",
         },
         {
-          name = "Show Implementation",
+          name = "Show LSP Implementation",
           cmd = function()
             local word = vim.fn.expand('<cword>')
-            fzf.lsp_implementations({query = word, jump1 = false})
+            fzf.lsp_implementations({ jump1 = false })
           end,
           -- rtxt = "<NOP>",
         }
@@ -144,7 +152,7 @@ return {
           name = "Search in Buffer",
           cmd = function()
             local visual_selection = get_visual_selection()
-            fzf.lgrep_curbuf({query = visual_selection})
+            fzf.lgrep_curbuf({ query = visual_selection })
           end,
         },
 
@@ -152,7 +160,7 @@ return {
           name = "Search in Project",
           cmd = function()
             local visual_selection = get_visual_selection()
-            fzf.live_grep({query = visual_selection})
+            fzf.live_grep({ query = visual_selection })
           end,
         },
       }
