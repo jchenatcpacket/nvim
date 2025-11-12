@@ -2,7 +2,7 @@ local vscode = require("vscode")
 
 vim.g.clipboard = vim.g.vscode_clipboard
 
-vim.keymap.set("n", "<leader>t", function()
+vim.keymap.set("n", "<leader>tr", function()
     vscode.action("editor.action.trimTrailingWhitespace")
     print("Trimmed trailing whitespace")
 end, { desc = "trim trailing whitespace" })

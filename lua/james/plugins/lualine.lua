@@ -1,7 +1,7 @@
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-        "DaikyXendo/nvim-material-icon",
+        "nvim-tree/nvim-web-devicons",
     },
     cond = not vim.g.vscode,
     config = function()
@@ -25,18 +25,18 @@ return {
                         end
                     end
                 } },
-                lualine_x = { 'diagnostics' },
+                lualine_x = {
+                    function()
+                        return "Session:" .. require("auto-session.lib").current_session_name(true)
+                    end,
+                    'diagnostics'
+                },
                 lualine_y = {
-                    {
-                        function()
-                            local line = vim.fn.line('.')
-                            local col = vim.fn.charcol('.')
-                            return string.format('Ln %-d, Col %-d', line, col)
-                        end
-                    },
+                    "location",
                     'progress',
                     { function() return "Spaces:" .. _G.indent_count end },
-                    'encoding', 'filetype'
+                    'encoding',
+                    'filetype'
                 },
                 lualine_z = {
                     {
