@@ -11,7 +11,7 @@ return {
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
           return
         end
-        return { timeout_ms = 500, lsp_fallback = true }
+        return { timeout_ms = 500, lsp_fallback = false }
       end,
 
       formatters_by_ft = {
@@ -27,7 +27,7 @@ return {
 
     vim.keymap.set({ "n", "v" }, "<leader>fm", function()
       conform.format({
-        lsp_fallback = true,
+        lsp_fallback = false,
         async = false,
         timeout_ms = 500,
       })
