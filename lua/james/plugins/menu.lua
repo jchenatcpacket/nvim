@@ -60,10 +60,14 @@ return {
         },
 
         {
+          name = "Toggle Inline Diagnostics",
+          cmd = "InlineDiagnostics"
+          -- rtxt = "<leader>fm",
+        },
+
+        {
           name = "Toggle Inlay Hints",
-          cmd = function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({0}),{0})
-          end,
+          cmd = "InlayLspHints"
           -- rtxt = "<leader>fm",
         },
 

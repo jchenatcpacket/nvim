@@ -10,8 +10,16 @@ return {
             -- there are no required options atm
         });
 
-        vim.keymap.set({ 'n', 'x' }, '<leader>si', function()
-            require('grug-far').open({ visualSelectionUsage = 'operate-within-range' })
-        end, { desc = 'grug-far: Search within range' })
+        -- replace within current file
+        -- require('grug-far').open({ prefills = { paths = vim.fn.expand("%") } })
+
+        -- replace current word
+        -- require('grug-far').open({ prefills = { search = vim.fn.expand("<cword>") } })
+
+        -- replace visual selection globally
+        -- require('grug-far').open({ visualSelectionUsage = 'operate-within-range' })
+
+        -- replace visual selection within current file
+        -- require('grug-far').with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })
     end
 }

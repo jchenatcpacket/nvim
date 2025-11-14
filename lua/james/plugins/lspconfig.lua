@@ -31,10 +31,6 @@ return {
             severity_sort = true,
         })
 
-        vim.api.nvim_create_user_command("ToggleDiagnostics", function()
-            vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-        end, { nargs = 0 })
-
         vim.api.nvim_create_autocmd("InsertEnter", {
             callback = function()
                 -- hide lsp diag virt text

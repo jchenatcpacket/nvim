@@ -5,4 +5,5 @@ if vim.g.vscode then
     require("vscode-setup")
 else
     require('common')
+    require("commands")
 end
