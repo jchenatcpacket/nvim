@@ -4,14 +4,6 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
+        indent = { enabled = true },
     },
-    config = function()
-        vim.api.nvim_create_user_command('Lazygit', function()
-            Snacks.lazygit()
-        end, { desc = "Lazygit" })
-
-        vim.api.nvim_create_user_command('Explorer', function()
-            Snacks.explorer()
-        end, { desc = "File Explorer" })
-    end
 }

@@ -4,7 +4,6 @@ vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
-vim.cmd("set list")
 
 vim.api.nvim_create_user_command("SetIndent", function(opts)
   local width = tonumber(opts.args)
@@ -14,11 +13,14 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
     return
   end
 
-  if width == 2 then
-    vim.cmd([[set listchars=leadmultispace:▏\ ]])
-  elseif width == 4 then
-    vim.cmd([[set listchars=leadmultispace:▏\ \ \ ]])
-  end
+  -- set list will interfere with expandtab by showing tab character as ^I instead of space
+  -- unless set listchars specify how it handles tab characters is shown
+  -- vim.cmd("set list")
+  -- if width == 2 then
+  --   vim.cmd([[set listchars=leadmultispace:▏\ ]])
+  -- elseif width == 4 then
+  --   vim.cmd([[set listchars=leadmultispace:▏\ \ \ ]])
+  -- end
 
   vim.opt.tabstop = width
   vim.opt.softtabstop = width
@@ -31,3 +33,11 @@ vim.api.nvim_create_autocmd("BufEnter", { command = "SetIndent 4" })
 
 vim.cmd([[match TrailingSpace /\s\+$/]])
 vim.cmd("hi TrailingSpace ctermbg=238 guibg=#4D0000")
+
+vim.api.nvim_create_user_command('Lazygit', function()
+    Snacks.lazygit()
+end, { desc = "Lazygit" })
+
+vim.api.nvim_create_user_command('Explorer', function()
+    Snacks.explorer()
+end, { desc = "File Explorer" })
