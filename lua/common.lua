@@ -4,6 +4,23 @@ vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
+vim.api.nvim_exec(
+  [[
+    let g:clipboard = {
+    \   'name': 'win32yank-wsl',
+    \   'copy': {
+    \      '+': 'win32yank.exe -i --crlf',
+    \      '*': 'win32yank.exe -i --crlf',
+    \    },
+    \   'paste': {
+    \      '+': 'win32yank.exe -o --lf',
+    \      '*': 'win32yank.exe -o --lf',
+    \   },
+    \   'cache_enabled': 0,
+    \ }
+  ]],
+  true
+)
 
 vim.api.nvim_create_user_command("SetIndent", function(opts)
   local width = tonumber(opts.args)
@@ -35,9 +52,9 @@ vim.cmd([[match TrailingSpace /\s\+$/]])
 vim.cmd("hi TrailingSpace ctermbg=238 guibg=#4D0000")
 
 vim.api.nvim_create_user_command('Lazygit', function()
-    Snacks.lazygit()
+  Snacks.lazygit()
 end, { desc = "Lazygit" })
 
 vim.api.nvim_create_user_command('Explorer', function()
-    Snacks.explorer()
+  Snacks.explorer()
 end, { desc = "File Explorer" })
