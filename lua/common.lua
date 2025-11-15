@@ -4,7 +4,9 @@ vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
-vim.api.nvim_exec(
+-- wsl clipboard
+if vim.fn.has("wsl") == 1 then
+  vim.api.nvim_exec(
   [[
     let g:clipboard = {
     \   'name': 'win32yank-wsl',
@@ -21,6 +23,7 @@ vim.api.nvim_exec(
   ]],
   true
 )
+end
 
 vim.api.nvim_create_user_command("SetIndent", function(opts)
   local width = tonumber(opts.args)
