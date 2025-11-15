@@ -13,7 +13,11 @@ return {
                     -- statusline = {},
                     -- winbar = {},
                     "neo-tree",
-                    "trouble"
+                    "trouble",
+                    "snacks",
+					"grug-far",
+					"grug-far-historye",
+					"grug-far-help",
                 },
             },
             sections = {
@@ -35,7 +39,6 @@ return {
                     function()
                         return "Session:" .. require("auto-session.lib").current_session_name(true)
                     end,
-                    'diagnostics'
                 },
                 lualine_y = {
                     "location",
@@ -65,6 +68,14 @@ return {
                 lualine_a = {},
                 lualine_b = { { "filename", path = 3, } },
                 lualine_c = { { "navic", color_correction = "dynamic", navic_opts = { highlight = true } } },
+                lualine_x = {'diagnostics'},
+                lualine_y = {},
+                lualine_z = {},
+            },
+            inactive_winbar = {
+                lualine_a = {},
+                lualine_b = { { "filename", path = 3, } },
+                lualine_c = {},
                 lualine_x = {},
                 lualine_y = {},
                 lualine_z = {},

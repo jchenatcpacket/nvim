@@ -4,7 +4,26 @@ vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
-vim.cmd("set list")
+-- wsl clipboard
+if vim.fn.has("wsl") == 1 then
+  vim.api.nvim_exec(
+  [[
+    let g:clipboard = {
+    \   'name': 'win32yank-wsl',
+    \   'copy': {
+    \      '+': 'win32yank.exe -i --crlf',
+    \      '*': 'win32yank.exe -i --crlf',
+    \    },
+    \   'paste': {
+    \      '+': 'win32yank.exe -o --lf',
+    \      '*': 'win32yank.exe -o --lf',
+    \   },
+    \   'cache_enabled': 0,
+    \ }
+  ]],
+  true
+)
+end
 
 vim.api.nvim_create_user_command("SetIndent", function(opts)
   local width = tonumber(opts.args)
@@ -14,6 +33,9 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
     return
   end
 
+  -- set list will interfere with expandtab by showing tab character as ^I instead of space
+  -- unless set listchars specify how it handles tab characters is shown
+  -- vim.cmd("set list")
   -- if width == 2 then
   --   vim.cmd([[set listchars=leadmultispace:▏\ ]])
   -- elseif width == 4 then
@@ -25,7 +47,7 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
   vim.opt.shiftwidth = width
 
   _G.indent_count = width
-end, { nargs = 1 })
+end, { nargs = 1, desc = "Set Indent spaces to either 2 or 4" })
 
 vim.api.nvim_create_autocmd("BufEnter", { command = "SetIndent 4" })
 
