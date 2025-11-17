@@ -1,6 +1,10 @@
 return {
   "j-hui/fidget.nvim",
   opts = {
-    -- options
+    progress = {
+      display = {
+        done_ttl = 10,
+      }
+    }
   },
 }

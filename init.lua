@@ -6,4 +6,5 @@ if vim.g.vscode then
 else
     require('common')
     require("commands")
+    require("james.lsp")
 end
