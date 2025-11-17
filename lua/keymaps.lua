@@ -89,10 +89,10 @@ vim.keymap.set('v', '<leader>qa2', function()
 	fzf.live_grep({ query = visual_selection })
 end, { desc = "Search visual selection in project" })
 
-vim.keymap.set('v', '<leader>qa2', function()
+vim.keymap.set('v', '<leader>qa3', function()
 	grugfar.with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })
 end, { desc = "Replace visual selection in Buffer" })
 
-vim.keymap.set('v', '<leader>qa2', function()
+vim.keymap.set('v', '<leader>qa4', function()
 	grugfar.with_visual_selection()
 end, { desc = "replace visual selection in project" })
