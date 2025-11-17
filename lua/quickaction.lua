@@ -1,97 +1,172 @@
-local Menu = require("nui.menu")
-local event = require("nui.utils.autocmd").event
+local fzf = require("fzf-lua")
 
-local callback = function(selection)
-	local fzf = require("fzf-lua")
-	if selection == "grep project" then
-		fzf.grep_project()
-	elseif selection == "grep current buffer" then
-		fzf.grep_curbuf()
-	elseif selection == "find files" then
-		fzf.files()
-	elseif selection == "find lsp workspace symbols" then
-		fzf.lsp_workspace_symbols()
-	elseif selection == "find lsp document symbols" then
-		fzf.lsp_document_symbols()
-	else
-		print("not implmented yet: " .. selection)
-	end
-end
+local action_ls = {
+	{
+		name = "lsp ref",
+		comment = "<leader>bc",
+		action = function()
+			print("show lsp ref")
+		end,
+	},
+	{
+		name = "lsp def",
+		comment = "<leader>ab",
+		action = function()
+			print("show lsp def")
+		end,
+	},
+	{
+		name = "format buffer",
+		comment = "<leader>fm",
+		action = function()
+			print("format buffer")
+		end,
+	},
+	{
+		name = "Echo cWORD",
+		action = function()
+			local current_WORD = vim.fn.expand("<cWORD>")
+			print(current_WORD)
+		end,
+		-- rtxt = "<NOP>",
+	},
+	{
+		name = "Jump Back",
+		action = function()
+			vim.cmd("normal! <C-o>")
+		end,
+		rtxt = "<C-o>",
+	},
+	{
+		name = "Jump Forward",
+		action = function()
+			vim.cmd("normal! <C-i>")
+		end,
+		rtxt = "<C-i>",
+	},
+	{
+		name = "Format Buffer",
+		action = function()
+			local conform = require("conform")
+			conform.format({
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 500,
+			})
+		end,
+		rtxt = "<leader>fm",
+	},
 
-local popup_options = {
-	relative = "win",
-	position = {
-		row = "55%",
-		col = "33%",
+	{
+		name = "Toggle Inline Diagnostics",
+		action = "InlineDiagnostics",
+		-- rtxt = "<leader>fm",
 	},
-	size = {
-		width = 35,
-		height = 20,
+
+	{
+		name = "Toggle Inlay Hints",
+		action = "InlayLspHints",
+		-- rtxt = "<leader>fm",
 	},
-	border = {
-		style = "single",
-		text = {
-			top = "QuickAction",
-			top_align = "center",
-		},
+
+	{
+		name = "Search in Buffer",
+		action = function()
+			local current_WORD = vim.fn.expand("<cWORD>")
+			fzf.lgrep_curbuf({ query = current_WORD })
+		end,
 	},
-	buf_options = {
-		modifiable = false,
-		readonly = true,
+
+	{
+		name = "Search in Project",
+		action = function()
+			local current_WORD = vim.fn.expand("<cWORD>")
+			fzf.live_grep({ query = current_WORD })
+		end,
 	},
-	win_options = {
-		winhighlight = "Normal:Normal,FloatBorder:Normal",
+
+	{
+		name = "Goto Definition",
+		action = vim.lsp.buf.definition,
+		-- rtxt = "<NOP>",
 	},
-	focusable = true,
-	enter = true,
+
+	{
+		name = "Goto Implementation",
+		action = vim.lsp.buf.implementation,
+		-- rtxt = "<NOP>",
+	},
+
+	{
+		name = "Show LSP Reference",
+		action = function()
+			local word = vim.fn.expand("<cword>")
+			fzf.lsp_references({ jump1 = false })
+		end,
+		-- rtxt = "<NOP>",
+	},
+	{
+		name = "Show LSP Definition",
+		action = function()
+			local word = vim.fn.expand("<cword>")
+			fzf.lsp_definitions({ jump1 = false })
+		end,
+		-- rtxt = "<NOP>",
+	},
+	{
+		name = "Show LSP Declaration",
+		action = function()
+			local word = vim.fn.expand("<cword>")
+			fzf.lsp_declarations({ jump1 = false })
+		end,
+		-- rtxt = "<NOP>",
+	},
+	{
+		name = "Show LSP Typedef",
+		action = function()
+			-- local word = vim.fn.expand('<cword>')
+			fzf.lsp_typedefs({ jump1 = false })
+		end,
+		-- rtxt = "<NOP>",
+	},
+	{
+		name = "Show LSP Implementation",
+		action = function()
+			local word = vim.fn.expand("<cword>")
+			fzf.lsp_implementations({ jump1 = false })
+		end,
+		-- rtxt = "<NOP>",
+	},
 }
 
-local menu = Menu(popup_options, {
-	lines = {
-		Menu.separator("Fzf", {
-			char = "-",
-			text_align = "center",
-		}),
-		Menu.item("grep project"),
-		Menu.item("grep current buffer"),
-		Menu.item("find files"),
-		Menu.item("find lsp workspace symbols"),
-		Menu.item("find lsp document symbols"),
-	},
+local quickaction = function()
+	return Snacks.picker.pick({
+		title = "Quick Action",
+		finder = function()
+			local items = {}
+			for index, item in ipairs(action_ls) do
+				table.insert(items, {
+					text = item.comment,
+					name = item.name,
+					action = item.action,
+				})
+			end
 
-	max_width = 30,
-
-	keymap = {
-		focus_next = { "j", "<Down>" },
-		focus_prev = { "k", "<Up>" },
-		close = { "<Esc>" },
-		submit = { "<CR>" },
-	},
-
-	on_close = function()
-		print("Quick Action Menu Closed!")
-	end,
-
-	on_submit = function(item)
-		local selection = item.text
-		callback(selection)
-	end,
-})
-
-vim.keymap.set("n", "<leader>q", function()
-	if not menu._.mounted then
-		menu:mount()
-	else
-		menu:unmount()
-	end
-end, { desc = "Quick Action Menu" })
+			return items
+		end,
+		format = function(item)
+			local ret = {}
+			ret[#ret + 1] = { item.name, "SnacksPickerLabel" }
+			ret[#ret + 1] = { item.text, "SnacksPickerComment" }
+			return ret
+		end,
+		confirm = function(picker, item)
+			picker:close()
+			item.action()
+		end,
+	})
+end
 
 vim.api.nvim_create_user_command("QuickAction", function()
-	if not menu._.mounted then
-		menu:mount()
-	end
-end, { nargs = 0, desc = "quick actions list" })
-
-menu:on({ event.BufLeave, event.BufWinLeave }, function()
-	menu:unmount()
-end)
+	return quickaction()
+end, { nargs = 0, desc = "quick actions picker" })
