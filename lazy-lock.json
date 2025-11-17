@@ -28,7 +28,6 @@
   "snacks.nvim": { "branch": "main", "commit": "836e07336ba523d4da480cd66f0241815393e98e" },
   "tokyonight.nvim": { "branch": "main", "commit": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
-  "vscode-multi-cursor.nvim": { "branch": "main", "commit": "210d64a6d190383a81b8dcdf8779d357006f3a69" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" }
 }
