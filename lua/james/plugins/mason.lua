@@ -1,6 +1,5 @@
 return {
 	"williamboman/mason-lspconfig.nvim",
-	cond = not vim.g.vscode,
 	config = function()
 		require("mason-lspconfig").setup({
 			ensure_installed = {

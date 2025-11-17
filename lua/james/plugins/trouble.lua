@@ -28,5 +28,4 @@ return {
       desc = "Symbols (Trouble)",
     },
   },
-  cond = not vim.g.vscode,
 }

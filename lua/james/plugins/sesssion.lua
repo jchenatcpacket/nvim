@@ -48,5 +48,4 @@ return {
   config = function()
     require("auto-session").setup({})
   end,
-  cond = not vim.g.vscode,
 }

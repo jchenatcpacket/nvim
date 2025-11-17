@@ -1,10 +1,5 @@
 require("james.lazy")
-
-if vim.g.vscode then
-    require("vscode-setup")
-else
-    require("keymaps")
-    require('common')
-    require("commands")
-    require("james.lsp")
-end
+require("james.lsp")
+require('common')
+require("keymaps")
+require("commands")

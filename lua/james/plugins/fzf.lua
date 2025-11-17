@@ -12,5 +12,4 @@ return {
     function() fzf.files() end,
     { silent = true, desc = "find files" })
   end,
-  cond = not vim.g.vscode,
 }

@@ -3,7 +3,6 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	cond = not vim.g.vscode,
 	config = function()
 		local symbols = require("trouble").statusline({
 			mode = "lsp_document_symbols",
