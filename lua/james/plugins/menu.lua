@@ -83,6 +83,23 @@ return {
 						fzf.live_grep({ query = current_WORD })
 					end,
 				},
+				{
+					name = "Replace cword in Buffer",
+					cmd = function()
+						grugfar.open({
+							prefills = { search = vim.fn.expand("<cword>"), paths = vim.fn.expand("%") },
+						})
+					end,
+				},
+
+				{
+					name = "Replace Selection in Project",
+					cmd = function()
+						grugfar.open({
+							prefills = { search = vim.fn.expand("<cword>") },
+						})
+					end,
+				},
 
 				{ name = "separator" },
 
@@ -137,23 +154,6 @@ return {
 						fzf.lsp_implementations({ jump1 = false })
 					end,
 					-- rtxt = "<NOP>",
-				},
-				{
-					name = "Replace cword in Buffer",
-					cmd = function()
-						grugfar.open({
-							prefills = { search = vim.fn.expand("<cword>"), paths = vim.fn.expand("%") },
-						})
-					end,
-				},
-
-				{
-					name = "Replace Selection in Project",
-					cmd = function()
-						grugfar.open({
-							prefills = { search = vim.fn.expand("<cword>") },
-						})
-					end,
 				},
 			}
 
