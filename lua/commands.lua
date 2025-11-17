@@ -18,7 +18,20 @@ vim.api.nvim_create_user_command("InlayLspHints", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
 end, { nargs = 0, desc = "Toggle inlay lsp type hints" })
 
-local billboard = function(text)
+vim.api.nvim_create_user_command("Surround", function()
+	local text = [[
+    Old text                    Command         New text
+--------------------------------------------------------------------------------
+    surr*ound_words             ysiw)           (surround_words)
+    surr*ound_words             ysiw(           ( surround_words )
+    *make strings               ys$"            "make strings"
+    [delete ar*ound me!]        ds]             delete around me!
+    remove <b>HTML t*ags</b>    dst             remove HTML tags
+    'change quot*es'            cs'"            "change quotes"
+    <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
+    delete(functi*on calls)     dsf             function calls
+]]
+
 	local Popup = require("nui.popup")
 	local event = require("nui.utils.autocmd").event
 
@@ -46,20 +59,4 @@ local billboard = function(text)
 	end, { noremap = true })
 
 	vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, vim.split(text, "\n"))
-end
-
-vim.api.nvim_create_user_command("Surround", function()
-	local content = [[
-    Old text                    Command         New text
---------------------------------------------------------------------------------
-    surr*ound_words             ysiw)           (surround_words)
-    surr*ound_words             ysiw(           ( surround_words )
-    *make strings               ys$"            "make strings"
-    [delete ar*ound me!]        ds]             delete around me!
-    remove <b>HTML t*ags</b>    dst             remove HTML tags
-    'change quot*es'            cs'"            "change quotes"
-    <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
-    delete(functi*on calls)     dsf             function calls
-]]
-	billboard(content)
 end, { nargs = 0, desc = "Surround help" })
