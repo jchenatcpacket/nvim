@@ -22,11 +22,11 @@ local function get_visual_selection()
 	return table.concat(lines, "\n")
 end
 
-vim.keymap.set("n", "<leader>?k", function()
+vim.keymap.set({"n", "v"}, "<leader>?k", function()
 	fzf.keymaps({ winopts = { preview = { hidden = true } } })
 end, { desc = "seach Keymaps" })
 
-vim.keymap.set("n", "<leader>?c", function()
+vim.keymap.set({"n", "v"}, "<leader>?c", function()
 	fzf.commands({ winopts = { preview = { hidden = true } } })
 end, { desc = "seach Commands" })
 
