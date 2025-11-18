@@ -4,6 +4,13 @@ vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
+-- insert mode cursor blinking
+vim.o.guicursor = table.concat({
+  "n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
+  "i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
+  "r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100"
+}, ",")
+
 -- wsl clipboard
 if vim.fn.has("wsl") == 1 then
   vim.api.nvim_exec(
