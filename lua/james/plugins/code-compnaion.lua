@@ -8,6 +8,13 @@ return {
 			ft = { "markdown", "codecompanion" },
 		},
 		{
+			"zbirenbaum/copilot.lua",
+			cmd = "Copilot",
+            config = function ()
+                require("copilot").setup({})
+            end
+		},
+		{
 			"echasnovski/mini.diff",
 			config = function()
 				local diff = require("mini.diff")
