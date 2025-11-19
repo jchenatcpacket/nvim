@@ -8,5 +8,4 @@ return {
 
     vim.cmd.colorscheme("tokyonight")
   end,
-  cond = not vim.g.vscode,
 }

@@ -1,8 +1,8 @@
 vim.lsp.config("lua_ls", {
     settings = {
-        lua = {
+        Lua = {
             diagnostics = {
-                globals = { "vim" },
+                globals = { "vim", "Snacks" },
             },
         },
     },

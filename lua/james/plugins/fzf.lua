@@ -9,9 +9,8 @@ return {
 			fzf.grep_curbuf()
 		end, { silent = true, desc = "search current buffer" })
 
-		vim.keymap.set({ "n", "v", "i" }, "<C-p>", function()
-			fzf.files()
-		end, { silent = true, desc = "find files" })
-	end,
-	cond = not vim.g.vscode,
+    vim.keymap.set({ "n", "v", "i" }, "<C-p>",
+    function() fzf.files() end,
+    { desc = "find files" })
+  end,
 }

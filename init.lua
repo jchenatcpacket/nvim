@@ -1,10 +1,8 @@
-require("keymaps")
-require("james.lazy")
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-if vim.g.vscode then
-    require("vscode-setup")
-else
-    require('common')
-    require("commands")
-    require("james.lsp")
-end
+require("james.lazy")
+require("james.lsp")
+require('common')
+require("keymaps")
+require("commands")

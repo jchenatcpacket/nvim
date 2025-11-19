@@ -7,7 +7,7 @@ return {
         indent = { enabled = true },
     },
     keys = {
-        { "<leader>?k", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
-        { "<leader>?c", function() Snacks.picker.commands() end, desc = "Commands" }
+        -- { "<leader>?k", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+        -- { "<leader>?c", function() Snacks.picker.commands() end, desc = "Commands" }
     }
 }
