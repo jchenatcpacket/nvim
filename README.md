@@ -24,3 +24,9 @@ Trouble
 
 ## Formatter
 Conform
+
+## AI/Copilot
+Copilot.lua CodeCompanion.nvim
+
+## DAP
+N/A
