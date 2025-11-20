@@ -8,7 +8,8 @@ return {
 		indent = { enabled = true },
 		picker = {
 			ignored = true,
-            hidden = true
+            hidden = true,
+            exclude = { ".git", ".DS_Store" },
 		},
 	},
 	keys = {
