@@ -1,25 +1,33 @@
 return {
-  {
-    "benomahony/oil-git.nvim",
-    dependencies = { "stevearc/oil.nvim" },
-    -- No opts or config needed! Works automatically
-  },
-  {
-    'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-    lazy = false,
-    config = function()
-      require("oil").setup({
-        view_options = {
-          -- Show files and directories that start with "."
-          show_hidden = true,
-        }
-      })
-    end
-  },
+	{
+		"benomahony/oil-git.nvim",
+		dependencies = { "stevearc/oil.nvim" },
+		-- No opts or config needed! Works automatically
+	},
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+		config = function()
+			require("oil").setup({
+				view_options = {
+					-- Show files and directories that start with "."
+					show_hidden = true,
+				},
+			})
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "OilActionsPost",
+				callback = function(event)
+					if event.data.actions[1].type == "move" then
+						Snacks.rename.on_rename_file(event.data.actions[1].src_url, event.data.actions[1].dest_url)
+					end
+				end,
+			})
+		end,
+	},
 }
