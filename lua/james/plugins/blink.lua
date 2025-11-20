@@ -1,30 +1,35 @@
 return {
-  "saghen/blink.cmp",
-  dependencies = { 'rafamadriz/friendly-snippets' },
-  version = "1.*",
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
-  opts = {
-    keymap = {
-      preset = "default",
-      ["<Tab>"] = { "select_and_accept", 'fallback' },
-      ["<CR>"] = { "select_and_accept", 'fallback' },
+	"saghen/blink.cmp",
+	dependencies = { "rafamadriz/friendly-snippets" },
+	version = "1.*",
+	---@module 'blink.cmp'
+	---@type blink.cmp.Config
+	opts = {
+		cmdline = {
+			keymap = { preset = "inherit" },
+			completion = { ghost_text = { enabled = false }, menu = { auto_show = true } },
+		},
 
-      ['<Up>'] = { 'select_prev', 'fallback' },
-      ['<Down>'] = { 'select_next', 'fallback' },
-    },
+		keymap = {
+			preset = "default",
+			["<Tab>"] = { "select_and_accept", "fallback" },
+			["<CR>"] = { "select_and_accept", "fallback" },
 
-    appearance = {
-      nerd_font_variant = "mono",
-    },
+			["<Up>"] = { "select_prev", "fallback" },
+			["<Down>"] = { "select_next", "fallback" },
+		},
 
-    completion = { documentation = { auto_show = false } },
+		appearance = {
+			nerd_font_variant = "mono",
+		},
 
-    sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
-    },
+		completion = { documentation = { auto_show = false } },
 
-    fuzzy = { implementation = "prefer_rust_with_warning" },
-  },
-  opts_extend = { "sources.default" },
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer" },
+		},
+
+		fuzzy = { implementation = "prefer_rust_with_warning" },
+	},
+	opts_extend = { "sources.default" },
 }
