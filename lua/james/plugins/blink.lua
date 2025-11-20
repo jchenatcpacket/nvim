@@ -6,7 +6,11 @@ return {
 	---@type blink.cmp.Config
 	opts = {
 		cmdline = {
-			keymap = { preset = "inherit" },
+			keymap = {
+				preset = "inherit",
+				["<ESC>"] = {"fallback"},
+                ["<CR>"] = { "select_accept_and_enter", "fallback" },
+			},
 			completion = { ghost_text = { enabled = false }, menu = { auto_show = true } },
 		},
 

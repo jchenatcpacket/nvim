@@ -10,9 +10,9 @@ return {
 		{
 			"zbirenbaum/copilot.lua",
 			cmd = "Copilot",
-            config = function ()
-                require("copilot").setup({})
-            end
+			config = function()
+				require("copilot").setup()
+			end,
 		},
 		{
 			"echasnovski/mini.diff",
@@ -39,6 +39,13 @@ return {
 				cmd = {
 					adapter = "copilot",
 					model = "claude-sonnet-4.5",
+				},
+			},
+			memory = {
+				opts = {
+					chat = {
+						enabled = true,
+					},
 				},
 			},
 			opts = {
