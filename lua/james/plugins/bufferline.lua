@@ -20,7 +20,7 @@ return {
 					style = "underline",
 				},
                 numbers = "buffer_id",
-                separator_style = "sloped",
+                separator_style = "slant",
 			},
 		})
 
