@@ -29,4 +29,7 @@ Conform
 Copilot.lua CodeCompanion.nvim
 
 ## DAP
-N/A
+Nvim-dap, nvim-dap-ui
+
+## Terminal
+Snakcs.terminal, tmux
