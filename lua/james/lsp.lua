@@ -1,11 +1,11 @@
 vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim", "Snacks" },
-            },
-        },
-    },
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim", "Snacks" },
+			},
+		},
+	},
 })
 
 -- vim.lsp.config("pyright", {
@@ -34,23 +34,28 @@ vim.lsp.enable("docker_compose_language_service")
 
 vim.diagnostic.enable(true)
 vim.diagnostic.config({
-    virtual_text = true,
-    signs = false,
-    underline = true,
-    update_in_insert = true,
-    severity_sort = true,
+	virtual_text = true,
+	signs = false,
+	underline = true,
+	update_in_insert = true,
+	severity_sort = true,
 })
 
 vim.api.nvim_create_autocmd("InsertEnter", {
-    callback = function()
-        -- hide lsp diag virt text
-        vim.diagnostic.enable(false)
-    end,
+	callback = function()
+		vim.diagnostic.enable(false)
+	end,
 })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
-    callback = function()
-        -- shown lsp diag virt text
-        vim.diagnostic.enable(true)
-    end,
+	callback = function()
+		vim.diagnostic.enable(true)
+	end,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    pattern = { "*.rs" },
+	callback = function()
+		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+	end,
 })
