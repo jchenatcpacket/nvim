@@ -24,8 +24,11 @@ return {
 					winbar = {
 						"snacks_terminal",
 					},
+                    "grug-far",
+					"grug-far-historye",
+					"grug-far-help",
 				},
-				extensions = { "oil" },
+				extensions = { "oil", "trouble" },
 			},
 			sections = {
 				lualine_a = { "mode" },
