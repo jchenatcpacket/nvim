@@ -15,59 +15,35 @@ return {
 			hl_group = "lualine_c_normal",
 		})
 
-		local autosession = require("auto-session.lib")
-
 		require("lualine").setup({
 			options = {
-				component_separators = { left = "│", right = "" },
+				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = {},
 					winbar = {
-                        "snacks_terminal"
-                    },
-					"neo-tree",
-					"trouble",
-					"snacks",
-					"grug-far",
-					"grug-far-historye",
-					"grug-far-help",
+						"snacks_terminal",
+					},
 				},
+				extensions = { "oil" },
 			},
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch" },
 				lualine_c = {
-					"diff",
+                    { "filename", path = 3 },
 					{
 						function()
-							vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-							vim.g.gitblame_date_format = "%x"
-							local git_blame = require("gitblame")
-							if git_blame.is_blame_text_available() then
-								return git_blame.get_current_blame_text()
+							if symbols.has() then
+								return symbols.get()
 							else
-								return "Not committed yet"
+								return ""
 							end
 						end,
 					},
 				},
-				lualine_x = {
-					function()
-						return "Session:" .. autosession.current_session_name(true)
-					end,
-				},
-				lualine_y = {
-					"location",
-					"progress",
-					{
-						function()
-							return "Spaces:" .. _G.indent_count
-						end,
-					},
-					"encoding",
-					"filetype",
-				},
+				lualine_x = {},
+				lualine_y = {},
 				lualine_z = {
 					{
 						"lsp_status",
@@ -85,49 +61,8 @@ return {
 					},
 				},
 			},
-			winbar = {
-				lualine_a = {},
-				lualine_b = { { "filename", path = 3 } },
-				lualine_c = {
-					{
-						function()
-							if symbols.has() then
-								return symbols.get()
-                            else
-                                return ""
-							end
-						end,
-					},
-				},
-				lualine_x = { "diagnostics" },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			inactive_winbar = {
-				lualine_a = {},
-				lualine_b = { { "filename", path = 3 } },
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = {},
-			},
-			-- tabline = {
-			-- 	lualine_a = { "tabs" },
-			-- 	lualine_b = {
-			-- 		{
-			-- 			"buffers",
-			-- 			symbols = {
-			-- 				modified = " ●", -- Text to show when the buffer is modified
-			-- 				alternate_file = "#", -- Text to show to identify the alternate file
-			-- 				directory = "", -- Text to show when the buffer is a directory
-			-- 			},
-			-- 		},
-			-- 	},
-			-- 	lualine_c = {},
-			-- 	lualine_x = {},
-			-- 	lualine_y = {},
-			-- 	lualine_z = {},
-			-- },
 		})
+
+		vim.cmd("set showtabline=0")
 	end,
 }
