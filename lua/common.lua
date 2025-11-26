@@ -4,8 +4,6 @@ vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
-vim.opt.clipboard = "unnamedplus"
-
 -- insert mode cursor blinking
 vim.o.guicursor = table.concat({
   "n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
