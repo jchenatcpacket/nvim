@@ -8,8 +8,8 @@ return {
 		cmdline = {
 			keymap = {
 				preset = "inherit",
-				["<ESC>"] = {"hide", "fallback"},
-                ["<CR>"] = { "select_accept_and_enter", "fallback" },
+				["<ESC>"] = { "hide", "fallback" },
+				["<CR>"] = { "select_accept_and_enter", "fallback" },
 			},
 			completion = { ghost_text = { enabled = false }, menu = { auto_show = true } },
 		},
