@@ -15,6 +15,8 @@ return {
 			hl_group = "lualine_c_normal",
 		})
 
+		local autosession = require("auto-session.lib")
+
 		require("lualine").setup({
 			options = {
 				component_separators = { left = "", right = "" },
@@ -24,7 +26,7 @@ return {
 					winbar = {
 						"snacks_terminal",
 					},
-                    "grug-far",
+					"grug-far",
 					"grug-far-historye",
 					"grug-far-help",
 				},
@@ -33,20 +35,20 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch" },
-				lualine_c = {
-                    { "filename", path = 3 },
+				lualine_c = {},
+				lualine_x = {
+					function()
+						return "Session:" .. autosession.current_session_name(true)
+					end,
+				},
+				lualine_y = {
+					"progress",
 					{
 						function()
-							if symbols.has() then
-								return symbols.get()
-							else
-								return ""
-							end
+							return "Spaces:" .. _G.indent_count
 						end,
 					},
 				},
-				lualine_x = {},
-				lualine_y = {},
 				lualine_z = {
 					{
 						"lsp_status",
@@ -63,6 +65,32 @@ return {
 						ignore_lsp = {},
 					},
 				},
+			},
+			winbar = {
+				lualine_a = {},
+				lualine_b = { { "filename", path = 3 } },
+				lualine_c = {
+					{
+						function()
+							if symbols.has() then
+								return symbols.get()
+							else
+								return ""
+							end
+						end,
+					},
+				},
+				lualine_x = { "diagnostics" },
+				lualine_y = {},
+				lualine_z = {},
+			},
+			inactive_winbar = {
+				lualine_a = {},
+				lualine_b = { { "filename", path = 3 } },
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
 			},
 		})
 
