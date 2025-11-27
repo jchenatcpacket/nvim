@@ -67,7 +67,7 @@ return {
 				},
 			},
 			winbar = {
-				lualine_a = { "branch" },
+				lualine_a = {},
 				lualine_b = { { "filename", path = 3 } },
 				lualine_c = {
 					{
