@@ -34,7 +34,7 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch" },
+				lualine_b = {},
 				lualine_c = {},
 				lualine_x = {
 					function()
@@ -67,7 +67,7 @@ return {
 				},
 			},
 			winbar = {
-				lualine_a = {},
+				lualine_a = { "branch" },
 				lualine_b = { { "filename", path = 3 } },
 				lualine_c = {
 					{
