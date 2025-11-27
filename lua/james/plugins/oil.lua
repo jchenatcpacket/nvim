@@ -18,6 +18,9 @@ return {
 				view_options = {
 					-- Show files and directories that start with "."
 					show_hidden = true,
+					is_always_hidden = function(name, _)
+						return name == ".git" or name == ".DS_Store" -- Add other folders you always want hidden
+					end,
 				},
 			})
 		end,
