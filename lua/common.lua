@@ -56,7 +56,13 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
   _G.indent_count = width
 end, { nargs = 1, desc = "Set Indent spaces to either 2 or 4" })
 
-vim.api.nvim_create_autocmd("BufEnter", { command = "SetIndent 4" })
+vim.api.nvim_create_autocmd("VimEnter", { command = "SetIndent 4" })
 
 vim.cmd([[match TrailingSpace /\s\+$/]])
 vim.cmd("hi TrailingSpace ctermbg=238 guibg=#4D0000")
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
