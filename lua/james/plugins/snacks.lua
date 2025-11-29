@@ -11,12 +11,6 @@ return {
 			hidden = true,
 			exclude = { ".git", ".DS_Store" },
 		},
-		terminal = {
-			win = {
-				position = "bottom",
-			}
-		}
 	},
-	keys = {
-	},
+	keys = {},
 }

@@ -2,6 +2,16 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		{
+			'f-person/git-blame.nvim',
+			event = "VeryLazy",
+			opts = {
+				enabled = true, -- if you want to enable the plugin
+				message_template = "<author>, <date> - <summary> • <<sha>>", -- template for the blame message, check the Message template section for more options
+				date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
+				virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
+			},
+		}
 	},
 	config = function()
 		local symbols = require("trouble").statusline({
@@ -34,8 +44,19 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = {},
-				lualine_c = {},
+				lualine_b = { "branch" },
+				lualine_c = { {
+					function()
+						vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+						vim.g.gitblame_date_format = "%x"
+						local git_blame = require("gitblame")
+						if git_blame.is_blame_text_available() then
+							return git_blame.get_current_blame_text()
+						else
+							return "Not committed yet"
+						end
+					end,
+				}, },
 				lualine_x = {
 					function()
 						return "Session:" .. autosession.current_session_name(true)
