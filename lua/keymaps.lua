@@ -30,77 +30,69 @@ vim.keymap.set({"n", "v"}, "<leader>?c", function()
 	fzf.commands({ winopts = { preview = { hidden = true } } })
 end, { desc = "seach Commands" })
 
--- quick action normal mode keymaps
-vim.keymap.set("n", "<leader>qa1", function()
-	local current_WORD = vim.fn.expand("<cWORD>")
-	print(current_WORD)
-end, { noremap = true, desc = "echo cword" })
-
-vim.keymap.set("n", "<leader>qa2", function()
+vim.keymap.set("n", "<leader>fw", function()
 	local current_WORD = vim.fn.expand("<cWORD>")
 	fzf.lgrep_curbuf({ query = current_WORD })
 end, { noremap = true, desc = "search cWORD in buffer" })
 
-vim.keymap.set("n", "<leader>qa3", function()
+vim.keymap.set("n", "<leader>fgw", function()
 	local current_WORD = vim.fn.expand("<cWORD>")
 	fzf.live_grep({ query = current_WORD })
 end, { noremap = true, desc = "search cWORD in project" })
 
-vim.keymap.set("n", "<leader>qa4", function()
+vim.keymap.set("n", "<leader>rw", function()
 	grugfar.open({
 		prefills = { search = vim.fn.expand("<cword>"), paths = vim.fn.expand("%") },
 	})
 end, { noremap = true, desc = "Replace cword in buffer" })
 
-vim.keymap.set("n", "<leader>qa5", function()
+vim.keymap.set("n", "<leader>rgw", function()
 	grugfar.open({
 		prefills = { search = vim.fn.expand("<cword>") },
 	})
 end, { noremap = true, desc = "Replace cword in project" })
 
-vim.keymap.set("n", "<leader>qa6", vim.lsp.buf.definition, { noremap = true, desc = "Jump to LSP Definition" })
+vim.keymap.set("n", "<leader>jd", vim.lsp.buf.definition, { noremap = true, desc = "Jump to LSP Definition" })
 
-vim.keymap.set("n", "<leader>qa7", vim.lsp.buf.implementation, { noremap = true, desc = "Jump to LSP Implementation" })
+vim.keymap.set("n", "<leader>ji", vim.lsp.buf.implementation, { noremap = true, desc = "Jump to LSP Implementation" })
 
-vim.keymap.set("n", "<leader>qa8", function()
+vim.keymap.set("n", "<leader>lr", function()
 	fzf.lsp_references({ jump1 = false })
 end, { noremap = true, desc = "Show LSP Reference" })
 
-vim.keymap.set("n", "<leader>qa9", function()
+vim.keymap.set("n", "<leader>ld", function()
 	fzf.lsp_definitions({ jump1 = false })
 end, { noremap = true, desc = "Show LSP Definition" })
 
-vim.keymap.set("n", "<leader>qa10", function()
+vim.keymap.set("n", "<leader>lc", function()
 	fzf.lsp_declarations({ jump1 = false })
 end, { noremap = true, desc = "Show LSP Declaration" })
 
-vim.keymap.set("n", "<leader>qa11", function()
+vim.keymap.set("n", "<leader>lt", function()
 	fzf.lsp_typedefs({ jump1 = false })
 end, { noremap = true, desc = "Show LSP Typedef" })
 
-vim.keymap.set("n", "<leader>qa12", function()
+vim.keymap.set("n", "<leader>li", function()
 	fzf.lsp_implementations({ jump1 = false })
 end, { noremap = true, desc = "Show LSP Implementation" })
 
-vim.keymap.set("n", "<leader>13", gitsigns.reset_hunk, { desc = "gitsigns reset hunk" })
-vim.keymap.set("n", "<leader>14", gitsigns.preview_hunk_inline, { desc = "gitsigns preview hunk inline" })
+vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk, { desc = "gitsigns reset hunk" })
 
--- quick action visual mode keymaps
-vim.keymap.set("v", "<leader>qa1", function()
+vim.keymap.set("v", "<leader>fs", function()
 	local visual_selection = get_visual_selection()
 	fzf.lgrep_curbuf({ query = visual_selection })
 end, { desc = "Search visual selection in Buffer" })
 
-vim.keymap.set("v", "<leader>qa2", function()
+vim.keymap.set("v", "<leader>fgs", function()
 	local visual_selection = get_visual_selection()
 	fzf.live_grep({ query = visual_selection })
 end, { desc = "Search visual selection in project" })
 
-vim.keymap.set("v", "<leader>qa3", function()
+vim.keymap.set("v", "<leader>rs", function()
 	grugfar.with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })
 end, { desc = "Replace visual selection in Buffer" })
 
-vim.keymap.set("v", "<leader>qa4", function()
+vim.keymap.set("v", "<leader>rgs", function()
 	grugfar.with_visual_selection()
 end, { desc = "replace visual selection in project" })
 
