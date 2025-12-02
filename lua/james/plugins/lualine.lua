@@ -118,10 +118,10 @@ return {
 			tabline = {
 				lualine_a = {},
 				lualine_b = {},
-				lualine_c = {"buffers"},
+				lualine_c = { { "buffers", mode = 4 } },
 				lualine_x = {},
 				lualine_y = {},
-				lualine_z = {"tabs"},
+				lualine_z = { "tabs" },
 			},
 		})
 
