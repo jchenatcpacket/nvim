@@ -8,7 +8,7 @@ return {
 			default_register = "*",
 		})
 
-		vim.api.nvim_create_user_command("SetRegister", function(opts)
+		vim.api.nvim_create_user_command("Neoclip", function(opts)
 			require("neoclip.fzf")(opts.args)
 		end, {
 			nargs = 1,
