@@ -5,8 +5,9 @@ return {
 	config = function()
 		local fzf = require("fzf-lua")
 		fzf.register_ui_select()
-		vim.keymap.set({ "n", "v", "i" }, "<C-f>", function()
+
+		vim.keymap.set({ "n" }, "<C-f>", function()
 			fzf.grep_curbuf()
-		end, { silent = true, desc = "search current buffer" })
+		end, { desc = "search current buffer" })
 	end,
 }

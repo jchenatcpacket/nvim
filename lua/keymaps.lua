@@ -1,13 +1,9 @@
 vim.keymap.set("i", "<C-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
-vim.keymap.set("i", "<D-s>", "<cmd>w<cr><Esc>", { desc = "insert mode, save file" })
-vim.keymap.set("n", "<D-s>", "<cmd>w<cr>", { desc = "normal mode, save file" })
 
 vim.keymap.set("i", "<Tab>", function()
 	return string.rep(" ", vim.opt.softtabstop:get())
 end, { expr = true, noremap = true })
-
-vim.keymap.set({ "n", "v" }, "D", '"_d', { noremap = true, desc = "capital D to delete to blackhole" })
 
 local fzf = require("fzf-lua")
 local grugfar = require("grug-far")
