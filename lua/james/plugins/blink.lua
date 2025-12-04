@@ -8,6 +8,8 @@ return {
 		cmdline = {
 			keymap = {
 				preset = "default",
+				["<C-q>"] = { "hide", "fallback" },
+				["<Tab>"] = { "select_and_accept", "fallback" },
 				["<CR>"] = { "select_accept_and_enter", "fallback" },
 			},
 			completion = { ghost_text = { enabled = false }, menu = { auto_show = true } },
