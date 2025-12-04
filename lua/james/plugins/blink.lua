@@ -7,8 +7,7 @@ return {
 	opts = {
 		cmdline = {
 			keymap = {
-				preset = "inherit",
-				["<ESC>"] = { "hide", "fallback" },
+				preset = "default",
 				["<CR>"] = { "select_accept_and_enter", "fallback" },
 			},
 			completion = { ghost_text = { enabled = false }, menu = { auto_show = true } },

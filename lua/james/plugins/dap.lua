@@ -1,6 +1,7 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+		enabled = false,
 		lazy = true,
 		-- Copied from LazyVim/lua/lazyvim/plugins/extras/dap/core.lua and
 		-- modified.
@@ -40,6 +41,7 @@ return {
 	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
+		enabled = false,
 		---@type MasonNvimDapSettings
 		opts = {
 			-- This line is essential to making automatic installation work
@@ -66,6 +68,7 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap-python",
+		enabled = false,
 		lazy = true,
 		config = function()
 			local python = vim.fn.expand("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
@@ -79,6 +82,7 @@ return {
 	},
 	{
 		"leoluz/nvim-dap-go",
+		enabled = false,
 		config = true,
 		dependencies = {
 			"mfussenegger/nvim-dap",
@@ -95,6 +99,7 @@ return {
 	},
 	{
 		"theHamsta/nvim-dap-virtual-text",
+		enabled = false,
 		config = true,
 		dependencies = {
 			"mfussenegger/nvim-dap",
@@ -102,6 +107,7 @@ return {
 	},
 	{
 		"rcarriga/nvim-dap-ui",
+		enabled = false,
 		config = true,
 		keys = {
 			{

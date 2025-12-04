@@ -14,16 +14,16 @@ return {
 		},
 	},
 	config = function()
-		local symbols = require("trouble").statusline({
-			mode = "lsp_document_symbols",
-			groups = {},
-			title = false,
-			filter = { range = true },
-			format = "{kind_icon}{symbol.name:Normal}",
-			-- The following line is needed to fix the background color
-			-- Set it to the lualine section you want to use
-			hl_group = "lualine_c_normal",
-		})
+		-- local symbols = require("trouble").statusline({
+		-- 	mode = "lsp_document_symbols",
+		-- 	groups = {},
+		-- 	title = false,
+		-- 	filter = { range = true },
+		-- 	format = "{kind_icon}{symbol.name:Normal}",
+		-- 	-- The following line is needed to fix the background color
+		-- 	-- Set it to the lualine section you want to use
+		-- 	hl_group = "lualine_c_normal",
+		-- })
 
 		local autosession = require("auto-session.lib")
 
@@ -89,32 +89,32 @@ return {
 					},
 				},
 			},
-			winbar = {
-				lualine_a = {},
-				lualine_b = { { "filename", path = 3 } },
-				lualine_c = {
-					{
-						function()
-							if symbols.has() then
-								return symbols.get()
-							else
-								return ""
-							end
-						end,
-					},
-				},
-				lualine_x = { "diagnostics" },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			inactive_winbar = {
-				lualine_a = {},
-				lualine_b = { { "filename", path = 3 } },
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = {},
-			},
+			-- winbar = {
+			-- 	lualine_a = {},
+			-- 	lualine_b = { { "filename", path = 3 } },
+			-- 	lualine_c = {
+			-- 		{
+			-- 			function()
+			-- 				if symbols.has() then
+			-- 					return symbols.get()
+			-- 				else
+			-- 					return ""
+			-- 				end
+			-- 			end,
+			-- 		},
+			-- 	},
+			-- 	lualine_x = { "diagnostics" },
+			-- 	lualine_y = {},
+			-- 	lualine_z = {},
+			-- },
+			-- inactive_winbar = {
+			-- 	lualine_a = {},
+			-- 	lualine_b = { { "filename", path = 3 } },
+			-- 	lualine_c = {},
+			-- 	lualine_x = {},
+			-- 	lualine_y = {},
+			-- 	lualine_z = {},
+			-- },
 			tabline = {
 				lualine_a = {},
 				lualine_b = {},
