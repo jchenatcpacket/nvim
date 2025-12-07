@@ -6,6 +6,6 @@ return {
 		local fzf = require("fzf-lua")
 		fzf.register_ui_select()
 
-		vim.keymap.set({ "n" }, "<C-f>", ":FzfLua ", { desc = "search current buffer" })
+		vim.keymap.set({ "n" }, "<C-f>", ":FzfLua ", { desc = "fzflua command" })
 	end,
 }

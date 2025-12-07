@@ -18,59 +18,59 @@ local function get_visual_selection()
 	return table.concat(lines, "\n")
 end
 
-vim.keymap.set({"n", "v"}, "<leader>?k", function()
+vim.keymap.set({ "n", "v" }, "<leader>?k", function()
 	fzf.keymaps({ winopts = { preview = { hidden = true } } })
 end, { desc = "seach Keymaps" })
 
-vim.keymap.set({"n", "v"}, "<leader>?c", function()
+vim.keymap.set({ "n", "v" }, "<leader>?c", function()
 	fzf.commands({ winopts = { preview = { hidden = true } } })
 end, { desc = "seach Commands" })
 
 vim.keymap.set("n", "<leader>fw", function()
 	local current_WORD = vim.fn.expand("<cWORD>")
 	fzf.lgrep_curbuf({ query = current_WORD })
-end, { noremap = true, desc = "search cWORD in buffer" })
+end, { desc = "search cWORD in buffer" })
 
 vim.keymap.set("n", "<leader>fgw", function()
 	local current_WORD = vim.fn.expand("<cWORD>")
 	fzf.live_grep({ query = current_WORD })
-end, { noremap = true, desc = "search cWORD in project" })
+end, { desc = "search cWORD in project" })
 
 vim.keymap.set("n", "<leader>rw", function()
 	grugfar.open({
 		prefills = { search = vim.fn.expand("<cword>"), paths = vim.fn.expand("%") },
 	})
-end, { noremap = true, desc = "Replace cword in buffer" })
+end, { desc = "Replace cword in buffer" })
 
 vim.keymap.set("n", "<leader>rgw", function()
 	grugfar.open({
 		prefills = { search = vim.fn.expand("<cword>") },
 	})
-end, { noremap = true, desc = "Replace cword in project" })
+end, { desc = "Replace cword in project" })
 
-vim.keymap.set("n", "<leader>jd", vim.lsp.buf.definition, { noremap = true, desc = "Jump to LSP Definition" })
+vim.keymap.set("n", "<leader>jd", vim.lsp.buf.definition, { desc = "Jump to LSP Definition" })
 
-vim.keymap.set("n", "<leader>ji", vim.lsp.buf.implementation, { noremap = true, desc = "Jump to LSP Implementation" })
+vim.keymap.set("n", "<leader>ji", vim.lsp.buf.implementation, { desc = "Jump to LSP Implementation" })
 
 vim.keymap.set("n", "<leader>lr", function()
 	fzf.lsp_references({ jump1 = false })
-end, { noremap = true, desc = "Show LSP Reference" })
+end, { desc = "Show LSP Reference" })
 
 vim.keymap.set("n", "<leader>ld", function()
 	fzf.lsp_definitions({ jump1 = false })
-end, { noremap = true, desc = "Show LSP Definition" })
+end, { desc = "Show LSP Definition" })
 
 vim.keymap.set("n", "<leader>lc", function()
 	fzf.lsp_declarations({ jump1 = false })
-end, { noremap = true, desc = "Show LSP Declaration" })
+end, { desc = "Show LSP Declaration" })
 
 vim.keymap.set("n", "<leader>lt", function()
 	fzf.lsp_typedefs({ jump1 = false })
-end, { noremap = true, desc = "Show LSP Typedef" })
+end, { desc = "Show LSP Typedef" })
 
 vim.keymap.set("n", "<leader>li", function()
 	fzf.lsp_implementations({ jump1 = false })
-end, { noremap = true, desc = "Show LSP Implementation" })
+end, { desc = "Show LSP Implementation" })
 
 vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk, { desc = "gitsigns reset hunk" })
 
@@ -93,3 +93,7 @@ vim.keymap.set("v", "<leader>rgs", function()
 end, { desc = "replace visual selection in project" })
 
 vim.keymap.set("n", "cc", "ggdG", { desc = "clear buffer" })
+
+vim.keymap.set("n", "<leader>th", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+end, { desc = "toggle lsp inlay type hints" })

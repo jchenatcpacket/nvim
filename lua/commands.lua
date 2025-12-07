@@ -41,7 +41,6 @@ vim.api.nvim_create_user_command("SetClipboard", function()
 			if item then
 				vim.fn.setreg("+", item.text)
 			end
-			print("copied to system clipboard")
 		end,
 		format = function(item)
 			return {

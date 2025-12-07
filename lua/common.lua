@@ -63,6 +63,13 @@ vim.cmd("hi TrailingSpace ctermbg=238 guibg=#4D0000")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
+        -- highlight on yank
         vim.highlight.on_yank()
+
+        -- copy to system clipboard
+        local event = vim.v.event
+        if event.operator == "y" and event.regname == "" then
+            vim.fn.setreg("+", event.regcontents, event.regtype)
+        end
     end,
 })
