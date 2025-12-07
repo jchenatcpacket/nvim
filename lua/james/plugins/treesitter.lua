@@ -12,7 +12,7 @@ return {
 				sync_install = false,
 				ignore_install = { "javascript" },
 				highlight = {
-					enable = true,
+					enable = false,
 					disable = { "c" },
 					additional_vim_regex_highlighting = false,
 				},
