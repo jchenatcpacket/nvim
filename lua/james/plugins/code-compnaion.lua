@@ -11,7 +11,11 @@ return {
 			"zbirenbaum/copilot.lua",
 			cmd = "Copilot",
 			config = function()
-				require("copilot").setup()
+				require("copilot").setup({
+					filetypes = {
+						["yaml.docker-compose"] = true,
+					},
+				})
 			end,
 		},
 		{

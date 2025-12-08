@@ -25,15 +25,6 @@ vim.lsp.config("lua_ls", {
 -- 	end,
 -- })
 
-vim.filetype.add({
-  filename = {
-    ["docker-compose.yml"] = "yaml.docker-compose",
-    ["docker-compose.yaml"] = "yaml.docker-compose",
-    ["compose.yml"] = "yaml.docker-compose",
-    ["compose.yaml"] = "yaml.docker-compose",
-  },
-})
-
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("pyright")
 vim.lsp.enable("rust_analyzer")
