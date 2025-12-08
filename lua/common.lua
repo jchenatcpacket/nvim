@@ -40,15 +40,6 @@ vim.api.nvim_create_user_command("SetIndent", function(opts)
     return
   end
 
-  -- set list will interfere with expandtab by showing tab character as ^I instead of space
-  -- unless set listchars specify how it handles tab characters is shown
-  -- vim.cmd("set list")
-  -- if width == 2 then
-  --   vim.cmd([[set listchars=leadmultispace:▏\ ]])
-  -- elseif width == 4 then
-  --   vim.cmd([[set listchars=leadmultispace:▏\ \ \ ]])
-  -- end
-
   vim.opt.tabstop = width
   vim.opt.softtabstop = width
   vim.opt.shiftwidth = width
@@ -64,7 +55,7 @@ vim.cmd("hi TrailingSpace ctermbg=238 guibg=#4D0000")
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
         -- highlight on yank
-        vim.highlight.on_yank()
+        vim.highlight.on_yank({timeout = 300})
 
         -- copy to system clipboard
         local event = vim.v.event
