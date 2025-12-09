@@ -29,7 +29,7 @@ return {
 
 		require("lualine").setup({
 			options = {
-				component_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = {},
@@ -66,6 +66,7 @@ return {
 				},
 				lualine_y = {
 					"progress",
+					"location",
 					{
 						function()
 							return "Spaces:" .. _G.indent_count
@@ -114,7 +115,7 @@ return {
 			tabline = {
 				lualine_a = {},
 				lualine_b = {},
-				lualine_c = { { "buffers", mode = 4 } },
+				lualine_c = { { "buffers", mode = 4, use_mode_colors = true, } },
 				lualine_x = {},
 				lualine_y = {},
 				lualine_z = { "tabs" },
