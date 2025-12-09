@@ -8,7 +8,15 @@ return {
 		cmdline = {
 			keymap = {
 				preset = "default",
-				["<C-q>"] = { "hide", "fallback" },
+				["<ESC>"] = {
+					function(cmp)
+						if cmp.is_visible() then
+							cmp.cancel()
+						else
+							vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, true, true), "n", true)
+						end
+					end,
+				},
 				["<Tab>"] = { "select_and_accept", "fallback" },
 				["<CR>"] = { "select_accept_and_enter", "fallback" },
 			},
