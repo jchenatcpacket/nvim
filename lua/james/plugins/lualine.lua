@@ -89,32 +89,28 @@ return {
 					},
 				},
 			},
-			-- winbar = {
-			-- 	lualine_a = {},
-			-- 	lualine_b = { { "filename", path = 3 } },
-			-- 	lualine_c = {
-			-- 		{
-			-- 			function()
-			-- 				if symbols.has() then
-			-- 					return symbols.get()
-			-- 				else
-			-- 					return ""
-			-- 				end
-			-- 			end,
-			-- 		},
-			-- 	},
-			-- 	lualine_x = { "diagnostics" },
-			-- 	lualine_y = {},
-			-- 	lualine_z = {},
-			-- },
-			-- inactive_winbar = {
-			-- 	lualine_a = {},
-			-- 	lualine_b = { { "filename", path = 3 } },
-			-- 	lualine_c = {},
-			-- 	lualine_x = {},
-			-- 	lualine_y = {},
-			-- 	lualine_z = {},
-			-- },
+			winbar = {
+				lualine_a = {},
+				lualine_b = { { "filename", path = 3 } },
+				lualine_c = {
+					{
+						function()
+							return require("lspsaga.symbol.winbar").get_bar()
+						end,
+					},
+				},
+				lualine_x = { "diagnostics" },
+				lualine_y = {},
+				lualine_z = {},
+			},
+			inactive_winbar = {
+				lualine_a = {},
+				lualine_b = { { "filename", path = 3 } },
+				lualine_c = {},
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
+			},
 			tabline = {
 				lualine_a = {},
 				lualine_b = {},
