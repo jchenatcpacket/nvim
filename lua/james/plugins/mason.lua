@@ -9,14 +9,7 @@ return {
 				"rust_analyzer",
 				"dockerls",
 				"docker_compose_language_service",
-			},
-			automatic_enable = {
-				"lua_ls",
-				"pyright",
-				"gopls",
-				"rust_analyzer",
-				"dockerls",
-				"docker_compose_language_service",
+				"codebook",
 			},
 		})
 	end,
@@ -29,12 +22,12 @@ return {
 						icons = {
 							package_installed = "✓",
 							package_pending = "➜",
-							package_uninstalled = "✗"
-						}
-					}
+							package_uninstalled = "✗",
+						},
+					},
 				})
-			end
+			end,
 		},
-		"neovim/nvim-lspconfig"
-	}
+		"neovim/nvim-lspconfig",
+	},
 }
