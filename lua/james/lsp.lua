@@ -32,6 +32,11 @@ vim.lsp.enable("gopls")
 vim.lsp.enable("dockerfilels")
 vim.lsp.enable("docker_compose_language_service")
 
+vim.diagnostic.config({
+	virtual_text = false,
+	signs = false,
+})
+
 -- rust inlay hint
 vim.api.nvim_create_autocmd("LspAttach", {
 	pattern = "*.rs",
