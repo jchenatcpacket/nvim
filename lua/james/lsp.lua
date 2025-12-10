@@ -31,28 +31,6 @@ vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("gopls")
 vim.lsp.enable("dockerfilels")
 vim.lsp.enable("docker_compose_language_service")
-vim.lsp.enable("codebook")
-
-vim.diagnostic.enable(true)
-vim.diagnostic.config({
-	virtual_text = true,
-	signs = false,
-	underline = true,
-	update_in_insert = true,
-	severity_sort = true,
-})
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-	callback = function()
-		vim.diagnostic.enable(false)
-	end,
-})
-
-vim.api.nvim_create_autocmd("InsertLeave", {
-	callback = function()
-		vim.diagnostic.enable(true)
-	end,
-})
 
 -- rust inlay hint
 vim.api.nvim_create_autocmd("LspAttach", {
