@@ -14,17 +14,6 @@ return {
 		},
 	},
 	config = function()
-		-- local symbols = require("trouble").statusline({
-		-- 	mode = "lsp_document_symbols",
-		-- 	groups = {},
-		-- 	title = false,
-		-- 	filter = { range = true },
-		-- 	format = "{kind_icon}{symbol.name:Normal}",
-		-- 	-- The following line is needed to fix the background color
-		-- 	-- Set it to the lualine section you want to use
-		-- 	hl_group = "lualine_c_normal",
-		-- })
-
 		local autosession = require("auto-session.lib")
 
 		require("lualine").setup({
@@ -40,7 +29,7 @@ return {
 					"grug-far-historye",
 					"grug-far-help",
 				},
-				extensions = { "oil", "trouble" },
+				extensions = { "oil" },
 			},
 			sections = {
 				lualine_a = { "mode" },
@@ -115,13 +104,11 @@ return {
 			tabline = {
 				lualine_a = {},
 				lualine_b = {},
-				lualine_c = { { "buffers", mode = 4, use_mode_colors = true, } },
+				lualine_c = { { "buffers", mode = 4, use_mode_colors = true } },
 				lualine_x = {},
 				lualine_y = {},
 				lualine_z = { "tabs" },
 			},
 		})
-
-		-- vim.cmd("set showtabline=0")
 	end,
 }
