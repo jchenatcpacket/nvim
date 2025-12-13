@@ -53,7 +53,7 @@ return {
 					"delve",
 					"python",
 				},
-			"nvim-neotest/nvim-nio",
+				"nvim-neotest/nvim-nio",
 			},
 			-- DAP servers: Mason will be invoked to install these if necessary.
 			ensure_installed = {

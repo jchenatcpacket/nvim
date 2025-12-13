@@ -6,30 +6,20 @@ return {
 			"f-person/git-blame.nvim",
 			event = "VeryLazy",
 			opts = {
-				enabled = true, -- if you want to enable the plugin
-				message_template = "<author>, <date> - <summary> • <<sha>>", -- template for the blame message, check the Message template section for more options
-				date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
-				virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
+				enabled = true,
+				message_template = "<author>, <date> - <summary> • <sha>",
+				date_format = "%m-%d-%Y",
+				display_virtual_text = 0,
 			},
 		},
 	},
 	config = function()
-		-- local symbols = require("trouble").statusline({
-		-- 	mode = "lsp_document_symbols",
-		-- 	groups = {},
-		-- 	title = false,
-		-- 	filter = { range = true },
-		-- 	format = "{kind_icon}{symbol.name:Normal}",
-		-- 	-- The following line is needed to fix the background color
-		-- 	-- Set it to the lualine section you want to use
-		-- 	hl_group = "lualine_c_normal",
-		-- })
-
 		local autosession = require("auto-session.lib")
+		local git_blame = require("gitblame")
 
 		require("lualine").setup({
 			options = {
-				component_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = {},
@@ -40,7 +30,7 @@ return {
 					"grug-far-historye",
 					"grug-far-help",
 				},
-				extensions = { "oil", "trouble" },
+				extensions = { "oil" },
 			},
 			sections = {
 				lualine_a = { "mode" },
@@ -48,9 +38,6 @@ return {
 				lualine_c = {
 					{
 						function()
-							vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-							vim.g.gitblame_date_format = "%x"
-							local git_blame = require("gitblame")
 							if git_blame.is_blame_text_available() then
 								return git_blame.get_current_blame_text()
 							else
@@ -66,6 +53,7 @@ return {
 				},
 				lualine_y = {
 					"progress",
+					"location",
 					{
 						function()
 							return "Spaces:" .. _G.indent_count
@@ -114,13 +102,11 @@ return {
 			tabline = {
 				lualine_a = {},
 				lualine_b = {},
-				lualine_c = { { "buffers", mode = 4 } },
+				lualine_c = { { "buffers", mode = 4, use_mode_colors = true } },
 				lualine_x = {},
 				lualine_y = {},
 				lualine_z = { "tabs" },
 			},
 		})
-
-		-- vim.cmd("set showtabline=0")
 	end,
 }

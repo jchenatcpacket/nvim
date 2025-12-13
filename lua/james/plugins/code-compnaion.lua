@@ -12,6 +12,7 @@ return {
 			cmd = "Copilot",
 			config = function()
 				require("copilot").setup({
+                    copilot_model = "claude-sonnet-4.5",
 					filetypes = {
 						["yaml.docker-compose"] = true,
 					},
@@ -31,18 +32,29 @@ return {
 	},
 	config = function()
 		require("codecompanion").setup({
+			display = {
+				action_palette = {
+					provider = "snacks", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+				},
+			},
 			strategies = {
 				chat = {
-					adapter = "copilot",
-					model = "claude-sonnet-4.5",
+					adapter = {
+						name = "copilot",
+						model = "claude-sonnet-4.5",
+					},
 				},
 				inline = {
-					adapter = "copilot",
-					model = "claude-sonnet-4.5",
+					adapter = {
+						name = "copilot",
+						model = "claude-sonnet-4.5",
+					},
 				},
 				cmd = {
-					adapter = "copilot",
-					model = "claude-sonnet-4.5",
+					adapter = {
+						name = "copilot",
+						model = "claude-sonnet-4.5",
+					},
 				},
 			},
 			memory = {
