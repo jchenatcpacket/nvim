@@ -8,23 +8,6 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
--- vim.lsp.config("pyright", {
--- 	cmd = { "docker", "exec", "-i", "python-node-app", "bash", "-lc", "npx pyright-langserver --stdio" },
--- 	root_markers = {
--- 		"pyrightconfig.json",
--- 		"pyproject.toml",
--- 		"setup.py",
--- 		"setup.cfg",
--- 		"requirements.txt",
--- 		"Pipfile",
--- 		".git",
---         "main.py",
--- 	},
--- 	before_init = function(params)
--- 		params.processId = vim.NIL
--- 	end,
--- })
-
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("pyright")
 vim.lsp.enable("rust_analyzer")
@@ -45,7 +28,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- go auto import
+-- go auto import and format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*.go",
 	callback = function()
