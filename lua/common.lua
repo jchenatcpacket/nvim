@@ -32,6 +32,20 @@ if vim.fn.has("wsl") == 1 then
 )
 end
 
+if os.getenv("SSH_CLIENT") or os.getenv("SSH_TTY") then
+	vim.g.clipboard = {
+		name = "OSC 52",
+		copy = {
+			["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+			["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+		},
+		paste = {
+			["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+			["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+		},
+	}
+end
+
 vim.api.nvim_create_user_command("SetIndent", function(opts)
   local width = tonumber(opts.args)
 
