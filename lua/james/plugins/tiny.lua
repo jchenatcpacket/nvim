@@ -6,7 +6,7 @@ return {
 		require("tiny-inline-diagnostic").setup({
 			options = {
 				multilines = {
-					always_show = true,
+                    always_show = true,
 					enabled = true,
 				},
 			},
