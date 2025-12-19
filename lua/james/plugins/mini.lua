@@ -14,12 +14,12 @@ return {
 
 			require("mini.surround").setup({
 				mappings = {
-					add = "`a", -- Add surrounding in Normal and Visual modes
-					delete = "`d", -- Delete surrounding
-					find = "`f", -- Find surrounding (to the right)
-					find_left = "`F", -- Find surrounding (to the left)
-					highlight = "`h", -- Highlight surrounding
-					replace = "`r", -- Replace surrounding
+					add = "<C-r>a", -- Add surrounding in Normal and Visual modes
+					delete = "<C-r>d", -- Delete surrounding
+					find = "<C-r>f", -- Find surrounding (to the right)
+					find_left = "<C-r>F", -- Find surrounding (to the left)
+					highlight = "<C-r>h", -- Highlight surrounding
+					replace = "<C-r>r", -- Replace surrounding
 				},
 			})
 		end,
