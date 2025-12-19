@@ -7,7 +7,6 @@ end, { expr = true, noremap = true })
 
 local fzf = require("fzf-lua")
 local grugfar = require("grug-far")
-local gitsigns = require("gitsigns")
 
 local function get_visual_selection()
 	local start_pos = vim.fn.getpos("'<")
@@ -71,8 +70,6 @@ end, { desc = "Show LSP Typedef" })
 vim.keymap.set("n", "<leader>li", function()
 	fzf.lsp_implementations({ jump1 = false })
 end, { desc = "Show LSP Implementation" })
-
-vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk, { desc = "gitsigns reset hunk" })
 
 vim.keymap.set("v", "<leader>fs", function()
 	local visual_selection = get_visual_selection()

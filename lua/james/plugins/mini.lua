@@ -10,8 +10,6 @@ return {
 		"nvim-mini/mini.surround",
 		version = "*",
 		config = function()
-            vim.keymap.set('n', 'S', '<Nop>')
-
 			require("mini.surround").setup({
 				mappings = {
 					add = "<C-r>a", -- Add surrounding in Normal and Visual modes
@@ -21,6 +19,17 @@ return {
 					highlight = "<C-r>h", -- Highlight surrounding
 					replace = "<C-r>r", -- Replace surrounding
 				},
+			})
+		end,
+	},
+	{
+		"nvim-mini/mini.diff",
+		version = "*",
+		config = function()
+			local diff = require("mini.diff")
+			diff.setup({
+				-- Disabled by default
+				source = diff.gen_source.none(),
 			})
 		end,
 	},
