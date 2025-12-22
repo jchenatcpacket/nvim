@@ -28,13 +28,8 @@ return {
 		config = function()
 			local diff = require("mini.diff")
 			diff.setup({
-				view = {
-					signs = { add = "", change = "", delete = "" },
-				},
-				source = diff.gen_source.git(),
+				source = diff.gen_source.none(),
 			})
-
-			vim.keymap.set("n", "<leader>hP", diff.toggle_overlay, { desc = "git inline mini diff" })
 		end,
 	},
 }
