@@ -60,7 +60,7 @@ return {
 					name = "yank",
 					module = "blink-yanky",
 					opts = {
-						minLength = 5,
+						minLength = 2,
 						onlyCurrentFiletype = true,
 						trigger_characters = { '"' },
 						kind_icon = "󰅍",
