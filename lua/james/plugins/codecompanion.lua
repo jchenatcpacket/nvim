@@ -9,12 +9,13 @@ return {
 		},
 		"zbirenbaum/copilot.lua",
 		"nvim-mini/mini.diff",
+		"saghen/blink.cmp",
 	},
 	config = function()
 		require("codecompanion").setup({
 			display = {
 				action_palette = {
-					provider = "fzf_lua", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+					provider = "fzf_lua",
 				},
 			},
 			strategies = {
