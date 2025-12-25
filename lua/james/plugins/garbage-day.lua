@@ -4,7 +4,7 @@ return {
 	event = "VeryLazy",
 	opts = {
 		excluded_lsp_clients = { "copilot" },
-		grace_period = 60, -- seconds
+		grace_period = 180, -- seconds
 		wakeup_delay = 700, -- ms
 	},
 	enabled = true,

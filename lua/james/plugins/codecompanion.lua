@@ -3,10 +3,7 @@ return {
 	opts = {},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{
-			"MeanderingProgrammer/render-markdown.nvim",
-			ft = { "markdown", "codecompanion" },
-		},
+		"MeanderingProgrammer/render-markdown.nvim",
 		"zbirenbaum/copilot.lua",
 		"nvim-mini/mini.diff",
 		"saghen/blink.cmp",
@@ -50,4 +47,5 @@ return {
 			},
 		})
 	end,
+	enabled = false,
 }

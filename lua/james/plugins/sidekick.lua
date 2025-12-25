@@ -81,4 +81,5 @@ return {
 			desc = "Sidekick Select Prompt",
 		},
 	},
+    enabled = false
 }
