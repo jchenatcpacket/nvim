@@ -26,7 +26,7 @@ Trouble
 Conform
 
 ## AI/Copilot
-Copilot.lua CodeCompanion.nvim
+Copilot.lua CodeCompanion.nvim Sidekick.nvim Copilot CLI
 
 ## DAP
 Nvim-dap, nvim-dap-ui

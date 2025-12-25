@@ -1,6 +1,6 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = { "rafamadriz/friendly-snippets" },
+	dependencies = { "rafamadriz/friendly-snippets", "marcoSven/blink-cmp-yanky" },
 	version = "1.*",
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
@@ -54,7 +54,19 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "codecompanion", "yank" },
+			providers = {
+				yank = {
+					name = "yank",
+					module = "blink-yanky",
+					opts = {
+						minLength = 2,
+						onlyCurrentFiletype = true,
+						trigger_characters = { '"' },
+						kind_icon = "󰅍",
+					},
+				},
+			},
 		},
 
 		fuzzy = { implementation = "prefer_rust_with_warning" },
