@@ -27,6 +27,7 @@ return {
 			preset = "default",
 			["<Tab>"] = { "select_and_accept", "fallback" },
 			["<CR>"] = { "select_and_accept", "fallback" },
+			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 
 			["<Up>"] = { "select_prev", "fallback" },
 			["<Down>"] = { "select_next", "fallback" },
@@ -40,8 +41,10 @@ return {
 
 		completion = {
 			menu = {
+				border = "single",
 				draw = {
 					treesitter = { "lsp" },
+					columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
 				},
 			},
 			documentation = {
@@ -54,13 +57,13 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "yank" },
+			default = { "lsp", "path", "buffer", "yank" },
 			providers = {
 				yank = {
 					name = "yank",
 					module = "blink-yanky",
 					opts = {
-						minLength = 2,
+						minLength = 5,
 						onlyCurrentFiletype = true,
 						trigger_characters = { '"' },
 						kind_icon = "󰅍",
