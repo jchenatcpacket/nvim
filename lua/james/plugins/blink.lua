@@ -57,7 +57,7 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "buffer", "yank" },
+			default = { "lsp", "path", "buffer", "snippets", "omni", "yank" },
 			providers = {
 				yank = {
 					name = "yank",
