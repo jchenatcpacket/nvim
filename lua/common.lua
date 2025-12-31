@@ -13,28 +13,13 @@ vim.o.guicursor = table.concat({
 	"r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100",
 }, ",")
 
--- wsl clipboard
-if vim.fn.has("wsl") == 1 then
-	vim.api.nvim_exec(
-		[[
-    let g:clipboard = {
-    \   'name': 'win32yank-wsl',
-    \   'copy': {
-    \      '+': 'win32yank.exe -i --crlf',
-    \      '*': 'win32yank.exe -i --crlf',
-    \    },
-    \   'paste': {
-    \      '+': 'win32yank.exe -o --lf',
-    \      '*': 'win32yank.exe -o --lf',
-    \   },
-    \   'cache_enabled': 0,
-    \ }
-  ]],
-		true
-	)
-end
+-- Clipboard configuration
+-- Priority: SSH over WSL (for SSH into WSL scenarios)
+local in_ssh = os.getenv("SSH_CLIENT") or os.getenv("SSH_TTY")
+local in_wsl = vim.fn.has("wsl") == 1
 
-if os.getenv("SSH_CLIENT") or os.getenv("SSH_TTY") then
+if in_ssh then
+	-- SSH clipboard configuration using OSC 52
 	vim.g.clipboard = {
 		name = "OSC 52",
 		copy = {
@@ -42,9 +27,23 @@ if os.getenv("SSH_CLIENT") or os.getenv("SSH_TTY") then
 			["*"] = require("vim.ui.clipboard.osc52").copy("*"),
 		},
 		paste = {
-			["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-			["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+			["+"] = function() end,
+			["*"] = function() end,
 		},
+	}
+elseif in_wsl then
+	-- WSL clipboard configuration
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = { "win32yank.exe", "-i", "--crlf" },
+			["*"] = { "win32yank.exe", "-i", "--crlf" },
+		},
+		paste = {
+			["+"] = { "win32yank.exe", "-o", "--lf" },
+			["*"] = { "win32yank.exe", "-o", "--lf" },
+		},
+		cache_enabled = 0,
 	}
 end
 
