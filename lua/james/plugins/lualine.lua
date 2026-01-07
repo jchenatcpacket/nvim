@@ -88,7 +88,16 @@ return {
 					},
 				},
 				lualine_x = { "diagnostics" },
-				lualine_y = {},
+				lualine_y = {
+					{
+						function()
+							return "grapple:" .. require("grapple").name_or_index()
+						end,
+						cond = function()
+							return package.loaded["grapple"] and require("grapple").exists()
+						end,
+					},
+				},
 				lualine_z = {},
 			},
 			inactive_winbar = {
