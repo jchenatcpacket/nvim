@@ -14,23 +14,24 @@ vim.o.guicursor = table.concat({
 }, ",")
 
 -- Clipboard configuration
+vim.opt.clipboard = "unnamedplus"
 -- Priority: SSH over WSL (for SSH into WSL scenarios)
 local in_ssh = os.getenv("SSH_CLIENT") or os.getenv("SSH_TTY")
 local in_wsl = vim.fn.has("wsl") == 1
 
 if in_ssh then
 	-- SSH clipboard configuration using OSC 52
-	vim.g.clipboard = {
-		name = "OSC 52",
-		copy = {
-			["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-			["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-		},
-		paste = {
-			["+"] = function() end,
-			["*"] = function() end,
-		},
-	}
+	-- vim.g.clipboard = {
+	-- 	name = "OSC 52",
+	-- 	copy = {
+	-- 		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+	-- 		["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+	-- 	},
+	-- 	paste = {
+	-- 		["+"] = function() end,
+	-- 		["*"] = function() end,
+	-- 	},
+	-- }
 elseif in_wsl then
 	-- WSL clipboard configuration
 	vim.g.clipboard = {
