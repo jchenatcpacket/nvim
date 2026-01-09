@@ -21,12 +21,12 @@ vim.diagnostic.config({
 })
 
 -- rust inlay hint
-vim.api.nvim_create_autocmd("LspAttach", {
-	pattern = "*.rs",
-	callback = function()
-		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
-	end,
-})
+-- vim.api.nvim_create_autocmd("LspAttach", {
+-- 	pattern = "*.rs",
+-- 	callback = function()
+-- 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+-- 	end,
+-- })
 
 -- go auto import and format on save
 vim.api.nvim_create_autocmd("BufWritePre", {

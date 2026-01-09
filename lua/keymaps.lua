@@ -17,13 +17,17 @@ local function get_visual_selection()
 	return table.concat(lines, "\n")
 end
 
+vim.keymap.set({ "n", "v" }, "<leader>b", function()
+	fzf.buffers()
+end, { desc = "Show buffers" })
+
 vim.keymap.set({ "n", "v" }, "<leader>?k", function()
 	fzf.keymaps({ winopts = { preview = { hidden = true } } })
-end, { desc = "seach Keymaps" })
+end, { desc = "search Keymaps" })
 
 vim.keymap.set({ "n", "v" }, "<leader>?c", function()
 	fzf.commands({ winopts = { preview = { hidden = true } } })
-end, { desc = "seach Commands" })
+end, { desc = "search Commands" })
 
 vim.keymap.set("n", "<leader>fw", function()
 	local current_WORD = vim.fn.expand("<cWORD>")
