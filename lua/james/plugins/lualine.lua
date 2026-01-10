@@ -21,8 +21,8 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch" },
-				lualine_c = { "grapple" },
+				lualine_b = { "grapple" },
+				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {
 					"location",
