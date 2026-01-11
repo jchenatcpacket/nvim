@@ -2,21 +2,8 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		{
-			"f-person/git-blame.nvim",
-			event = "VeryLazy",
-			opts = {
-				enabled = true,
-				message_template = "<author>, <date> - <summary> • <sha>",
-				date_format = "%m-%d-%Y",
-				display_virtual_text = 0,
-			},
-		},
 	},
 	config = function()
-		local autosession = require("auto-session.lib")
-		local git_blame = require("gitblame")
-
 		require("lualine").setup({
 			options = {
 				component_separators = { left = "", right = "" },
@@ -34,33 +21,16 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch" },
-				lualine_c = {
-					{
-						function()
-							if git_blame.is_blame_text_available() then
-								return git_blame.get_current_blame_text()
-							else
-								return "Not committed yet"
-							end
-						end,
-					},
-				},
-				lualine_x = {
-					function()
-						return "Session:" .. autosession.current_session_name(true)
-					end,
-				},
+				lualine_b = { "grapple" },
+				lualine_c = {},
+				lualine_x = {},
 				lualine_y = {
-					"progress",
 					"location",
-					{
-						function()
-							return "Spaces:" .. _G.indent_count
-						end,
-					},
 				},
 				lualine_z = {
+					{
+						require("opencode").statusline,
+					},
 					{
 						"lsp_status",
 						icon = "", -- f013
@@ -76,36 +46,6 @@ return {
 						ignore_lsp = {},
 					},
 				},
-			},
-			winbar = {
-				lualine_a = {},
-				lualine_b = { { "filename", path = 3 } },
-				lualine_c = {
-					{
-						function()
-							return require("lspsaga.symbol.winbar").get_bar()
-						end,
-					},
-				},
-				lualine_x = { "diagnostics" },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			inactive_winbar = {
-				lualine_a = {},
-				lualine_b = { { "filename", path = 3 } },
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = {},
-			},
-			tabline = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = { { "buffers", mode = 4, use_mode_colors = true } },
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = { "tabs" },
 			},
 		})
 	end,
