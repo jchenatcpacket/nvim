@@ -7,5 +7,5 @@ return {
 		grace_period = 180, -- seconds
 		wakeup_delay = 700, -- ms
 	},
-	enabled = true,
+	enabled = false,
 }

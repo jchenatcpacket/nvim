@@ -12,7 +12,7 @@ return {
 		{ "<leader>ta", "<cmd>Grapple tag<cr>", desc = "Grapple create tag" },
 		{ "<leader>tA", "<cmd>Grapple untag<cr>", desc = "Grapple untag" },
 		{ "<leader>tt", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple toggle tag" },
-        { "t]", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
-        { "t[", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
+        { "]t", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
+        { "[t", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
 	},
 }
