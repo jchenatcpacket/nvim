@@ -11,8 +11,5 @@ return {
 				},
 			},
 		})
-
-		local diag = require("tiny-inline-diagnostic")
-		vim.keymap.set("n", "<leader>td", diag.toggle, { desc = "toggle tiny diagnsotics" })
 	end,
 }

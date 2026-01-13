@@ -95,6 +95,6 @@ end, { desc = "replace visual selection in project" })
 
 vim.keymap.set("n", "cc", "ggdG", { desc = "clear buffer" })
 
-vim.keymap.set("n", "<leader>th", function()
+vim.keymap.set("n", "<leader>lh", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
 end, { desc = "toggle lsp inlay type hints" })
