@@ -18,3 +18,11 @@ require("james.lsp")
 require("common")
 require("keymaps")
 require("commands")
+
+-- right click menu
+-- vim.cmd("aunmenu PopUp")
+
+vim.cmd([[
+  amenu PopUp.Copy\ abs\ Filepath <cmd>let @+ = expand('%:p')<cr>
+  amenu PopUp.Go\ to\ Definition <cmd>lua vim.lsp.buf.definition()<CR>
+]])
