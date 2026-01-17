@@ -22,7 +22,7 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "grapple" },
-				lualine_c = {},
+				lualine_c = { { "filename", newfile_status = true, path = 1 } },
 				lualine_x = {},
 				lualine_y = {
 					"location",
@@ -46,6 +46,14 @@ return {
 						ignore_lsp = {},
 					},
 				},
+			},
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = { { "filename", path = 1 } },
+				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
 			},
 		})
 	end,
