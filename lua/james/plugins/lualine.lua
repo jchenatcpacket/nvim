@@ -13,6 +13,7 @@ return {
 					winbar = {
 						"snacks_terminal",
 					},
+                    "neo-tree",
 					"grug-far",
 					"grug-far-historye",
 					"grug-far-help",
