@@ -2,7 +2,11 @@ return {
 	"lewis6991/gitsigns.nvim",
 	config = function()
 		local gitsigns = require("gitsigns")
-		gitsigns.setup()
+		gitsigns.setup({
+			current_line_blame_opts = {
+				delay = 200,
+			},
+		})
 
 		vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk, { desc = "gitsigns reset hunk" })
 		vim.keymap.set("n", "<leader>hR", gitsigns.reset_buffer, { desc = "gitsigns reset buffer" })
