@@ -16,6 +16,12 @@ return {
 		vim.keymap.set("n", "<leader>hb", function()
 			gitsigns.blame_line()
 		end, { desc = "gitsigns blame lines" })
+		vim.keymap.set("n", "]h", function()
+			gitsigns.nav_hunk("next")
+		end, { desc = "gitsigns next hunk" })
+		vim.keymap.set("n", "[h", function()
+			gitsigns.nav_hunk("next")
+		end, { desc = "gitsigns prev hunk" })
 
 		vim.api.nvim_create_user_command("InlineDiff", function()
 			gitsigns.toggle_deleted()
