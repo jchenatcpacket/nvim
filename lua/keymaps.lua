@@ -19,7 +19,7 @@ end
 
 vim.keymap.set({ "n", "v" }, "<leader>b", function()
 	fzf.buffers()
-end, { desc = "Show buffers" })
+end, { desc = "buffer list" })
 
 vim.keymap.set({ "n", "v" }, "<leader>?k", function()
 	fzf.keymaps({ winopts = { preview = { hidden = true } } })
@@ -28,16 +28,6 @@ end, { desc = "search Keymaps" })
 vim.keymap.set({ "n", "v" }, "<leader>?c", function()
 	fzf.commands({ winopts = { preview = { hidden = true } } })
 end, { desc = "search Commands" })
-
-vim.keymap.set("n", "<leader>fw", function()
-	local current_WORD = vim.fn.expand("<cWORD>")
-	fzf.lgrep_curbuf({ query = current_WORD })
-end, { desc = "search cWORD in buffer" })
-
-vim.keymap.set("n", "<leader>fgw", function()
-	local current_WORD = vim.fn.expand("<cWORD>")
-	fzf.live_grep({ query = current_WORD })
-end, { desc = "search cWORD in project" })
 
 vim.keymap.set("n", "<leader>rw", function()
 	grugfar.open({
