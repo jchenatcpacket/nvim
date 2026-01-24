@@ -41,9 +41,9 @@ vim.keymap.set("n", "<leader>rgw", function()
 	})
 end, { desc = "Replace cword in project" })
 
-vim.keymap.set("n", "<leader>jd", vim.lsp.buf.definition, { desc = "Jump to LSP Definition" })
+vim.keymap.set("n", "<leader>ljd", vim.lsp.buf.definition, { desc = "Jump to LSP Definition" })
 
-vim.keymap.set("n", "<leader>ji", vim.lsp.buf.implementation, { desc = "Jump to LSP Implementation" })
+vim.keymap.set("n", "<leader>lji", vim.lsp.buf.implementation, { desc = "Jump to LSP Implementation" })
 
 vim.keymap.set("n", "<leader>lr", function()
 	fzf.lsp_references({ jump1 = false })

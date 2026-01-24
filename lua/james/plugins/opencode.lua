@@ -8,12 +8,19 @@ return {
 	},
 	config = function()
 		---@type opencode.Opts
-		vim.g.opencode_opts = {}
+		vim.g.opencode_opts = {
+			provider = {
+				enabled = "tmux",
+				tmux = {
+					-- ...
+				},
+			},
+		}
 
 		vim.o.autoread = true
 
 		vim.keymap.set({ "n", "x" }, "<leader>aa", function()
-			require("opencode").ask()
+			require("opencode").ask("@this: ", { submit = true })
 		end, { desc = "Ask opencode" })
 		vim.keymap.set({ "n", "x" }, "<leader>as", function()
 			require("opencode").select()

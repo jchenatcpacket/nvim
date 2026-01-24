@@ -2,18 +2,28 @@ return {
 	"lewis6991/gitsigns.nvim",
 	config = function()
 		local gitsigns = require("gitsigns")
-		gitsigns.setup()
+		gitsigns.setup({
+			current_line_blame_opts = {
+				delay = 200,
+			},
+		})
 
 		vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk, { desc = "gitsigns reset hunk" })
 		vim.keymap.set("n", "<leader>hR", gitsigns.reset_buffer, { desc = "gitsigns reset buffer" })
 		vim.keymap.set("n", "<leader>hs", gitsigns.stage_hunk, { desc = "gitsigns stage hunk" })
 		vim.keymap.set("n", "<leader>hS", gitsigns.stage_buffer, { desc = "gitsigns stage buffer" })
-		vim.keymap.set("n", "<leader>hp", gitsigns.preview_hunk_inline, { desc = "gitsigns peview hunk" })
+		vim.keymap.set("n", "<leader>hp", gitsigns.preview_hunk_inline, { desc = "gitsigns preview hunk" })
 		vim.keymap.set("n", "<leader>hb", function()
 			gitsigns.blame_line()
-		end, { desc = "gitsigns blame lines" })
+		end, { desc = "gitsigns blame line" })
+		vim.keymap.set("n", "]h", function()
+			gitsigns.nav_hunk("next")
+		end, { desc = "gitsigns next hunk" })
+		vim.keymap.set("n", "[h", function()
+			gitsigns.nav_hunk("prev")
+		end, { desc = "gitsigns prev hunk" })
 
-		vim.api.nvim_create_user_command("InlineDiff", function()
+		vim.api.nvim_create_user_command("GitsignsInlineDiff", function()
 			gitsigns.toggle_deleted()
 			gitsigns.toggle_linehl()
 		end, { desc = "inline diff view" })
