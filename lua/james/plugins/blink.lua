@@ -1,6 +1,13 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = { "rafamadriz/friendly-snippets", "marcoSven/blink-cmp-yanky" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"marcoSven/blink-cmp-yanky",
+		{
+			"mikavilpas/blink-ripgrep.nvim",
+			version = "*", -- use the latest stable version
+		},
+	},
 	version = "1.*",
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
@@ -57,7 +64,7 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "buffer", "snippets", "omni", "yank" },
+			default = { "lsp", "path", "buffer", "snippets", "omni", "yank", "ripgrep" },
 			providers = {
 				yank = {
 					name = "yank",
@@ -68,6 +75,14 @@ return {
 						trigger_characters = { '"' },
 						kind_icon = "󰅍",
 					},
+				},
+				ripgrep = {
+					module = "blink-ripgrep",
+					name = "Ripgrep",
+					-- see the full configuration below for all available options
+					---@module "blink-ripgrep"
+					---@type blink-ripgrep.Options
+					opts = {},
 				},
 			},
 		},

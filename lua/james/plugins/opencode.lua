@@ -20,7 +20,7 @@ return {
 		vim.o.autoread = true
 
 		vim.keymap.set({ "n", "x" }, "<leader>aa", function()
-			require("opencode").ask("@this: ", { submit = true })
+			require("opencode").ask("@this ", { submit = true })
 		end, { desc = "Ask opencode" })
 		vim.keymap.set({ "n", "x" }, "<leader>as", function()
 			require("opencode").select()
