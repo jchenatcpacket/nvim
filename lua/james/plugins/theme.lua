@@ -1,6 +1,7 @@
 return {
-	{
+    {
 		"rebelot/kanagawa.nvim",
+		lazy = true,
 	},
 	{
 		"Mofiqul/vscode.nvim",
@@ -13,6 +14,7 @@ return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
+		lazy = true,
 	},
-	{ "folke/tokyonight.nvim" },
+	{ "folke/tokyonight.nvim", lazy = true },
 }
