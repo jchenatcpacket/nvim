@@ -1,15 +1,32 @@
 return {
 	"mistweaverco/kulala.nvim",
-	keys = {
-		{ "<leader>Rs", desc = "Send request" },
-		{ "<leader>Ra", desc = "Send all requests" },
-		{ "<leader>Rb", desc = "Open scratchpad" },
-	},
 	ft = { "http", "rest" },
-	opts = {
-		-- your configuration comes here
-		global_keymaps = false,
-		global_keymaps_prefix = "<leader>R",
-		kulala_keymaps_prefix = "",
-	},
+	config = function()
+		local kulala = require("kulala")
+		kulala.setup()
+		vim.keymap.set({ "n", "v" }, "<leader>ks", function()
+			kulala.run()
+		end, { desc = "Send request" })
+		vim.keymap.set({ "n", "v" }, "<leader>ka", function()
+			kulala.run_all()
+		end, { desc = "Send all requests" })
+		vim.keymap.set({ "n", "v" }, "<leader>kb", function()
+			kulala.scratchpad()
+		end, { desc = "Open scratchpad" })
+		-- vim.keymap.set({ "n", "v" }, "]k", function()
+		-- 	kulala.show_next()
+		-- end, { desc = "Next response" })
+		-- vim.keymap.set({ "n", "v" }, "[k", function()
+		-- 	kulala.show_previous()
+		-- end, { desc = "Previous response" })
+		vim.keymap.set({ "n", "v" }, "<leader>kq", function()
+			kulala.close()
+		end, { desc = "close" })
+		vim.keymap.set({ "n", "v" }, "<leader>kj", function()
+			kulala.jump_to_response()
+		end, { desc = "jump to response" })
+		vim.keymap.set({ "n", "v" }, "<leader>kx", function()
+			kulala.clear_responses_history()
+		end, { desc = "clear response history" })
+	end,
 }

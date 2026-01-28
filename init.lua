@@ -13,6 +13,12 @@ vim.filetype.add({
 	},
 })
 
+vim.filetype.add({
+  extension = {
+    ['http'] = 'http',
+  },
+})
+
 require("james.lazy")
 require("james.lsp")
 require("common")
