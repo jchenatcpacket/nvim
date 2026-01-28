@@ -13,11 +13,12 @@ return {
 			{ "<leader>h", group = "Gitsigns", mode = "n" },
 			{ "<leader>f", group = "formatting", mode = "n" },
 			{ "<leader>a", group = "opencode", mode = "n" },
+			{ "<leader>A", group = "claude code", mode = "n" },
 			{ "<leader>m", group = "Recall Mark", mode = "n" },
-			{ "<leader>R", group = "Kulala", mode = { "n", "v" } },
+			{ "<leader>k", group = "Kulala", mode = { "n", "v" } },
 			{ "<leader>t", group = "Grapple Tag", mode = "n" },
-			{ "<leader>r", group = "Grugfar Replace", mode = "n" },
-			{ "<leader>?", group = "bindings", mode = "n" },
+			{ "<leader>r", group = "Grugfar Replace", mode = {"n", "v"} },
+			{ "<leader>?", group = "help", mode = "n" },
 		})
 	end,
 }
