@@ -14,9 +14,9 @@ vim.filetype.add({
 })
 
 vim.filetype.add({
-  extension = {
-    ['http'] = 'http',
-  },
+	extension = {
+		["http"] = "http",
+	},
 })
 
 require("james.lazy")
