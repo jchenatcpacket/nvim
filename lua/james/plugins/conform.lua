@@ -35,9 +35,9 @@ return {
 
 		vim.keymap.set({ "n", "v" }, "<leader>fm", function()
 			conform.format()
-		end, { desc = "Format file or a range of lines" })
+		end, { desc = "Format buffer or visual" })
 
-		vim.keymap.set({ "n", "v" }, "<leader>ft", function()
+		vim.keymap.set({ "n" }, "<leader>ft", function()
 			conform.format({ formatters = { "trim_whitespace" } })
 		end, { desc = "trim trailing whitespace" })
 	end,
