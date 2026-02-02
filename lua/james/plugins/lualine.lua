@@ -13,7 +13,7 @@ return {
 					winbar = {
 						"snacks_terminal",
 					},
-                    "neo-tree",
+					"neo-tree",
 					"grug-far",
 					"grug-far-historye",
 					"grug-far-help",
@@ -29,9 +29,6 @@ return {
 					"location",
 				},
 				lualine_z = {
-					{
-						require("opencode").statusline,
-					},
 					{
 						"lsp_status",
 						icon = "", -- f013

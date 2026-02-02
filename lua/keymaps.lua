@@ -6,40 +6,6 @@ vim.keymap.set("i", "<Tab>", function()
 end, { expr = true, noremap = true })
 
 local fzf = require("fzf-lua")
-local grugfar = require("grug-far")
-
-local function get_visual_selection()
-	local start_pos = vim.fn.getpos("'<")
-	local end_pos = vim.fn.getpos("'>")
-
-	local lines = vim.api.nvim_buf_get_text(0, start_pos[2] - 1, start_pos[3] - 1, end_pos[2] - 1, end_pos[3], {})
-
-	return table.concat(lines, "\n")
-end
-
-vim.keymap.set({ "n", "v" }, "<leader>b", function()
-	fzf.buffers()
-end, { desc = "buffer list" })
-
-vim.keymap.set({ "n", "v" }, "<leader>?k", function()
-	fzf.keymaps({ winopts = { preview = { hidden = true } } })
-end, { desc = "search Keymaps" })
-
-vim.keymap.set({ "n", "v" }, "<leader>?c", function()
-	fzf.commands({ winopts = { preview = { hidden = true } } })
-end, { desc = "search Commands" })
-
-vim.keymap.set("n", "<leader>rw", function()
-	grugfar.open({
-		prefills = { search = vim.fn.expand("<cword>"), paths = vim.fn.expand("%") },
-	})
-end, { desc = "Replace cword in buffer" })
-
-vim.keymap.set("n", "<leader>rgw", function()
-	grugfar.open({
-		prefills = { search = vim.fn.expand("<cword>") },
-	})
-end, { desc = "Replace cword in project" })
 
 vim.keymap.set("n", "<leader>ljd", vim.lsp.buf.definition, { desc = "Jump to LSP Definition" })
 
@@ -64,24 +30,6 @@ end, { desc = "Show LSP Typedef" })
 vim.keymap.set("n", "<leader>li", function()
 	fzf.lsp_implementations({ jump1 = false })
 end, { desc = "Show LSP Implementation" })
-
-vim.keymap.set("v", "<leader>fs", function()
-	local visual_selection = get_visual_selection()
-	fzf.lgrep_curbuf({ query = visual_selection })
-end, { desc = "Search visual selection in Buffer" })
-
-vim.keymap.set("v", "<leader>fgs", function()
-	local visual_selection = get_visual_selection()
-	fzf.live_grep({ query = visual_selection })
-end, { desc = "Search visual selection in project" })
-
-vim.keymap.set("v", "<leader>rs", function()
-	grugfar.with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })
-end, { desc = "Replace visual selection in Buffer" })
-
-vim.keymap.set("v", "<leader>rgs", function()
-	grugfar.with_visual_selection()
-end, { desc = "replace visual selection in project" })
 
 vim.keymap.set("n", "cc", "ggdG", { desc = "clear buffer" })
 

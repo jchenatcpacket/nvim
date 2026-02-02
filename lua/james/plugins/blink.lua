@@ -40,6 +40,8 @@ return {
 			["<Down>"] = { "select_next", "fallback" },
 			["<ESC>"] = { "hide", "fallback" },
 			["<C-z>"] = { "cancel", "fallback" },
+
+			["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
 		},
 
 		appearance = {
@@ -48,20 +50,27 @@ return {
 
 		completion = {
 			menu = {
-				border = "single",
+				border = "rounded",
 				draw = {
 					treesitter = { "lsp" },
-					columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+					columns = {
+						{ "label", "label_description", gap = 1 },
+						{ "kind_icon", "kind", gap = 1 },
+					},
 				},
 			},
 			documentation = {
-				auto_show = true,
+				auto_show = false,
 				auto_show_delay_ms = 200,
+				window = { border = "rounded" },
 			},
 			ghost_text = {
 				enabled = false,
 			},
 		},
+
+		-- experimental
+		signature = { enabled = false },
 
 		sources = {
 			default = { "lsp", "path", "buffer", "snippets", "omni", "yank", "ripgrep" },
