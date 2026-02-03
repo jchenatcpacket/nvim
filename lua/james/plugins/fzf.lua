@@ -4,48 +4,40 @@ return {
 	config = function()
 		local fzf = require("fzf-lua")
 		fzf.setup({
+			files = {
+				rg_opts = [[-g "!.git"]],
+			},
 			grep = {
-				-- include hidden files for grep
+				rg_opts = [[-g "!.git"]],
 				hidden = true,
 			},
 		})
 		fzf.register_ui_select()
 
-		local function get_visual_selection()
-			local s_start = vim.fn.getpos("'<")
-			local s_end = vim.fn.getpos("'>")
-			local n_lines = math.abs(s_end[2] - s_start[2]) + 1
-			local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
-			lines[1] = string.sub(lines[1], s_start[3], -1)
-			if n_lines == 1 then
-				lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
-			else
-				lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
-			end
-			return table.concat(lines, "\n")
-		end
-
-		vim.keymap.set({ "n", "v" }, "<leader>b", function()
+		vim.keymap.set({ "n" }, "<leader>sb", function()
 			fzf.buffers()
-		end, { desc = "buffer list" })
+		end, { desc = "search buffers" })
 
-		vim.keymap.set({ "n", "v" }, "<leader>?k", function()
+		vim.keymap.set({ "n" }, "<leader>sf", function()
+			fzf.files()
+		end, { desc = "search files" })
+
+		vim.keymap.set({ "n" }, "<leader>st", function()
+			fzf.tabs()
+		end, { desc = "search tabs" })
+
+		vim.keymap.set({ "n" }, "<leader>sl", function()
+			fzf.grep({ resume = true })
+		end, { desc = "search last" })
+
+		vim.keymap.set({ "n", "v" }, "<leader>sk", function()
 			fzf.keymaps({ winopts = { preview = { hidden = true } } })
-		end, { desc = "search Keymaps" })
+		end, { desc = "search keymaps" })
 
-		vim.keymap.set({ "n", "v" }, "<leader>?c", function()
+		vim.keymap.set({ "n", "v" }, "<leader>sc", function()
 			fzf.commands({ winopts = { preview = { hidden = true } } })
-		end, { desc = "search Commands" })
+		end, { desc = "search commands" })
 
-		vim.keymap.set("v", "<leader>ss", function()
-			local visual_selection = get_visual_selection()
-			fzf.grep_curbuf({ query = visual_selection })
-		end, { desc = "Search visual selection in Buffer" })
-
-		vim.keymap.set("v", "<leader>sgs", function()
-			local visual_selection = get_visual_selection()
-			fzf.grep_project({ query = visual_selection })
-		end, { desc = "Search visual selection in project" })
 		vim.keymap.set("v", "<leader>sv", fzf.grep_visual, { desc = "Search visual" })
 		vim.keymap.set("n", "<leader>sw", fzf.grep_cword, { desc = "Search word" })
 		vim.keymap.set("n", "<leader>sW", fzf.grep_cWORD, { desc = "Search WORD" })
