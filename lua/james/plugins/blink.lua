@@ -54,8 +54,10 @@ return {
 				draw = {
 					treesitter = { "lsp" },
 					columns = {
+						{ "kind_icon" },
 						{ "label", "label_description", gap = 1 },
-						{ "kind_icon", "kind", gap = 1 },
+						{ "kind" },
+						{ "source_name" },
 					},
 				},
 			},
@@ -69,17 +71,22 @@ return {
 			},
 		},
 
-		-- experimental
-		signature = { enabled = false },
+		signature = {
+			enabled = true,
+			window = {
+				show_documentation = true,
+				border = "rounded",
+			},
+		},
 
 		sources = {
-			default = { "lsp", "path", "buffer", "snippets", "omni", "yank", "ripgrep" },
+			default = { "lsp", "path", "snippets", "yank", "ripgrep" },
 			providers = {
 				yank = {
 					name = "yank",
 					module = "blink-yanky",
 					opts = {
-						minLength = 5,
+						minLength = 7,
 						onlyCurrentFiletype = true,
 						trigger_characters = { '"' },
 						kind_icon = "󰅍",
@@ -91,7 +98,9 @@ return {
 					-- see the full configuration below for all available options
 					---@module "blink-ripgrep"
 					---@type blink-ripgrep.Options
-					opts = {},
+					opts = {
+						prefix_min_len = 7,
+					},
 				},
 			},
 		},
