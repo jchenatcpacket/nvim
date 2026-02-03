@@ -3,8 +3,6 @@ vim.opt.wrap = false
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
--- allow external source overwrite
-vim.opt.autowriteall = true
 
 -- insert mode cursor blinking
 vim.o.guicursor = table.concat({
@@ -12,25 +10,6 @@ vim.o.guicursor = table.concat({
 	"i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100",
 	"r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100",
 }, ",")
-
--- if os.getenv("SSH_CLIENT") or os.getenv("SSH_TTY") then
--- 	vim.g.clipboard = "osc52"
--- elseif vim.fn.has("wsl") == 1 then
--- 	vim.g.clipboard = {
--- 		name = "WslClipboard",
--- 		copy = {
--- 			["+"] = { "win32yank.exe", "-i", "--crlf" },
--- 			["*"] = { "win32yank.exe", "-i", "--crlf" },
--- 		},
--- 		paste = {
--- 			["+"] = { "win32yank.exe", "-o", "--lf" },
--- 			["*"] = { "win32yank.exe", "-o", "--lf" },
--- 		},
--- 		cache_enabled = 0,
--- 	}
--- else
--- 	vim.opt.clipboard = "unnamedplus"
--- end
 
 vim.api.nvim_create_user_command("SetIndent", function(opts)
 	local width = tonumber(opts.args)
