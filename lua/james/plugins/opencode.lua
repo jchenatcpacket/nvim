@@ -31,5 +31,8 @@ return {
 		vim.keymap.set({ "n", "x" }, "<leader>au", function()
 			require("opencode").command("session.undo")
 		end, { desc = "undo last action" })
+		vim.keymap.set({ "n", "x" }, "<leader>ad", function()
+			require("opencode").prompt("fix @diagnostics at @this")
+		end, { desc = "fix diagnostics" })
 	end,
 }

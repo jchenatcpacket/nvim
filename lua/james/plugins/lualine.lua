@@ -30,6 +30,9 @@ return {
 				},
 				lualine_z = {
 					{
+						require("opencode").statusline,
+					},
+					{
 						"lsp_status",
 						icon = "", -- f013
 						symbols = {
