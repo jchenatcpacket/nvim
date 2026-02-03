@@ -22,6 +22,9 @@ return {
 						return name == ".git" or name == ".DS_Store" -- Add other folders you always want hidden
 					end,
 				},
+				keymaps = {
+					["<C-s>"] = false,
+				},
 			})
 
 			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
