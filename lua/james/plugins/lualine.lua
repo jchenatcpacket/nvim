@@ -17,13 +17,15 @@ return {
 		local git_blame = require("gitblame")
 		require("lualine").setup({
 			options = {
-				component_separators = { left = "", right = "" },
+				component_separators = { left = "│", right = "" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = {},
 					winbar = {
 						"snacks_terminal",
+						"snacks_layout_box",
 					},
+					"snacks_layout_box",
 					"trouble",
 					"neo-tree",
 					"grug-far",
@@ -89,7 +91,17 @@ return {
 			},
 			winbar = {
 				lualine_a = {},
-				lualine_b = { { "filename", newfile_status = true, path = 2 } },
+				lualine_b = {
+					{
+						"filetype",
+						colored = true, -- Displays filetype icon in color if set to true
+						icon_only = false, -- Display only an icon for filetype
+						icon = { align = "left" }, -- Display filetype icon on the right hand side
+						-- icon =    {'X', align='right'}
+						-- Icon string ^ in table is ignored in filetype component
+					},
+					{ "filename", newfile_status = true, path = 2 },
+				},
 				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {},
@@ -98,7 +110,17 @@ return {
 
 			inactive_winbar = {
 				lualine_a = {},
-				lualine_b = { { "filename", pnewfile_status = true, path = 2 } },
+				lualine_b = {
+					{
+						"filetype",
+						colored = true, -- Displays filetype icon in color if set to true
+						icon_only = false, -- Display only an icon for filetype
+						icon = { align = "left" }, -- Display filetype icon on the right hand side
+						-- icon =    {'X', align='right'}
+						-- Icon string ^ in table is ignored in filetype component
+					},
+					{ "filename", pnewfile_status = true, path = 2 },
+				},
 				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {},
