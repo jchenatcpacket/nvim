@@ -7,7 +7,7 @@ return {
 
 		recall.setup({})
 
-		vim.keymap.set("n", "<leader>ma", recall.toggle, { desc = "create a mark" })
+		vim.keymap.set("n", "<leader>ma", recall.toggle, { desc = "toggle a mark" })
 		vim.keymap.set("n", "<leader>mA", "<cmd>RecallUnmark<cr>", { desc = "unmark" })
 		vim.keymap.set("n", "<leader>mt", "<cmd>RecallToggle<cr>", { desc = "toggle a mark" })
 		vim.keymap.set("n", "]m", recall.goto_next, { desc = "jump to next mark" })
