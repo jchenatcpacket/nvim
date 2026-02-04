@@ -2,8 +2,19 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		{
+			"f-person/git-blame.nvim",
+			event = "VeryLazy",
+			opts = {
+				enabled = true,
+				message_template = "<author>, <date> - <summary> • <sha>",
+				date_format = "%m-%d-%Y",
+				display_virtual_text = 0,
+			},
+		},
 	},
 	config = function()
+		local git_blame = require("gitblame")
 		require("lualine").setup({
 			options = {
 				component_separators = { left = "", right = "" },
@@ -24,7 +35,12 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "grapple" },
-				lualine_c = {},
+				lualine_c = {
+					{
+						git_blame.get_current_blame_text,
+						cond = git_blame.is_blame_text_available,
+					},
+				},
 				lualine_x = {},
 				lualine_y = {
 					"location",
