@@ -5,10 +5,11 @@ return {
 		local fzf = require("fzf-lua")
 		fzf.setup({
 			files = {
-				rg_opts = [[-g "!.git"]],
+				-- rg_opts = [[--color=never --hidden --files -g '!{.git,node_modules,.cargo}']],
+				-- fd_opts = [[--color=never --hidden --type f --type l --exclude .git --exclude .cargo]],
 			},
 			grep = {
-				rg_opts = [[-g "!.git"]],
+				-- rg_opts = [[--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e -g '!{.git,node_modules,.cargo}']],
 				hidden = true,
 			},
 		})
@@ -19,7 +20,7 @@ return {
 		end, { desc = "search buffers" })
 
 		vim.keymap.set({ "n" }, "<leader>sf", function()
-			fzf.files()
+			fzf.files({ resume = true })
 		end, { desc = "search files" })
 
 		vim.keymap.set({ "n" }, "<leader>st", function()
@@ -30,6 +31,10 @@ return {
 			fzf.grep({ resume = true })
 		end, { desc = "search last" })
 
+		vim.keymap.set({ "n" }, "<leader>sr", function()
+			fzf.resume()
+		end, { desc = "resume search" })
+
 		vim.keymap.set({ "n", "v" }, "<leader>sk", function()
 			fzf.keymaps({ winopts = { preview = { hidden = true } } })
 		end, { desc = "search keymaps" })
@@ -38,9 +43,21 @@ return {
 			fzf.commands({ winopts = { preview = { hidden = true } } })
 		end, { desc = "search commands" })
 
-		vim.keymap.set("v", "<leader>sv", fzf.grep_visual, { desc = "Search visual" })
-		vim.keymap.set("n", "<leader>sw", fzf.grep_cword, { desc = "Search word" })
-		vim.keymap.set("n", "<leader>sW", fzf.grep_cWORD, { desc = "Search WORD" })
+		vim.keymap.set("v", "<leader>sv", function()
+			fzf.grep_visual({ resume = true })
+		end, { desc = "Search visual" })
+		vim.keymap.set("n", "<leader>sc", function()
+			fzf.grep_curbuf({ resume = true })
+		end, { desc = "grep buffer" })
+		vim.keymap.set("n", "<leader>sp", function()
+			fzf.grep_project({ resume = true })
+		end, { desc = "grep project" })
+		vim.keymap.set("n", "<leader>sw", function()
+			fzf.grep_cword()
+		end, { desc = "Search word" })
+		vim.keymap.set("n", "<leader>sW", function()
+			fzf.grep_cWORD()
+		end, { desc = "Search WORD" })
 		vim.keymap.set({ "n" }, "<C-f>", ":FzfLua ", { desc = "fzflua command" })
 	end,
 }
