@@ -79,5 +79,12 @@ return {
 		vim.keymap.set("n", "<leader>li", function()
 			fzf.lsp_implementations({ jump1 = false })
 		end, { desc = "Show LSP Implementation" })
+
+		vim.keymap.set("n", "<leader>dd", function()
+            fzf.diagnostics_document()
+		end, { desc = "Show document diagnostics" })
+		vim.keymap.set("n", "<leader>dw", function()
+			fzf.diagnostics_workspace()
+		end, { desc = "Show workspace diagnostics" })
 	end,
 }

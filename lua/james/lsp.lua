@@ -18,6 +18,11 @@ vim.lsp.enable("docker_compose_language_service")
 vim.diagnostic.config({
 	virtual_text = false,
 	signs = false,
+	underline = true,
+	float = {
+		source = "always",
+		border = "rounded",
+	},
 })
 
 -- rust inlay hint

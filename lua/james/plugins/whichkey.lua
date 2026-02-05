@@ -9,6 +9,7 @@ return {
 		wk.add({
 			{ "<leader>l", group = "LSP", mode = "n" },
 			{ "<leader>lj", group = "LSP jump", mode = "n" },
+			{ "<leader>d", group = "diagnostics", mode = "n" },
 			{ "<leader>c", group = "Trouble", mode = "n" },
 			{ "<leader>h", group = "Gitsigns", mode = "n" },
 			{ "<leader>f", group = "formatting", mode = { "n", "v" } },
