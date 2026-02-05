@@ -20,9 +20,13 @@ vim.diagnostic.config({
 	signs = false,
 	underline = true,
 	float = {
-		source = "always",
 		border = "rounded",
+		format = function(diagnostic)
+			local severity = vim.diagnostic.severity[diagnostic.severity]
+			return string.format("(%s) %s: %s", severity, diagnostic.source, diagnostic.message)
+		end,
 	},
+	severity_sort = true,
 })
 
 -- rust inlay hint

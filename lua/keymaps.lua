@@ -15,7 +15,12 @@ vim.keymap.set("n", "<leader>lh", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
 end, { desc = "toggle lsp inlay type hints" })
 
-vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { desc = "show line diagnostics" })
+vim.keymap.set("n", "<leader>dc", function()
+	vim.diagnostic.open_float({ scope = "cursor" })
+end, { desc = "show cursor diagnostics" })
+vim.keymap.set("n", "<leader>dl", function()
+	vim.diagnostic.open_float({ scope = "line" })
+end, { desc = "show line diagnostics" })
 
 vim.keymap.set({ "n", "v" }, "<C-w>1", ":1wincmd c<cr>", { desc = "close window 1" })
 vim.keymap.set({ "n", "v" }, "<C-w>2", ":2wincmd c<cr>", { desc = "close window 2" })
