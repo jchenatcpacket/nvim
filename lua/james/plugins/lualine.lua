@@ -36,7 +36,7 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "grapple" },
+				lualine_b = { "branch" },
 				lualine_c = {
 					{
 						git_blame.get_current_blame_text,
@@ -90,7 +90,7 @@ return {
 				lualine_z = {},
 			},
 			winbar = {
-				lualine_a = {},
+				lualine_a = { "grapple" },
 				lualine_b = {
 					{
 						"filetype",
