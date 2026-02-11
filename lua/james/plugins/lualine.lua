@@ -75,20 +75,20 @@ return {
 				lualine_y = {},
 				lualine_z = {},
 			},
-			tabline = {
-				lualine_a = {
-					{
-						"tabs",
-						mode = 2,
-						use_mode_colors = true,
-					},
-				},
-				lualine_b = {},
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = {},
-			},
+			-- tabline = {
+			-- 	lualine_a = {
+			-- 		{
+			-- 			"tabs",
+			-- 			mode = 2,
+			-- 			use_mode_colors = true,
+			-- 		},
+			-- 	},
+			-- 	lualine_b = {},
+			-- 	lualine_c = {},
+			-- 	lualine_x = {},
+			-- 	lualine_y = {},
+			-- 	lualine_z = {},
+			-- },
 			winbar = {
 				lualine_a = { "grapple" },
 				lualine_b = {

@@ -22,7 +22,4 @@ return {
 			})
 		end,
 	},
-	{
-		{ "nvim-mini/mini.comment", version = "*" },
-	},
 }
