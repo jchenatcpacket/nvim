@@ -17,8 +17,8 @@ vim.lsp.enable("docker_compose_language_service")
 
 vim.diagnostic.config({
 	virtual_text = false,
-	signs = false,
-	underline = true,
+	signs = true,
+	underline = false,
 	float = {
 		border = "rounded",
 		format = function(diagnostic)
