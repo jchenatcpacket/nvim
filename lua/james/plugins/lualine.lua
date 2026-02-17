@@ -46,6 +46,7 @@ return {
 				lualine_x = {},
 				lualine_y = {
 					"location",
+					"progress",
 				},
 				lualine_z = {
 					{
