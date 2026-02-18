@@ -14,6 +14,11 @@ return {
 			desc = "Diagnostics (Trouble)",
 		},
 		{
+			"<leader>cr",
+			"<cmd>Trouble lsp_references toggle<cr>",
+			desc = "Reference (Trouble)",
+		},
+		{
 			"<leader>cs",
 			"<cmd>Trouble symbols toggle focus=false<cr>",
 			desc = "Symbols (Trouble)",
