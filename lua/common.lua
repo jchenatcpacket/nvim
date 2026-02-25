@@ -3,6 +3,7 @@ vim.opt.wrap = false
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
+vim.opt.foldenable = false
 
 -- insert mode cursor blinking
 vim.o.guicursor = table.concat({

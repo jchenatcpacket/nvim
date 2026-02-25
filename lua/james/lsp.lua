@@ -18,7 +18,7 @@ vim.lsp.enable("docker_compose_language_service")
 vim.diagnostic.config({
 	virtual_text = false,
 	signs = true,
-	underline = false,
+	underline = true,
 	float = {
 		border = "rounded",
 		format = function(diagnostic)
@@ -27,6 +27,14 @@ vim.diagnostic.config({
 		end,
 	},
 	severity_sort = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = "",
+		},
+	},
 })
 
 -- rust inlay hint
