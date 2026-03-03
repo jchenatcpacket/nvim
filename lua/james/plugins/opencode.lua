@@ -18,6 +18,7 @@ return {
 			keymap = {
 				editor = {
 					["<leader>ag"] = { "toggle" },
+					["<leader>aI"] = { "open_input_new_session" },
 					["<leader>aq"] = { "close" },
 				},
 			},

@@ -24,6 +24,8 @@ return {
 					winbar = {
 						"snacks_terminal",
 						"snacks_layout_box",
+						"opencode",
+						"opencode_output",
 					},
 					"snacks_layout_box",
 					"trouble",
@@ -49,9 +51,6 @@ return {
 					"progress",
 				},
 				lualine_z = {
-					{
-						require("opencode").statusline,
-					},
 					{
 						"lsp_status",
 						icon = "", -- f013
