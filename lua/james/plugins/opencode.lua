@@ -8,20 +8,12 @@ return {
 		-- 'hrsh7th/nvim-cmp',
 
 		-- Optional, for file mentions picker, pick only one
-		"folke/snacks.nvim",
+		-- "folke/snacks.nvim",
 		-- 'nvim-telescope/telescope.nvim',
-		-- 'ibhagwan/fzf-lua',
+		"ibhagwan/fzf-lua",
 		-- 'nvim_mini/mini.nvim',
 	},
 	config = function()
-		require("opencode").setup({
-			keymap = {
-				editor = {
-					["<leader>ag"] = { "toggle" },
-					["<leader>aI"] = { "open_input_new_session" },
-					["<leader>aq"] = { "close" },
-				},
-			},
-		})
+		require("opencode").setup({})
 	end,
 }

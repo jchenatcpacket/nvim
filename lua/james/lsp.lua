@@ -14,11 +14,11 @@ vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("gopls")
 vim.lsp.enable("dockerfilels")
 vim.lsp.enable("docker_compose_language_service")
+vim.lsp.enable("ocamllsp")
 
 vim.diagnostic.config({
 	virtual_text = false,
-	signs = true,
-	underline = true,
+	underline = false,
 	float = {
 		border = "rounded",
 		format = function(diagnostic)

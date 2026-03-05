@@ -13,7 +13,7 @@ return {
 			{ "<leader>c", group = "Trouble", mode = "n" },
 			{ "<leader>h", group = "Gitsigns", mode = "n" },
 			{ "<leader>f", group = "formatting", mode = { "n", "v" } },
-			{ "<leader>a", group = "opencode", mode = { "n", "v" } },
+			{ "<leader>o", group = "opencode", mode = { "n", "v" } },
 			{ "<leader>A", group = "claude code", mode = { "n", "v" } },
 			{ "<leader>m", group = "Recall Mark", mode = "n" },
 			{ "<leader>k", group = "Kulala", mode = { "n", "v" } },
