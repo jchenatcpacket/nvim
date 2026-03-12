@@ -92,6 +92,10 @@ return {
 			winbar = {
 				lualine_a = { "grapple" },
 				lualine_b = {
+					{ "filename", newfile_status = true, path = 3 },
+				},
+				lualine_c = {},
+				lualine_x = {
 					{
 						"filetype",
 						colored = true, -- Displays filetype icon in color if set to true
@@ -100,10 +104,7 @@ return {
 						-- icon =    {'X', align='right'}
 						-- Icon string ^ in table is ignored in filetype component
 					},
-					{ "filename", newfile_status = true, path = 2 },
 				},
-				lualine_c = {},
-				lualine_x = {},
 				lualine_y = {},
 				lualine_z = {},
 			},
@@ -111,6 +112,10 @@ return {
 			inactive_winbar = {
 				lualine_a = {},
 				lualine_b = {
+					{ "filename", newfile_status = true, path = 3 },
+				},
+				lualine_c = {},
+				lualine_x = {
 					{
 						"filetype",
 						colored = true, -- Displays filetype icon in color if set to true
@@ -119,10 +124,7 @@ return {
 						-- icon =    {'X', align='right'}
 						-- Icon string ^ in table is ignored in filetype component
 					},
-					{ "filename", pnewfile_status = true, path = 2 },
 				},
-				lualine_c = {},
-				lualine_x = {},
 				lualine_y = {},
 				lualine_z = {},
 			},
