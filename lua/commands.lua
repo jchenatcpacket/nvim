@@ -6,9 +6,11 @@ vim.api.nvim_create_user_command("Terminal", function()
 	Snacks.terminal()
 end, { desc = "Snacks Terminal" })
 
-vim.api.nvim_create_user_command("Explorer", function()
-	Snacks.explorer()
-end, { desc = "File Explorer" })
+-- vim.api.nvim_create_user_command("Explorer", function()
+-- 	Snacks.explorer()
+-- end, { desc = "File Explorer" })
+
+vim.api.nvim_create_user_command("Explorer", "Neotree", { desc = "File Explorer" })
 
 vim.api.nvim_create_user_command("SetClipboard", function()
 	local format_title = function(item)

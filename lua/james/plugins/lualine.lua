@@ -14,6 +14,17 @@ return {
 		},
 	},
 	config = function()
+		local trouble = require("trouble")
+		local symbols = trouble.statusline({
+			mode = "lsp_document_symbols",
+			groups = {},
+			title = false,
+			filter = { range = true },
+			format = "{kind_icon}{symbol.name:Normal}",
+			-- The following line is needed to fix the background color
+			-- Set it to the lualine section you want to use
+			hl_group = "lualine_c_normal",
+		})
 		local git_blame = require("gitblame")
 		require("lualine").setup({
 			options = {
@@ -94,7 +105,12 @@ return {
 				lualine_b = {
 					{ "filename", newfile_status = true, path = 3 },
 				},
-				lualine_c = {},
+				lualine_c = {
+					{
+						symbols.get,
+						cond = symbols.has,
+					},
+				},
 				lualine_x = {
 					{
 						"filetype",
