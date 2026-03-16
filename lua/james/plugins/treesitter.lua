@@ -5,7 +5,7 @@ return {
 		event = { "VeryLazy" },
 		lazy = vim.fn.argc(-1) == 0,
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter").setup({
 				auto_install = true,
 				indent = { enable = true },
 				ensure_installed = { "lua", "python", "rust", "dockerfile", "yaml" },
@@ -24,7 +24,7 @@ return {
 		event = "VeryLazy",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter").setup({
 				textobjects = {
 					move = {
 						enable = true,
