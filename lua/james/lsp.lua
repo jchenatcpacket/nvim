@@ -37,6 +37,11 @@ vim.diagnostic.config({
 	},
 })
 
+vim.api.nvim_create_user_command("ToggleUnderline", function()
+	local current = vim.diagnostic.config()
+	vim.diagnostic.config({ underline = not current.underline })
+end, { desc = "Toggle diagnostics underline" })
+
 -- rust inlay hint
 -- vim.api.nvim_create_autocmd("LspAttach", {
 -- 	pattern = "*.rs",
