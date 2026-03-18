@@ -22,10 +22,5 @@ return {
 		vim.keymap.set("n", "[h", function()
 			gitsigns.nav_hunk("prev")
 		end, { desc = "gitsigns prev hunk" })
-
-		vim.api.nvim_create_user_command("GitsignsInlineDiff", function()
-			gitsigns.toggle_deleted()
-			gitsigns.toggle_linehl()
-		end, { desc = "inline diff view" })
 	end,
 }
