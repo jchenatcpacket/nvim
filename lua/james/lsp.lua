@@ -14,11 +14,33 @@ vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("gopls")
 vim.lsp.enable("dockerfilels")
 vim.lsp.enable("docker_compose_language_service")
+vim.lsp.enable("ocamllsp")
 
 vim.diagnostic.config({
 	virtual_text = false,
-	signs = false,
+	underline = false,
+	float = {
+		border = "rounded",
+		format = function(diagnostic)
+			local severity = vim.diagnostic.severity[diagnostic.severity]
+			return string.format("(%s) %s: %s", severity, diagnostic.source, diagnostic.message)
+		end,
+	},
+	severity_sort = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = "",
+		},
+	},
 })
+
+vim.api.nvim_create_user_command("ToggleUnderline", function()
+	local current = vim.diagnostic.config()
+	vim.diagnostic.config({ underline = not current.underline })
+end, { desc = "Toggle diagnostics underline" })
 
 -- rust inlay hint
 -- vim.api.nvim_create_autocmd("LspAttach", {

@@ -3,28 +3,46 @@ return {
 	ft = { "http", "rest" },
 	config = function()
 		local kulala = require("kulala")
-		kulala.setup()
+
+		kulala.setup({
+			-- contenttypes = {
+			-- 	["application/json"] = {
+			-- 		ft = "json",
+			-- 		formatter = vim.fn.executable("jq") == 1 and { "jq", "." },
+			-- 		pathresolver = function(...)
+			-- 			return require("kulala.parser.jsonpath").parse(...)
+			-- 		end,
+			-- 	},
+			-- },
+		})
+
 		vim.keymap.set({ "n", "v" }, "<leader>ks", function()
 			kulala.run()
 		end, { desc = "Send request" })
+
 		vim.keymap.set({ "n", "v" }, "<leader>ka", function()
 			kulala.run_all()
 		end, { desc = "Send all requests" })
+
 		vim.keymap.set({ "n", "v" }, "<leader>kb", function()
 			kulala.scratchpad()
 		end, { desc = "Open scratchpad" })
+
 		-- vim.keymap.set({ "n", "v" }, "]k", function()
 		-- 	kulala.show_next()
 		-- end, { desc = "Next response" })
 		-- vim.keymap.set({ "n", "v" }, "[k", function()
 		-- 	kulala.show_previous()
 		-- end, { desc = "Previous response" })
+		--
 		vim.keymap.set({ "n", "v" }, "<leader>kq", function()
 			kulala.close()
 		end, { desc = "close" })
+
 		vim.keymap.set({ "n", "v" }, "<leader>kj", function()
 			kulala.jump_to_response()
 		end, { desc = "jump to response" })
+
 		vim.keymap.set({ "n", "v" }, "<leader>kx", function()
 			kulala.clear_responses_history()
 		end, { desc = "clear response history" })

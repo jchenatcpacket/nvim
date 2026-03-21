@@ -5,7 +5,7 @@ return {
 		event = { "VeryLazy" },
 		lazy = vim.fn.argc(-1) == 0,
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter").setup({
 				auto_install = true,
 				indent = { enable = true },
 				ensure_installed = { "lua", "python", "rust", "dockerfile", "yaml" },
@@ -24,11 +24,11 @@ return {
 		event = "VeryLazy",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter").setup({
 				textobjects = {
 					move = {
 						enable = true,
-						set_jumps = true, -- whether to set jumps in the jumplist
+						set_jumps = true,
 						goto_next_start = {
 							["}m"] = "@function.outer",
 							["}]"] = "@class.outer",
@@ -58,22 +58,29 @@ return {
 						enable = true,
 						lookahead = true,
 						keymaps = {
-							-- ["af"] = "@function.outer",
-							-- ["if"] = "@function.inner",
-							-- ["ac"] = "@class.outer",
-							-- ["ic"] = "@class.inner",
-							-- ["ab"] = "@block.outer",
-							-- ["ib"] = "@block.inner",
-							-- ["al"] = "@loop.outer",
-							-- ["il"] = "@loop.inner",
-							-- ["a/"] = "@comment.outer",
-							-- ["i/"] = "@comment.outer", -- no inner for comment
-							-- ["aa"] = "@parameter.outer", -- parameter -> argument
-							-- ["ia"] = "@parameter.inner",
+							["_F"] = "@function.outer",
+							["_f"] = "@function.inner",
+							["_C"] = "@class.outer",
+							["_c"] = "@class.inner",
+							["_B"] = "@block.outer",
+							["_b"] = "@block.inner",
+							["_L"] = "@loop.outer",
+							["_l"] = "@loop.inner",
+							["_M"] = "@comment.outer",
+							["_m"] = "@comment.outer",
+							["_P"] = "@parameter.outer",
+							["_p"] = "@parameter.inner",
 						},
 					},
 				},
 			})
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("treesitter-context").setup({ max_lines = 3 })
 		end,
 	},
 }

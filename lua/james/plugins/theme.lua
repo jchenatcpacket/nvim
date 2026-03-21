@@ -1,7 +1,7 @@
 return {
-    {
+	{
 		"rebelot/kanagawa.nvim",
-		lazy = true,
+		enabled = false,
 	},
 	{
 		"Mofiqul/vscode.nvim",
@@ -10,11 +10,15 @@ return {
 			vim.o.background = "dark"
 			vim.cmd("colorscheme vscode")
 		end,
+		enabled = false,
 	},
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-		lazy = true,
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("catppuccin-mocha")
+		end,
 	},
-	{ "folke/tokyonight.nvim", lazy = true },
+	{ "folke/tokyonight.nvim", enabled = false },
 }
