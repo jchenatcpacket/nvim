@@ -14,8 +14,7 @@ return {
 		},
 	},
 	config = function()
-		local trouble = require("trouble")
-		local symbols = trouble.statusline({
+		local symbols = require("trouble").statusline({
 			mode = "lsp_document_symbols",
 			groups = {},
 			title = false,

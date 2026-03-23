@@ -2,8 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = { "VeryLazy" },
-		lazy = vim.fn.argc(-1) == 0,
+		lazy = false,
 		config = function()
 			require("nvim-treesitter").setup({
 				auto_install = true,

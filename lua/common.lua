@@ -1,6 +1,7 @@
 vim.opt.number = true
 vim.opt.wrap = false
 vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.foldenable = false
