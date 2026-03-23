@@ -2,7 +2,17 @@ return {
 	"MagicDuck/grug-far.nvim",
 	config = function()
 		local grugfar = require("grug-far")
-		grugfar.setup({})
+		grugfar.setup({
+			windowCreationCommand = "tabnew",
+			-- previewWindow = { split = "right", win = 0 },
+		})
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "grug-far", "grug-far-historye", "grug-far-help" },
+			callback = function()
+				vim.diagnostic.config({ signs = false }, nil)
+			end,
+		})
 
 		vim.keymap.set({ "n", "x" }, "<leader>rs", function()
 			local search = vim.fn.getreg("/")
