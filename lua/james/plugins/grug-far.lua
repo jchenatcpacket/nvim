@@ -4,7 +4,9 @@ return {
 		local grugfar = require("grug-far")
 		grugfar.setup({
 			windowCreationCommand = "tabnew",
-			-- previewWindow = { split = "right", win = 0 },
+			openTargetWindow = {
+				preferredLocation = "right",
+			},
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
