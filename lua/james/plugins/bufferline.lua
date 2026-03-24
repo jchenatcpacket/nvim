@@ -6,6 +6,10 @@ return {
 		require("bufferline").setup({
 			options = {
 				mode = "tabs",
+				right_mouse_command = false,
+				indicator = {
+					style = "underline",
+				},
 			},
 		})
 		vim.keymap.set("n", "<leader>b", "<cmd>BufferLinePick<cr>", { desc = "jump to a tab" })

@@ -1,19 +1,21 @@
 return {
 	"rachartier/tiny-inline-diagnostic.nvim",
 	event = "VeryLazy",
-	priority = 1000,
 	config = function()
 		local diag = require("tiny-inline-diagnostic")
 		diag.setup({
+			transparent_bg = true,
 			options = {
 				multilines = {
 					enabled = true,
 				},
+				use_icons_from_diagnostic = true,
+				show_all_diags_on_cursorline = true,
 			},
 		})
 
-        diag.disable()
+		diag.disable()
 
-        vim.keymap.set("n", "<leader>dt", diag.toggle, { desc = "tiny diag show all diag" })
+		vim.keymap.set("n", "<leader>dt", diag.toggle, { desc = "toggle tiny diag" })
 	end,
 }
