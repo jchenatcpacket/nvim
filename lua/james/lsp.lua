@@ -14,33 +14,6 @@ vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("gopls")
 vim.lsp.enable("dockerfilels")
 vim.lsp.enable("docker_compose_language_service")
-vim.lsp.enable("ocamllsp")
-
-vim.diagnostic.config({
-	virtual_text = false,
-	underline = false,
-	float = {
-		border = "rounded",
-		format = function(diagnostic)
-			local severity = vim.diagnostic.severity[diagnostic.severity]
-			return string.format("(%s) %s: %s", severity, diagnostic.source, diagnostic.message)
-		end,
-	},
-	severity_sort = true,
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = "",
-			[vim.diagnostic.severity.WARN] = "",
-			[vim.diagnostic.severity.INFO] = "",
-			[vim.diagnostic.severity.HINT] = "",
-		},
-	},
-})
-
-vim.api.nvim_create_user_command("ToggleUnderline", function()
-	local current = vim.diagnostic.config()
-	vim.diagnostic.config({ underline = not current.underline })
-end, { desc = "Toggle diagnostics underline" })
 
 -- rust inlay hint
 -- vim.api.nvim_create_autocmd("LspAttach", {
@@ -49,6 +22,14 @@ end, { desc = "Toggle diagnostics underline" })
 -- 		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
 -- 	end,
 -- })
+
+vim.keymap.set("n", "<leader>lh", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+end, { desc = "toggle lsp inlay type hints" })
+
+vim.keymap.set("n", "<leader>ljd", vim.lsp.buf.definition, { desc = "Jump to LSP Definition" })
+
+vim.keymap.set("n", "<leader>lji", vim.lsp.buf.implementation, { desc = "Jump to LSP Implementation" })
 
 -- go auto import and format on save
 vim.api.nvim_create_autocmd("BufWritePre", {

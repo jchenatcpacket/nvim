@@ -25,11 +25,12 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 require("james.lazy")
 require("james.lsp")
+require("james.diag")
 require("common")
 require("keymaps")
 require("commands")
 
--- right click menu
+-- right click menu customize
 -- vim.cmd("aunmenu PopUp")
 
 vim.cmd([[

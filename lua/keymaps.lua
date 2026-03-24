@@ -5,22 +5,7 @@ vim.keymap.set("i", "<Tab>", function()
 	return string.rep(" ", vim.opt.softtabstop:get())
 end, { expr = true, noremap = true })
 
-vim.keymap.set("n", "<leader>ljd", vim.lsp.buf.definition, { desc = "Jump to LSP Definition" })
-
-vim.keymap.set("n", "<leader>lji", vim.lsp.buf.implementation, { desc = "Jump to LSP Implementation" })
-
 vim.keymap.set("n", "cc", "ggdG", { desc = "clear buffer" })
-
-vim.keymap.set("n", "<leader>lh", function()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
-end, { desc = "toggle lsp inlay type hints" })
-
-vim.keymap.set("n", "<leader>dc", function()
-	vim.diagnostic.open_float({ scope = "cursor" })
-end, { desc = "show cursor diagnostics" })
-vim.keymap.set("n", "<leader>dl", function()
-	vim.diagnostic.open_float({ scope = "line" })
-end, { desc = "show line diagnostics" })
 
 vim.keymap.set({ "n", "v" }, "<C-w>1", ":1wincmd c<cr>", { desc = "close window 1" })
 vim.keymap.set({ "n", "v" }, "<C-w>2", ":2wincmd c<cr>", { desc = "close window 2" })
