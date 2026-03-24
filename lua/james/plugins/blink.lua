@@ -2,15 +2,12 @@ return {
 	"saghen/blink.cmp",
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		"marcoSven/blink-cmp-yanky",
 		{
 			"mikavilpas/blink-ripgrep.nvim",
 			version = "*", -- use the latest stable version
 		},
 	},
 	version = "1.*",
-	---@module 'blink.cmp'
-	---@type blink.cmp.Config
 	opts = {
 		cmdline = {
 			keymap = {
@@ -42,10 +39,6 @@ return {
 			["<C-z>"] = { "cancel", "fallback" },
 
 			["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
-		},
-
-		appearance = {
-			nerd_font_variant = "mono",
 		},
 
 		completion = {
@@ -80,32 +73,16 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "yank", "ripgrep" },
+			default = { "lsp", "path", "snippets", "ripgrep" },
 			providers = {
-				yank = {
-					name = "yank",
-					module = "blink-yanky",
-					opts = {
-						minLength = 7,
-						onlyCurrentFiletype = true,
-						trigger_characters = { '"' },
-						kind_icon = "󰅍",
-					},
-				},
 				ripgrep = {
 					module = "blink-ripgrep",
 					name = "Ripgrep",
-					-- see the full configuration below for all available options
-					---@module "blink-ripgrep"
-					---@type blink-ripgrep.Options
 					opts = {
 						prefix_min_len = 7,
 					},
 				},
 			},
 		},
-
-		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
-	opts_extend = { "sources.default" },
 }
