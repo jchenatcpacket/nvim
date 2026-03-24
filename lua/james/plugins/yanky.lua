@@ -1,19 +1,17 @@
 return {
 	"gbprod/yanky.nvim",
 	dependencies = {
-		{ "folke/snacks.nvim" },
 		{ "kkharji/sqlite.lua" },
 	},
-	config = function()
-		require("yanky").setup({
-			ring = {
-				storage = "sqlite",
-				permanent_wrapper = require("yanky.wrappers").remove_carriage_return,
-			},
-		})
-
-		vim.keymap.set({ "n", "i" }, "<C-p>", function()
-			Snacks.picker.yanky()
-		end, { desc = "yanky History picker" })
-	end,
+	opts = {
+		ring = {
+			storage = "sqlite",
+			-- permanent_wrapper = require("yanky.wrappers").remove_carriage_return,
+		},
+	},
+	keys = {
+		{ "<leader>p", "<cmd>YankyRingHistory<cr>", mode = { "n", "x" }, desc = "Open Yank History" },
+		{ "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put yanked text after cursor" },
+		{ "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put yanked text before cursor" },
+	},
 }

@@ -28,7 +28,6 @@ require("james.lsp")
 require("james.diag")
 require("common")
 require("keymaps")
-require("commands")
 
 -- right click menu customize
 -- vim.cmd("aunmenu PopUp")

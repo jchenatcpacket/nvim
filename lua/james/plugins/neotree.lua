@@ -78,5 +78,7 @@ return {
 				},
 			},
 		})
+
+		vim.api.nvim_create_user_command("Explorer", "Neotree", { desc = "File Explorer" })
 	end,
 }
