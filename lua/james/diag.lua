@@ -9,7 +9,7 @@ local diag_signs = {
 
 vim.diagnostic.config({
 	virtual_text = false,
-	underline = false,
+	underline = true,
 	float = {
 		border = "rounded",
 		format = function(diagnostic)
