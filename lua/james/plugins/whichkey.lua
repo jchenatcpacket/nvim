@@ -22,6 +22,7 @@ return {
 			{ "<leader>rg", group = "Grugfar Replace in project", mode = { "n", "v" } },
 			{ "<leader>s", group = "Fzf grep", mode = { "n", "v" } },
 			{ "<leader>sg", group = "Fzf in project", mode = { "n", "v" } },
+			{ "<leader>/", group = "comment", mode = { "n", "v" } },
 			{ "<leader>?", group = "help", mode = { "n", "v" } },
 		})
 	end,
