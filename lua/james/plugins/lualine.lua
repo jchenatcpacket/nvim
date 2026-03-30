@@ -55,7 +55,16 @@ return {
 						cond = git_blame.is_blame_text_available,
 					},
 				},
-				lualine_x = {},
+				lualine_x = {
+					{
+						"filetype",
+						colored = true, -- Displays filetype icon in color if set to true
+						icon_only = false, -- Display only an icon for filetype
+						icon = { align = "left" }, -- Display filetype icon on the right hand side
+						-- icon =    {'X', align='right'}
+						-- Icon string ^ in table is ignored in filetype component
+					},
+				},
 				lualine_y = {
 					"location",
 					"progress",
@@ -110,16 +119,7 @@ return {
 						cond = symbols.has,
 					},
 				},
-				lualine_x = {
-					{
-						"filetype",
-						colored = true, -- Displays filetype icon in color if set to true
-						icon_only = false, -- Display only an icon for filetype
-						icon = { align = "left" }, -- Display filetype icon on the right hand side
-						-- icon =    {'X', align='right'}
-						-- Icon string ^ in table is ignored in filetype component
-					},
-				},
+				lualine_x = {},
 				lualine_y = {},
 				lualine_z = {},
 			},
