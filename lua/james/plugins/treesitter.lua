@@ -99,10 +99,15 @@ return {
 			for _, map in ipairs({
 				{ { "n", "x", "o" }, "}m", mv.goto_next_start, "@function.outer" },
 				{ { "n", "x", "o" }, "{m", mv.goto_previous_start, "@function.outer" },
-				{ { "n", "x", "o" }, "}]", mv.goto_next_start, "@class.outer" },
-				{ { "n", "x", "o" }, "{[", mv.goto_previous_start, "@class.outer" },
 				{ { "n", "x", "o" }, "}M", mv.goto_next_end, "@function.outer" },
 				{ { "n", "x", "o" }, "{M", mv.goto_previous_end, "@function.outer" },
+
+				{ { "n", "x", "o" }, "}]", mv.goto_next_start, "@class.outer" },
+				{ { "n", "x", "o" }, "{[", mv.goto_previous_start, "@class.outer" },
+
+				{ { "n", "x", "o" }, "}b", mv.goto_next_end, "@block.outer" },
+				{ { "n", "x", "o" }, "{b", mv.goto_previous_end, "@block.outer" },
+
 				{ { "n", "x", "o" }, "}o", mv.goto_next_start, { "@loop.inner", "@loop.outer" } },
 				{ { "n", "x", "o" }, "{o", mv.goto_previous_start, { "@loop.inner", "@loop.outer" } },
 			}) do
